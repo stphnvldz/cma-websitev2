@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tenant Profiling</title>
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
@@ -15,7 +16,7 @@
   <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">TENANT PROFILING</label>
 </div>
 
-<form action="/tenant/add" method="post">
+<form action="/tenant/add" method="post" enctype="multipart/form-data">
   @csrf
   <div class ="d-flex justify-content-center row">
     <div class="col-md-3 mt-4 mx-4">
@@ -68,16 +69,15 @@
     <div class="col-md-2 mt-4 ml-4">
       <label for="inputpayment" class="form-label">Choice of Payment</label>
       <select id="inputpayment" name="payment" class="form-select">
-        <option selected>Choose...</option>
-        <option>Daily</option>
-        <option>Monthly</option>
+        <option value="" selected>Choose...</option>
+        <option value="daily">Daily</option>
+        <option value="monthly">Monthly</option>
       </select>
     </div>
     <div class="col-md-2 mt-4 mx-4">
       <label for="inputstallprice" class="form-label">Stall Price</label>
-      <input type="stallprice" name="stallprice" class="form-control" id="stallprice" value="500" readonly>
+      <input type="text" name="stallprice" class="form-control" id="stallprice" readonly>
     </div>
-  </div>
 
     <div class="col-6 mt-4 mx-auto">
       <label for="formFile" class="form-label">Upload Photo Here</label>
@@ -86,7 +86,45 @@
     <div class ="text-center col-12 md-2 mt-4 mx-4">
       <button type="store" class="btn btn-primary">Submit</button>
     </div>
-</form>  
+</form> 
+    
+{{--choice of payment tas mag bibigay ng value sa textbox ng stallprice--}}
+    <script>
+      const paymentSelect = document.querySelector('#inputpayment');
+      const stallPriceInput = document.querySelector('#stallprice');
+      
+      paymentSelect.addEventListener('change', (event) => {
+        const paymentOption = event.target.value;
+        const tenant = {
+          daily: 400,
+          monthly: 1500,
+        };
+
+        stallPriceInput.value = tenant[paymentOption];
+      });
+    </script>
+
+{{--pag upload ng image sa database--}}
+  <script>
+    function previewImage() {
+      var preview = document.getElementById('preview');
+      var image = document.querySelector('input[name=image]').files[0];
+      var reader = new FileReader();
+    
+      reader.onloadend = function() {
+        preview.src = reader.result;
+        preview.style.display = 'block';
+      }
+    
+      if (image) {
+        reader.readAsDataURL(image);
+      } else {
+        preview.src = "";
+        preview.style.display = 'none';
+      }
+    }
+    </script>
+    
     <script src="assets/js/bootstrap.js"></script>
 
 </body>
