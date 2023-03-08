@@ -8,6 +8,7 @@
     <title>Stalls</title>
 
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
+
 </head>
 <body>
 
@@ -58,18 +59,18 @@
             <p class="fw-bolder">STALLS</p>
             <div class="dropdown">
                 <div class="col-my-4">
-                    <select id="inputState" class="for-select">
-                    <option selected>Select Stall Number</option>
-                    <option value="101">Stall No. 101</option>
-                    <option value="102">Stall No. 102</option>
-                    <option value="103">Stall No. 103</option>
-                    <option value="104">Stall No. 104</option>
-                    <option value="105">Stall No. 105</option>
-                    <option value="106">Stall No. 106</option>
-                    <option value="107">Stall No. 107</option>
-                    <option value="108">Stall No. 108</option>
-                    <option value="109">Stall No. 109</option>
-                    <option value="110">Stall No. 110</option>
+                    <select id="stall-select1" name="for-select">
+                    <option selected></option>
+                    <option>Stall No. 101</option>
+                    <option>Stall No. 102</option>
+                    <option>Stall No. 103</option>
+                    <option>Stall No. 104</option>
+                    <option>Stall No. 105</option>
+                    <option>Stall No. 106</option>
+                    <option>Stall No. 107</option>
+                    <option>Stall No. 108</option>
+                    <option>Stall No. 109</option>
+                    <option>Stall No. 110</option>
                     </select>
                 </div>
             </div>
@@ -78,8 +79,8 @@
             <div class="p-4">
                 <div class="dropdown">
                     <div class="col-my-4">
-                        <select id="inputState" class="for-select">
-                        <option selected>Select Stall Number</option>
+                        <select id="stall-select2" name="for-select">
+                        <option selected></option>
                         <option>Stall No. 201</option>
                         <option>Stall No. 202</option>
                         <option>Stall No. 203</option>
@@ -98,8 +99,8 @@
                 <div class="p-3">
                     <div class="dropdown">
                         <div class="col-my-4">
-                            <select id="inputState" class="for-select">
-                            <option selected>Select Stall Number</option>
+                            <select id="stall-select3" name="for-select">
+                            <option selected></option>
                             <option>Stall No. 301</option>
                             <option>Stall No. 302</option>
                             <option>Stall No. 303</option>
@@ -117,11 +118,12 @@
         </div>
 
         </div>
-        <div class="d-grid gap-1 d-md-flex justify-content-md-end">
-            <button class="btn btn-primary me-md-3" type="button">Select Stall</button>
+        <div class="d-grid gap-1 d-md-flex justify-content-md-end" href="/tenant">
+            <button href="/tenant" aria-current="page" id="proceedButton" type="button" class="btn btn-primary me-md-3">Proceed</button>
         </div>
 
     </div>
+
 
         <script src="assets/js/bootstrap.js"></script>
 </body>

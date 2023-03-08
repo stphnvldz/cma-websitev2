@@ -21,6 +21,9 @@ Route::get('/stalls', function () {
 Route::get('/tenant', function () {
     return view('admin.tenant');
 });
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
+});
 
 
 Auth::routes();
@@ -34,7 +37,6 @@ Route::prefix('admin')->middleware(['auth'])->group(function() {
 // Route::get('/tenant', function () {
 //     return view('admin.tenant');
 //     Route::post('/tenant', 'UserController@store');
- 
 // });
 
 Route::post('/tenant/add', [App\Http\Controllers\TenantController::class, 'addtenant'])->name('addtenant');
