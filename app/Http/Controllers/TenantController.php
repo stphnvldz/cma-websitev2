@@ -24,10 +24,23 @@ class TenantController extends Controller
         $tenant->stalltype = $request->input('stalltype');
         $tenant->payment = $request->input('payment');
         $tenant->stallprice = $request->input('stallprice');
-        $tenant->image = $request->input('image');
+        
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = time().'.'.$image->getClientOriginalExtension();
+            $image->storeAs('public/images', $filename);
+            $tenant->image = $filename;
+        }
 
         $tenant->save();
 
         return redirect('/tenant');
     }
+    
+   // public function getTenantData()
+  //  {
+   //     $tenants = Tenant::all();
+   //     return response()->json($tenants);
+ //   }
+    
 }
