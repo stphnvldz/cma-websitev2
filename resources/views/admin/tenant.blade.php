@@ -48,8 +48,8 @@
 
   <div class ="d-flex justify-content-center row">
     <div class="col-md-3 mt-4 mx-4">
-      <label for="inputstallnumt4" class="form-label">Stall Number</label>
-      <input type="stallnum" name="stallnum" class="form-control" id="stallnum" placeholder="Please Type Stall Number">
+      <label for="stallnum" class="form-label">Stall Number</label>
+      <input type="text" name="stallnum" class="form-control" id="stallnum" readonly value="{{ request('$selectedStalls') }}">
     </div>
     <div class="col-md-3 mt-4 mx-4">
       <label for="inputstallname4" class="form-label">Stall Name</label>
