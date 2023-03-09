@@ -20,7 +20,7 @@ class StallsController extends Controller
             dd($selectedStalls);
 
             // Pass the selected stall value(s) to the tenant view
-            return view('admin.tenant', ['selectedStalls' => $selectedStalls]);
+            return view('admin.tenant', $selectedStalls);
         }
         return view('layouts.stalls');
     }
