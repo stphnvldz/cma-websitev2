@@ -1,4 +1,9 @@
 @extends('layouts.master')
+
+@php
+    echo $selectedStalls;
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
