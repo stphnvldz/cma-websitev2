@@ -20,7 +20,7 @@ Route::get('/stalls', function () {
 });
 Route::get('/tenant', function () {
     return view('admin.tenant');
-});
+})->name('tenant');
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
