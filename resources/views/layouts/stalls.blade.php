@@ -134,7 +134,7 @@
           </script>
         </div>
         <div class="d-grid gap-1 d-md-flex justify-content-md-end">
-           <a href="/tenant" class="btn btn-primary" id="#proceed-btn">Proceed</a>
+           <a href="/tenants" class="btn btn-primary" id="#proceed-btn">Proceed</a>
         </div>
     </div>
 </form>
