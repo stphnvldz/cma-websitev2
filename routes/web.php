@@ -48,7 +48,7 @@ Route::get('/viewtenant', function () {
     return view('admin.viewtenant');
 });
 
-Route::post('/tenants', [App\Http\Controllers\StallsController::class, 'tenants'])->name('tenants');
+Route::get('/tenants', [App\Http\Controllers\StallsController::class, 'tenants'])->name('tenants');
 
 //Route::post('/tenants', 'App\Http\Controllers\StallsController@tenants');
 
