@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
-@if (isset($selectedStalls))
-    <h1>Selected Stalls: {{ $selectedStalls }}</h1>
+@if (request('selectedStalls'))
+    <p>Selected Stalls: {{ request('selectedStalls') }}</p>
 @endif
 
 <!DOCTYPE html>
