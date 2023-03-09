@@ -17,10 +17,10 @@ class StallsController extends Controller
             $selectedStalls = $selectedStall1 . ' ' . $selectedStall2 . ' ' . $selectedStall3;
 
             // Debug statement
-            dd($selectedStalls);
+            // comment ko muna dd($selectedStalls);
 
             // Pass the selected stall value(s) to the tenant view
-            return view('admin.tenant', $selectedStalls);
+            return view('admin.tenant', ['selectedStalls => $selectedStalls']);
         }
         return view('layouts.stalls');
     }
