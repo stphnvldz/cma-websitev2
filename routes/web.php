@@ -18,9 +18,9 @@ Route::get('/about', function () {
 Route::get('/stalls', function () {
     return view('layouts.stalls');
 });
-// Route::get('/tenant', function () {
-//     return view('admin.tenant');
-// });
+Route::get('/tenant', function () {
+    return view('admin.tenant');
+});
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
