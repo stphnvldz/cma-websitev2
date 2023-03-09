@@ -61,16 +61,16 @@
             <div class="dropdown">
                 <select id="stall-select1" onchange="updateStallDropdowns()">
                     <option selected></option>
-                    <option>Stall No. 101</option>
-                    <option>Stall No. 102</option>
-                    <option>Stall No. 103</option>
-                    <option>Stall No. 104</option>
-                    <option>Stall No. 105</option>
-                    <option>Stall No. 106</option>
-                    <option>Stall No. 107</option>
-                    <option>Stall No. 108</option>
-                    <option>Stall No. 109</option>
-                    <option>Stall No. 110</option>
+                    <option value="Stall No. 101">Stall No. 101</option>
+                    <option value="Stall No. 102">Stall No. 102</option>
+                    <option value="Stall No. 103">Stall No. 103</option>
+                    <option value="Stall No. 104">Stall No. 104</option>
+                    <option value="Stall No. 105">Stall No. 105</option>
+                    <option value="Stall No. 106">Stall No. 106</option>
+                    <option value="Stall No. 107">Stall No. 107</option>
+                    <option value="Stall No. 108">Stall No. 108</option>
+                    <option value="Stall No. 109">Stall No. 109</option>
+                    <option value="Stall No. 110">Stall No. 110</option>
                 </select>
             </div>
             </div>
@@ -79,16 +79,16 @@
                 <div class="dropdown">
                         <select id="stall-select2" onchange="updateStallDropdowns()">
                         <option selected></option>
-                        <option>Stall No. 201</option>
-                        <option>Stall No. 202</option>
-                        <option>Stall No. 203</option>
-                        <option>Stall No. 204</option>
-                        <option>Stall No. 205</option>
-                        <option>Stall No. 206</option>
-                        <option>Stall No. 207</option>
-                        <option>Stall No. 208</option>
-                        <option>Stall No. 209</option>
-                        <option>Stall No. 210</option>
+                        <option value="Stall No. 201">Stall No. 201</option>
+                        <option value="Stall No. 202">Stall No. 202</option>
+                        <option value="Stall No. 203">Stall No. 203</option>
+                        <option value="Stall No. 204">Stall No. 204</option>
+                        <option value="Stall No. 205">Stall No. 205</option>
+                        <option value="Stall No. 206">Stall No. 206</option>
+                        <option value="Stall No. 207">Stall No. 207</option>
+                        <option value="Stall No. 208">Stall No. 208</option>
+                        <option value="Stall No. 209">Stall No. 209</option>
+                        <option value="Stall No. 210">Stall No. 210</option>
                         </select>
                 </div>
             </div>
@@ -97,16 +97,16 @@
                     <div class="dropdown">
                         <select id="stall-select3" onchange="updateStallDropdowns()">
                             <option selected></option>
-                            <option>Stall No. 301</option>
-                            <option>Stall No. 302</option>
-                            <option>Stall No. 303</option>
-                            <option>Stall No. 304</option>
-                            <option>Stall No. 305</option>
-                            <option>Stall No. 306</option>
-                            <option>Stall No. 307</option>
-                            <option>Stall No. 308</option>
-                            <option>Stall No. 309</option>
-                            <option>Stall No. 310</option>
+                            <option value="Stall No. 301">Stall No. 301</option>
+                            <option value="Stall No. 302">Stall No. 302</option>
+                            <option value="Stall No. 303">Stall No. 303</option>
+                            <option value="Stall No. 304">Stall No. 304</option>
+                            <option value="Stall No. 305">Stall No. 305</option>
+                            <option value="Stall No. 306">Stall No. 306</option>
+                            <option value="Stall No. 307">Stall No. 307</option>
+                            <option value="Stall No. 308">Stall No. 308</option>
+                            <option value="Stall No. 309">Stall No. 309</option>
+                            <option value="Stall No. 310">Stall No. 310</option>
                         </select>
                     </div>
                 </div>
