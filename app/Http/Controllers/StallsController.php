@@ -20,7 +20,7 @@ class StallsController extends Controller
             // comment ko muna dd($selectedStalls);
 
             // Pass the selected stall value(s) to the tenant view
-            return view('admin.tenant', ['selectedStalls' => $selectedStalls]);
+            return redirect('/tenant?selectedStalls=' . urlencode($selectedStalls));
         }
         return view('layouts.stalls');
     }
