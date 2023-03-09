@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
-{{ $selectedStalls }}
+@if (isset($selectedStalls))
+    <h1>Selected Stalls: {{ $selectedStalls }}</h1>
+@endif
 
 <!DOCTYPE html>
 <html lang="en">
