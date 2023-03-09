@@ -30,7 +30,6 @@
                             </a>
                             <div class="collapse" id="collapseTenants" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a href="/tenant" class="nav-link" aria-current="page">Tenant Profiling</a>
                                     <a href="/tenantlists" class="nav-link" aria-current="page">List of Tenants</a>
                                     <a class="nav-link" href="layout-contracts.html">Contracts</a>
                                     <a class="nav-link" href="layout-unaccountendtenant.html">Unaccounted Tenants</a>

@@ -43,7 +43,8 @@
         </button>
     </div>
 
-    
+<form action="{{ route('tenants') }}" method="post">
+@csrf
     <div class="container px-4 text-center mt-2 mx-5" style="height:320px;border: 1px solid rgb(39, 38, 38);border-radius: 4px;">
         <div class="row gx-5">
         <div class="col">
@@ -58,8 +59,7 @@
             <div class="p-3">
             <p class="fw-bolder">STALLS</p>
             <div class="dropdown">
-                <div class="col-my-4">
-                    <select id="stall-select1" name="for-select">
+                <select id="stall-select1" onchange="updateStallDropdowns()">
                     <option selected></option>
                     <option>Stall No. 101</option>
                     <option>Stall No. 102</option>
@@ -71,15 +71,13 @@
                     <option>Stall No. 108</option>
                     <option>Stall No. 109</option>
                     <option>Stall No. 110</option>
-                    </select>
-                </div>
+                </select>
             </div>
             </div>
 
             <div class="p-4">
                 <div class="dropdown">
-                    <div class="col-my-4">
-                        <select id="stall-select2" name="for-select">
+                        <select id="stall-select2" onchange="updateStallDropdowns()">
                         <option selected></option>
                         <option>Stall No. 201</option>
                         <option>Stall No. 202</option>
@@ -92,14 +90,12 @@
                         <option>Stall No. 209</option>
                         <option>Stall No. 210</option>
                         </select>
-                    </div>
                 </div>
-                </div>
+            </div>
 
                 <div class="p-3">
                     <div class="dropdown">
-                        <div class="col-my-4">
-                            <select id="stall-select3" name="for-select">
+                        <select id="stall-select3" onchange="updateStallDropdowns()">
                             <option selected></option>
                             <option>Stall No. 301</option>
                             <option>Stall No. 302</option>
@@ -111,19 +107,41 @@
                             <option>Stall No. 308</option>
                             <option>Stall No. 309</option>
                             <option>Stall No. 310</option>
-                            </select>
-                        </div>
+                        </select>
                     </div>
-                    </div>
+                </div>
         </div>
-
+        <script>
+            function updateStallDropdowns() {
+                var select1 = document.getElementById("stall-select1");
+                var select2 = document.getElementById("stall-select2");
+                var select3 = document.getElementById("stall-select3");
+            
+                if (select1.value && select2.value) {
+                    select3.disabled = true;
+                } 
+                else if (select1.value && select3.value){
+                    select2.disabled = true;
+                }
+                else if (select2.value && select3.value){
+                    select1.disabled = true;
+                }else {
+                    select1.disabled = false;
+                    select2.disabled = false;
+                    select3.disabled = false;
+                }
+            }
+          </script>
         </div>
-        <div class="d-grid gap-1 d-md-flex justify-content-md-end" href="/tenant">
-            <button href="/tenant" aria-current="page" id="proceedButton" type="button" class="btn btn-primary me-md-3">Proceed</button>
+        <div class="d-grid gap-1 d-md-flex justify-content-md-end">
+           <a href="/tenant" class="btn btn-primary" id="#proceed-btn">Proceed</a>
         </div>
-
     </div>
+</form>
 
+    @if(isset($selectedStalls))
+        @include('admin.tenant', ['selectedStalls' => $selectedStalls])
+    @endif
 
         <script src="assets/js/bootstrap.js"></script>
 </body>
