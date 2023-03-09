@@ -134,7 +134,7 @@
           </script>
         </div>
         <div class="d-grid gap-1 d-md-flex justify-content-md-end">
-           <a type="submit" class="btn btn-primary" id="#proceed-btn">Proceed</a>
+           <button type="submit" class="btn btn-primary" id="#proceed-btn">Proceed</a>
         </div>
     </div>
 </form>
