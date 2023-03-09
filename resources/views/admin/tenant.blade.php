@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
-@php
-    echo {{ $selectedStalls }};
-@endphp
+{{ $selectedStalls }}
 
 <!DOCTYPE html>
 <html lang="en">
