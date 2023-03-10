@@ -59,7 +59,7 @@
             <div class="p-3">
             <p class="fw-bolder">STALLS</p>
             <div class="dropdown">
-                <select id="stall-select1" onchange="updateStallDropdowns()">
+                <select name="stall-select1" id="stall-select1" onchange="updateStallDropdowns()">
                     <option selected></option>
                     <option value="Stall No. 101">Stall No. 101</option>
                     <option value="Stall No. 102">Stall No. 102</option>
@@ -77,7 +77,7 @@
 
             <div class="p-4">
                 <div class="dropdown">
-                        <select id="stall-select2" onchange="updateStallDropdowns()">
+                        <select name="stall-select2" id="stall-select2" onchange="updateStallDropdowns()">
                         <option selected></option>
                         <option value="Stall No. 201">Stall No. 201</option>
                         <option value="Stall No. 202">Stall No. 202</option>
@@ -95,7 +95,7 @@
 
                 <div class="p-3">
                     <div class="dropdown">
-                        <select id="stall-select3" onchange="updateStallDropdowns()">
+                        <select name="stall-select3" id="stall-select3" onchange="updateStallDropdowns()">
                             <option selected></option>
                             <option value="Stall No. 301">Stall No. 301</option>
                             <option value="Stall No. 302">Stall No. 302</option>

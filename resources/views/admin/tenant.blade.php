@@ -1,9 +1,5 @@
 @extends('layouts.master')
 
-@if (request('selectedStalls'))
-    <p>Selected Stalls: {{ request('selectedStalls') }}</p>
-@endif
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,7 +50,7 @@
   <div class ="d-flex justify-content-center row">
     <div class="col-md-3 mt-4 mx-4">
       <label for="stallnum" class="form-label">Stall Number</label>
-      <input type="text" name="stallnum" class="form-control" id="stallnum" readonly value="{{ request('$selectedStalls') }}">
+      <input type="text" name="stallnum" class="form-control" id="stallnum" readonly value="{{ request('selectedStalls') }}">
     </div>
     <div class="col-md-3 mt-4 mx-4">
       <label for="inputstallname4" class="form-label">Stall Name</label>
