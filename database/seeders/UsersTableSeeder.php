@@ -22,13 +22,13 @@ class UsersTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'name' => 'Admin',
-                'email' => 'admin@example.com',
+                'name' => 'Louisse',
+                'email' => 'louisse@example.com',
                 'email_verified_at' => NULL,
-                'password' => '$2y$10$in4ihjOXgtWtaDMWcr2BeOlMUXhIjyXaat16fhsoy4r0J173TwJy2',
+                'password' => '$2y$10$k1iVDE7qIWw1EKZjc2835OJMCGCgXU1mBrOP2I/TBh6dMfsATAso6',
                 'remember_token' => NULL,
-                'created_at' => '2023-02-25 10:31:27',
-                'updated_at' => '2023-02-25 10:31:27',
+                'created_at' => '2023-02-26 08:46:36',
+                'updated_at' => '2023-02-26 08:46:36',
                 'role_as' => 0,
             ),
         ));
