@@ -14,7 +14,7 @@
     
     <div class="d-flex justify-content-end">
         <form class="d-flex" role="search">
-            <input id="searchInput" class="form-control me-2 mt-2" style="width: 500px" type="search" placeholder="Search by stall type" aria-label="Search">
+            <input id="searchInput" class="form-control me-2 mt-2" style="width: 500px" type="search" placeholder="Search" aria-label="Search">
             <button id="searchButton" class="btn btn-outline-success me-2 mt-2" onclick="filterTable()" type="button">Search</button>
             <button class="btn btn-outline-success me-2 mt-2" type="submit">Sort</button>
         </form>
@@ -24,6 +24,7 @@
         <thead>
           <tr>
             <th scope="col">Full Name</th>
+            <th scope="col">Stall Name</th>
             <th scope="col">Stall Number</th>
             <th scope="col">Stall Type</th>
           </tr>
@@ -38,6 +39,7 @@
                 let tenant = tenants[i];
                 document.write('<tr>');
                 document.write('<td>' + tenant.fullname +'</td>');
+                document.write('<td>' + tenant.stallname + '</td>');
                 document.write('<td>' + tenant.stallnum +'</td>');
                 document.write('<td>' + tenant.stalltype + '</td>');
                 document.write('<td>');
