@@ -18,58 +18,58 @@
     <div class ="d-flex justify-content-center row">
         <div class="col-md-3 mt-4 mx-4">
           <label for="inputName4" class="form-label">Full Name</label>
-          <input type="fullname" name="fullname"class="form-control" id="fullname" readonly value="{{ request('tenant') }}">
+          <input type="fullname" name="fullname"class="form-control" id="fullname" readonly value="{{ $data->fullname }}">
         </div>
 
         <div class="col-md-3 mt-4 mx-4">
           <label for="inputBirthday4" class="form-label">Date of Birth</label>
-          <input type="dateofbirth" name="dateofbirth" class="form-control" id="dateofbirth" readonly>
+          <input type="dateofbirth" name="dateofbirth" class="form-control" id="dateofbirth"  value="{{ $data->dateofbirth }}" readonly>
         </div>
 
         <div class="col-6 mt-2 mx-3">
           <label for="inputAddress" class="form-label">Address</label>
-          <input type="address" name="address" class="form-control" id="address" style="height: 100px;" readonly>
+          <input type="address" name="address" class="form-control" id="address" style="height: 100px;" value="{{ $data->address }}" readonly>
         </div>
       </div>
     
       <div class ="d-flex justify-content-center row">
         <div class="col-md-3 mt-4 mx-4">
           <label for="inputcontact4" class="form-label">Contact No.</label>
-          <input type="contact" name="contact" class="form-control" id="contact" readonly>
+          <input type="contact" name="contact" class="form-control" id="contact"  value="{{ $data->contact }}"readonly>
         </div>
 
         <div class="col-md-3 mt-4 mx-4">
           <label for="inputEmail4" class="form-label">Email Address</label>
-          <input type="emailadd" name="emailadd" class="form-control" id="emailadd" readonly>
+          <input type="emailadd" name="emailadd" class="form-control" id="emailadd" value="{{ $data->emailadd }}" readonly>
         </div>
       </div>  
       
       <div class ="d-flex justify-content-center row">
         <div class="col-md-3 mt-4 mx-4">
           <label for="stallnum" class="form-label">Stall Number</label>
-          <input type="text" name="stallnum" class="form-control" id="stallnum" readonly>
+          <input type="text" name="stallnum" class="form-control" id="stallnum" value="{{ $data->stallnum }}" readonly>
         </div>
 
         <div class="col-md-3 mt-4 mx-4">
           <label for="inputstallname4" class="form-label">Stall Name</label>
-          <input type="stallname" name="stallname" class="form-control" id="stallname" readonly>
+          <input type="stallname" name="stallname" class="form-control" id="stallname" value="{{ $data->stallname }}" readonly>
         </div>
       </div>
       
       <div class ="d-flex justify-content-center row">
         <div class="col-md-2 mt-4 mx-4">
           <label for="inputstalltype" class="form-label">Stall Type</label>
-          <input id="inputstalltype" name="stalltype" class="form-control" readonly>
+          <input id="inputstalltype" name="stalltype" class="form-control" value="{{ $data->stalltype }}" readonly>
         </div>
 
         <div class="col-md-2 mt-4 ml-4">
           <label for="inputpayment" class="form-label">Choice of Payment</label>
-          <input id="inputpayment" name="payment" class="form-control" readonly>
+          <input id="inputpayment" name="payment" class="form-control" value="{{ $data->payment }}" readonly>
         </div>
 
         <div class="col-md-2 mt-4 mx-4">
           <label for="inputstallprice" class="form-label">Stall Price</label>
-          <input type="text" name="stallprice" class="form-control" id="stallprice" readonly>
+          <input type="text" name="stallprice" class="form-control" id="stallprice" value="{{ $data->stallprice }}" readonly>
         </div>
     
         <div class="col-6 mt-4 mx-auto">
