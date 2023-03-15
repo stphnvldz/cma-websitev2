@@ -73,7 +73,7 @@
         </div>
     
         <div class="col-6 mt-4 mx-auto">
-          <img src="data:image/jpeg;base64,{{ base64_encode($image) }}" alt="Image">
+          <img src="/public/img/{{ $data->image }}" alt="Image">
         {{--  <input class="d-flex justify-content-center form-control" name="image" type="file" id="image" style="height: 38px;">--}}
         </div>
 
