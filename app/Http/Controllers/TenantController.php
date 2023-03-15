@@ -36,11 +36,9 @@ class TenantController extends Controller
 
         return redirect('/tenant');
     }
-    
-   // public function getTenantData()
-  //  {
-   //     $tenants = Tenant::all();
-   //     return response()->json($tenants);
- //   }
-    
+    //public function show(Product $product)
+    //{
+     //   return view('products.show',compact('product'));
+   // }
+ 
 }

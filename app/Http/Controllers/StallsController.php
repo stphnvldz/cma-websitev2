@@ -15,7 +15,8 @@ class StallsController extends Controller
 
             // Concatenate all selected values into one string
             $selectedStalls = $selectedStall1 . ' ' . $selectedStall2 . ' ' . $selectedStall3;
-            // Debug statement  
+
+            // Debug statement
             // comment ko muna dd($selectedStalls);
 
             // Pass the selected stall value(s) to the tenant view

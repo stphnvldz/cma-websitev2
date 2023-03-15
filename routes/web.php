@@ -40,15 +40,13 @@ Route::prefix('admin')->middleware(['auth'])->group(function() {
 // });
 Route::post('/tenant/add', [App\Http\Controllers\TenantController::class, 'addtenant'])->name('addtenant');
 
-
-
 Route::get('/tenantlists', [App\Http\Controllers\TenantListController::class, 'index'])->name('tenantlists');
 
-Route::get('/viewtenant', function () {
-    return view('admin.viewtenant');
-});
-
 Route::post('/tenants', [App\Http\Controllers\StallsController::class, 'tenants'])->name('tenants');
+
+Route::get('/viewtenant', [App\Http\Controllers\TenantListController::class, 'viewTenantData'])->name('viewtenant');
+
+Route::post('/postviewtenant', [App\Http\Controllers\TenantListController::class, 'editTenantData'])->name('viewtenant');
 
 //Route::post('/tenants', 'App\Http\Controllers\StallsController@tenants');
 

@@ -131,10 +131,10 @@
                     select3.disabled = false;
                 }
             }
-          </script>
+        </script>
         </div>
         <div class="d-grid gap-1 d-md-flex justify-content-md-end">
-           <button type="submit" class="btn btn-primary" id="#proceed-btn">Proceed</a>
+            <button type="submit" class="btn btn-primary" id="#proceed-btn">Proceed</a>
         </div>
     </div>
 </form>
