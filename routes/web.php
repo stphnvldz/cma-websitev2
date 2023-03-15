@@ -46,6 +46,8 @@ Route::post('/tenants', [App\Http\Controllers\StallsController::class, 'tenants'
 
 Route::get('/viewtenant', [App\Http\Controllers\TenantListController::class, 'viewTenantData'])->name('viewtenant');
 
+Route::post('/postviewtenant', [App\Http\Controllers\TenantListController::class, 'editTenantData'])->name('viewtenant');
+
 //Route::post('/tenants', 'App\Http\Controllers\StallsController@tenants');
 
 //Route::post('/tenants', 'StallsController@tenants')->name('tenants');

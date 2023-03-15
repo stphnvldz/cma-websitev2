@@ -44,7 +44,7 @@
                 document.write('<td>' + tenant.stalltype + '</td>');
                 document.write('<td>');
                 document.write('<div class="btn-group" role="group" aria-label="Tenant Actions">');
-                document.write('<a href="/edittenant?id=' + tenant.id + '" type="button" class="btn btn-primary">Edit</button>');
+            //  document.write('<a href="/edittenant?id=' + tenant.id + '" type="button" class="btn btn-primary">Edit</button>');
                 document.write('<a href="/viewtenant?id=' + tenant.id + '" type="button" class="btn btn-secondary">View</button>');
                 document.write('<a href="/archivetenant?id=' + tenant.id + '" type="button" class="btn btn-danger">Archive</button>');
                 document.write('</td>');

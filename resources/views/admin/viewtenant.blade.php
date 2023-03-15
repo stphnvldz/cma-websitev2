@@ -73,8 +73,8 @@
         </div>
     
         <div class="col-6 mt-4 mx-auto">
-          <label for="formFile" class="form-label">Upload Photo Here</label>
-          <input class="d-flex justify-content-center form-control" name="image" type="file" id="image" style="height: 38px;">
+          <img src=""data:image/jpeg;base64,{{ base64_encode($image) }}" alt="Image">
+        {{--  <input class="d-flex justify-content-center form-control" name="image" type="file" id="image" style="height: 38px;">--}}
         </div>
 
         <div class="d-grid gap-1 d-md-flex justify-content-md-end">
@@ -90,12 +90,27 @@
             var editButton = document.getElementById("edit");
             
             // Get the fullname and dateofbirth input elements
+            var fullnameInput = document.getElementById("fullname");
+            var dateofbirthInput = document.getElementById("dateofbirth");
+            var addressInput = document.getElementById("address");
             var contactInput = document.getElementById("contact");
-          
+            var emailaddInput = document.getElementById("emailadd");
+            var stallnumInput = document.getElementById("stallnum");
+            var stallnameInput = document.getElementById("stallname");
+            var stalltypeInput = document.getElementById("stalltype");
+            var paymentInput = document.getElementById("payment");
             // Add an event listener to the edit button
             editButton.addEventListener("click", function() {
             // Enable the fullname and dateofbirth input fields
+            fullnameInput.removeAttribute("readonly");
+            dateofbirthInput.removeAttribute("readonly");
+            addressInput.removeAttribute("readonly");
             contactInput.removeAttribute("readonly");
+            emailaddInput.removeAttribute("readonly");
+            stallnumInput.removeAttribute("readonly");
+            stallnameInput.removeAttribute("readonly");
+            stalltypeInput.removeAttribute("readonly");
+            paymentInput.removeAttribute("readonly");
             });
           </script>
     <script src="assets/js/bootstrap.js"></script>

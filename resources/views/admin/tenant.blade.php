@@ -50,7 +50,7 @@
   <div class ="d-flex justify-content-center row">
     <div class="col-md-3 mt-4 mx-4">
       <label for="stallnum" class="form-label">Stall Number</label>
-      <input type="text" name="stallnum" class="form-control" id="stallnum" readonly value="($selectedStalls->fullname)">
+      <input type="text" name="stallnum" class="form-control" id="stallnum" readonly value="{{ request('selectedStalls')}}">
     </div>
     <div class="col-md-3 mt-4 mx-4">
       <label for="inputstallname4" class="form-label">Stall Name</label>

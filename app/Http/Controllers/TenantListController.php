@@ -13,15 +13,26 @@ class TenantListController extends Controller
         return view('admin.tenantlists', compact('tenants'));
     }
 
-
     public function viewTenantData(Request $request){
         $id = $request->input('id');
 
         $db = DB::table('tenant')
         ->where('id', '=', $id)
         ->first();
+        $image = $db->image; // replace "image" with the actual column name in your table
+        
+        return view('admin.viewtenant', ['data' => $db , 'image' => $image]);
+    }
+
+    public function editTenantData(Request $request){
+        $id = $request->input('id');
+
+        $db = DB::table('tenant')
+        ->where('id', '=', $id)
+        ->update([
+            'contact' => $request->input('contact'),
+        ]);
         
         return view('admin.viewtenant', ['data' => $db]);
     }
-
 }
