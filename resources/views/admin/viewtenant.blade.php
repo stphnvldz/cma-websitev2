@@ -59,21 +59,21 @@
       <div class ="d-flex justify-content-center row">
         <div class="col-md-2 mt-4 mx-4">
           <label for="inputstalltype" class="form-label">Stall Type</label>
-          <input id="inputstalltype" name="stalltype" class="form-control" value="{{ $data->stalltype }}" readonly>
+          <input id="stalltype" name="stalltype" class="form-control" value="{{ $data->stalltype }}" readonly>
         </div>
 
         <div class="col-md-2 mt-4 ml-4">
           <label for="inputpayment" class="form-label">Choice of Payment</label>
-          <input id="inputpayment" name="payment" class="form-control" value="{{ $data->payment }}" readonly>
+          <input id="payment" name="payment" class="form-control" value="{{ $data->payment }}" readonly>
         </div>
 
         <div class="col-md-2 mt-4 mx-4">
           <label for="inputstallprice" class="form-label">Stall Price</label>
-          <input type="text" name="stallprice" class="form-control" id="stallprice" value="{{ $data->stallprice }}" readonly>
+          <input type="text" id="stallprice" name="stallprice" class="form-control" id="stallprice" value="{{ $data->stallprice }}" readonly>
         </div>
     
         <div class="col-6 mt-4 mx-auto">
-          <img src=""data:image/jpeg;base64,{{ base64_encode($image) }}" alt="Image">
+          <img src="data:image/jpeg;base64,{{ base64_encode($image) }}" alt="Image">
         {{--  <input class="d-flex justify-content-center form-control" name="image" type="file" id="image" style="height: 38px;">--}}
         </div>
 
@@ -89,7 +89,7 @@
             // Get the edit button element
             var editButton = document.getElementById("edit");
             
-            // Get the fullname and dateofbirth input elements
+            // Get the input elements
             var fullnameInput = document.getElementById("fullname");
             var dateofbirthInput = document.getElementById("dateofbirth");
             var addressInput = document.getElementById("address");
@@ -101,7 +101,7 @@
             var paymentInput = document.getElementById("payment");
             // Add an event listener to the edit button
             editButton.addEventListener("click", function() {
-            // Enable the fullname and dateofbirth input fields
+            // Enable the input fields
             fullnameInput.removeAttribute("readonly");
             dateofbirthInput.removeAttribute("readonly");
             addressInput.removeAttribute("readonly");
