@@ -28,7 +28,7 @@ class TenantController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $filename = time().'.'.$image->getClientOriginalExtension();
-            $image->storeAs('public/images', $filename);
+            $image->move(public_path('public/img'), $filename);
             $tenant->image = $filename;
         }
 
