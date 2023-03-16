@@ -19,9 +19,9 @@ class TenantListController extends Controller
         $db = DB::table('tenant')
         ->where('id', '=', $id)
         ->first();
-        $image = $db->image; // replace "image" with the actual column name in your table
+        //$image = $db->image; // replace "image" with the actual column name in your table
         
-        return view('admin.viewtenant', ['data' => $db , 'image' => $image]);
+        return view('admin.viewtenant', ['data' => $db]);
     }
 
     public function editTenantData(Request $request){
