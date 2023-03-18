@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\tenant;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File; 
 
 class TenantListController extends Controller
 {
@@ -42,13 +43,18 @@ class TenantListController extends Controller
             'stallprice' => $request->input('stallprice'),
         ]);
 
-        if ($request->hasFile('image')) {
+        if($request->hasFile('image')){
+            $tenant = DB::table('tenant')->where('id', '=', $id)->first();
+
+            File::delete('public/img/' . $tenant->image);
+
             $image = $request->file('image');
-            $filename = DB::table('tenant')
-                ->where('id', '=', $id)
-                ->select('image')
-                ->get();
+            $filename = time().'.'.$image->getClientOriginalExtension();
             $image->move(public_path('public/img'), $filename);
+
+            DB::table('tenant')
+            ->where('id', '=', $id)
+            ->update(['image' => $filename,]);
         }
 
         return redirect()->back()->with('success', 'Tenant information updated successfully');

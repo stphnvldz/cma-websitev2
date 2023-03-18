@@ -79,7 +79,7 @@
       <div class="mb-3 row">
         <label for="stalltype" class="col-sm-3 col-form-label align-self-center">Stall Type</label>
         <div class="col-sm-9">
-          <select id="stalltype" name="stalltype" class="form-control" disabled>
+          <select id="stalltype" name="stalltype" class="form-control" readonly>
             <option value="Regular" {{ $data->stalltype == 'Regular' ? 'selected' : '' }}>Regular</option>
             <option value="Temporary" {{ $data->stalltype == 'Temporary' ? 'selected' : '' }}>Temporary</option>
         </select>
