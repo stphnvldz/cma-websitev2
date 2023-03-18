@@ -36,9 +36,4 @@ class TenantController extends Controller
 
         return redirect('/tenant');
     }
-    //public function show(Product $product)
-    //{
-     //   return view('products.show',compact('product'));
-   // }
- 
 }

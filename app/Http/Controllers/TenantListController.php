@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\tenant;
 use Illuminate\Support\Facades\DB;
 
 class TenantListController extends Controller
@@ -19,20 +20,29 @@ class TenantListController extends Controller
         $db = DB::table('tenant')
         ->where('id', '=', $id)
         ->first();
-        //$image = $db->image; // replace "image" with the actual column name in your table
         
         return view('admin.viewtenant', ['data' => $db]);
     }
 
-    public function editTenantData(Request $request){
+    public function updateTenantData(Request $request, $id){
         $id = $request->input('id');
-
+    
         $db = DB::table('tenant')
         ->where('id', '=', $id)
         ->update([
+            'fullname' => $request->input('fullname'),
+            'dateofbirth' => $request->input('dateofbirth'),
+            'address' => $request->input('address'),
             'contact' => $request->input('contact'),
+            'emailadd' => $request->input('emailadd'),
+            'stallnum' => $request->input('stallnum'),
+            'stallname' => $request->input('stallname'),
+            'stalltype' => $request->input('stalltype'),
+            'payment' => $request->input('payment'),
+            'stallprice' => $request->input('stallprice'),
+            'image' => $request->input('image'),
         ]);
-        
-        return view('admin.viewtenant', ['data' => $db]);
+
+        return redirect()->back()->with('success', 'Tenant information updated successfully');
     }
 }
