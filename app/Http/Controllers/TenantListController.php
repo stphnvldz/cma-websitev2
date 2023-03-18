@@ -26,8 +26,6 @@ class TenantListController extends Controller
 
     public function updateTenantData(Request $request){
         $id = $request->input('id');
-        
-
 
         $db = DB::table('tenant')
         ->where('id', '=', $id)
@@ -42,8 +40,16 @@ class TenantListController extends Controller
             'stalltype' => $request->input('stalltype'),
             'payment' => $request->input('payment'),
             'stallprice' => $request->input('stallprice'),
-            'image' => $request->input('image'),
         ]);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = DB::table('tenant')
+                ->where('id', '=', $id)
+                ->select('image')
+                ->get();
+            $image->move(public_path('public/img'), $filename);
+        }
 
         return redirect()->back()->with('success', 'Tenant information updated successfully');
     }
