@@ -37,7 +37,7 @@
       <div class="mb-3 row">
         <label for="inputName4" class="col-sm-3 col-form-label align-self-center">Full Name</label>
         <div class="col-sm-9">
-          <input type="fullname" class="form-control" id="fullname" readonly value="{{ $data->fullname }}">
+          <input type="fullname" name="fullname" class="form-control" id="fullname" readonly value="{{ $data->fullname }}">
         </div>
       </div>
       <div class="mb-3 row">

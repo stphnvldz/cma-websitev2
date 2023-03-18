@@ -24,9 +24,11 @@ class TenantListController extends Controller
         return view('admin.viewtenant', ['data' => $db]);
     }
 
-    public function updateTenantData(Request $request, $id){
+    public function updateTenantData(Request $request){
         $id = $request->input('id');
-    
+        
+
+
         $db = DB::table('tenant')
         ->where('id', '=', $id)
         ->update([
