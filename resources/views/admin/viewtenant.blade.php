@@ -88,7 +88,7 @@
       <div class="mb-3 row">
         <label for="payment" class="col-sm-3 col-form-label align-self-center">Choice of Payment</label>
         <div class="col-sm-9 d-flex align-items-center">
-          <input id="payment" name="payment" class="form-control" value="{{ $data->payment }}" disabled>
+          <input id="payment" name="payment" class="form-control" value="{{ $data->payment }}" readonly>
         </div>
       </div>
       <div class="mb-3 row">
@@ -121,7 +121,6 @@
     var stallnumInput = document.getElementById("stallnum");
     var stallnameInput = document.getElementById("stallname");
     var stalltypeInput = document.getElementById("stalltype");
-    var paymentInput = document.getElementById("payment");
     var saveButton = document.getElementById("save");
     // Add an event listener to the edit button
     editButton.addEventListener("click", function() {
@@ -134,7 +133,6 @@
       stallnumInput.removeAttribute("disabled");
       stallnameInput.removeAttribute("disabled");
       stalltypeInput.removeAttribute("disabled");
-      paymentInput.removeAttribute("disabled");
       saveButton.removeAttribute("disabled");
     });
     </script>

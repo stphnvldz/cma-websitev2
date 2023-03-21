@@ -45,7 +45,7 @@
 
 <form action="/tenants" method="post">
 @csrf
-    <div class="container px-4 text-center mt-2 mx-5" style="height:320px;border: 1px solid rgb(39, 38, 38);border-radius: 4px;">
+    <div class="container px-4 text-center mt-2 " style="height:320px;border: 1px solid rgb(39, 38, 38);border-radius: 4px;">
         <div class="row gx-5">
         <div class="col">
         <div class="p-3">
