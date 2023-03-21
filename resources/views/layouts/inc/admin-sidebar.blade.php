@@ -30,13 +30,41 @@
                             </a>
                             <div class="collapse" id="collapseTenants" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
+                                    <a href="/tenant" class="nav-link" aria-current="page">Tenant Profiling</a>
                                     <a href="/tenantlists" class="nav-link" aria-current="page">List of Tenants</a>
+                                    <a href="/rent" class="nav-link" aria-current="page">Rent Stall</a>
                                     <a class="nav-link" href="layout-contracts.html">Contracts</a>
                                     <a class="nav-link" href="layout-unaccountendtenant.html">Unaccounted Tenants</a>
                                     <a class="nav-link" href="layout-archives.html">Archives</a>
                                     <a class="nav-link" href="layout-billing.html">Billing</a>
                                 </nav>
                             </div>
+
+
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseStalls" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Stalls
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseStalls" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a href="/stalladd" class="nav-link" aria-current="page">Add</a>
+                                    <a href="/tenantlists" class="nav-link" aria-current="page">View</a>
+                                </nav>
+                            </div>
+
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseFloor" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Floor
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseFloor" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a href="/flooradd" class="nav-link" aria-current="page">Add</a>
+                                    <a href="/tenantlists" class="nav-link" aria-current="page">View</a>
+                                </nav>
+                            </div>
+
 
                             <a class="nav-link" href="/stalls">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>

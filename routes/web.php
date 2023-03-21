@@ -24,6 +24,16 @@ Route::get('/tenant', function () {
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
+Route::get('/stalladd', function () {
+    return view('admin.stalladd');
+});
+Route::get('/flooradd', function () {
+    return view('admin.flooradd');
+});
+Route::get('/rent', function () {
+    return view('admin.rent');
+});
+
 
 
 Auth::routes();
