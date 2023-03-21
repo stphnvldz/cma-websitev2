@@ -35,7 +35,7 @@
                                     <a href="/rent" class="nav-link" aria-current="page">Rent Stall</a>
                                     <a class="nav-link" href="layout-contracts.html">Contracts</a>
                                     <a class="nav-link" href="layout-unaccountendtenant.html">Unaccounted Tenants</a>
-                                    <a class="nav-link" href="layout-archives.html">Archives</a>
+                                    <a href="/archivetenant" class="nav-link" aria-current="page">Archives</a>
                                     <a class="nav-link" href="layout-billing.html">Billing</a>
                                 </nav>
                             </div>
@@ -83,7 +83,7 @@
                                 </nav>
                             </div>
 
-                            <div class="sb-sidenav-menu-heading">Addons</div>
+                            <div class="sb-sidenav-menu-heading">Add-ons</div>
                             <a class="nav-link" href="lostandfound.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Lost and Found

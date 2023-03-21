@@ -44,10 +44,6 @@ Route::prefix('admin')->middleware(['auth'])->group(function() {
     Route::get('/dashboard', [App\Http\Controllers\Admin\DasboardController::class, 'index']);
 });
 
-// Route::get('/tenant', function () {
-//     return view('admin.tenant');
-//     Route::post('/tenant', 'UserController@store');
-// });
 Route::post('/tenant/add', [App\Http\Controllers\TenantController::class, 'addtenant'])->name('addtenant');
 
 Route::get('/tenantlists', [App\Http\Controllers\TenantListController::class, 'index'])->name('tenantlists');
@@ -57,6 +53,10 @@ Route::post('/tenants', [App\Http\Controllers\StallsController::class, 'tenants'
 Route::get('/viewtenant', [App\Http\Controllers\TenantListController::class, 'viewTenantData'])->name('viewtenant');
 
 Route::post('/tenant/update', [App\Http\Controllers\TenantListController::class,'updateTenantData'])->name('updateTenantData');
+
+Route::get('/archivetenant', function () {
+    return view('admin.archives');
+});
 
 //Route::post('/tenants', 'App\Http\Controllers\StallsController@tenants');
 
