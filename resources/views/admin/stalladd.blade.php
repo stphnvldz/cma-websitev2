@@ -22,7 +22,7 @@
         <div class="mb-3 row">
           <label for="inputFloor" class="col-sm-3 col-form-label align-self-center">Floor</label>
           <div class="col-sm-9">
-            <select id="inputstalltype" name="stalltype" class="form-select">
+            <select id="inputfloorNo" name="floorNo" class="form-select">
               <option selected>Choose...</option>
               <option>1</option>
               <option>2</option>
