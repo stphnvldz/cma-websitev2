@@ -18,10 +18,6 @@ return new class extends Migration
             $table->string('address');
             $table->string('contact');
             $table->string('emailadd');
-            $table->string('stallnum');
-            $table->string('stallname');
-            $table->string('stalltype');
-            $table->string('payment');
             $table->string('stallprice');
             $table->mediumText('image')->nullable();
             $table->timestamps();

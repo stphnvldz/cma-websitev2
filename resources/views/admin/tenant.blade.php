@@ -52,7 +52,7 @@
           <input type="emailadd" name="emailadd" class="form-control" id="emailadd" placeholder="example@example.com">
         </div>
       </div>
-      <div class="mb-3 row">
+      {{--<div class="mb-3 row">
         <label for="stallnum" class="col-sm-3 col-form-label align-self-center">Stall Number</label>
         <div class="col-sm-9">
           <input type="text" name="stallnum" class="form-control" id="stallnum" readonly value="{{ request('selectedStalls')}}">
@@ -89,7 +89,7 @@
       <div class="col-sm-9"> 
         <input type="text" name="stallprice" class="form-control" id="stallprice" readonly>
       </div>
-    </div>
+    </div>--}}
     <div class="mb-3 row">
       <label for="formFile" class="col-sm-3 col-form-label align-self-center">Upload Photo Here</label>
       <div class="col-sm-9 d-flex align-items-center"> 

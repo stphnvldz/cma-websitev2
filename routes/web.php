@@ -24,12 +24,18 @@ Route::get('/tenant', function () {
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
+//stall folder
 Route::get('/stalladd', function () {
-    return view('admin.stalladd');
+    return view('admin.stall.stalladd');
 });
+//floor folder
 Route::get('/flooradd', function () {
-    return view('admin.flooradd');
+    return view('admin.floor.flooradd');
 });
+Route::get('/stallview', function () {
+    return view('admin.stall.stallview');
+});
+//rent folder
 Route::get('/rent', function () {
     return view('admin.rent');
 });
@@ -58,6 +64,10 @@ Route::get('/archivetenant', function () {
     return view('admin.archives');
 });
 
-//Route::post('/tenants', 'App\Http\Controllers\StallsController@tenants');
+//floor
+Route::post('/save-floor', [App\Http\Controllers\FloorController::class, 'saveFloor'])->name('saveFloor');
+Route::get('/floorview', [App\Http\Controllers\FloorController::class, 'showFloors'])->name('floorview');
 
-//Route::post('/tenants', 'StallsController@tenants')->name('tenants');
+//stalls
+Route::get('/stalladd', [App\Http\Controllers\StallController::class, 'showForm'])->name('stalladd');
+
