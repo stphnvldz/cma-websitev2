@@ -29,7 +29,7 @@
     </div>
     <div class="col-sm-6">
         <label for="inputName4" class="col-form-label align-self-center">Contact Number</label>
-        <input type="contactno" name="contactno" class="form-control" id="contactno" placeholder="">
+        <input type="contact" name="contact" class="form-control" id="contact" placeholder="">
     </div>
 </div>
 
@@ -40,7 +40,7 @@
         <div class="mb-3 mt-3 row">
             <label for="inputFloor" class="col-sm-3 col-form-label align-self-center">Stall Type</label>
             <div class="col-sm-3">
-                <select id="inputStalltype" name="Stalltype" class="form-select">
+                <select id="stalltype" name="stalltype" class="form-select">
                     <option selected>Choose...</option>
                     <option>Regular</option>
                     <option>Temporary</option>
@@ -55,37 +55,28 @@
         <div class="mb-3 mt-3 row">
             <label for="inputFloor" class="col-sm-3 col-form-label align-self-center">Type of Payment</label>
             <div class="col-sm-3">
-                <select id="inputfloorNo" name="floorNo" class="form-select">
+                <select id="payment" name="payment" class="form-select">
                     <option selected>Choose...</option>
-                    <option></option>
                     <option>Monthly</option>
                     <option>Daily</option>
                 </select>
             </div>
             <label for="inputStallAmount" class="col-sm-2 col-form-label align-self-center">Amount of Stall</label>
             <div class="col-sm-3">
-                <input type="stallname" name="stallname" class="form-control" id="stallname">
+                <input type="amount" name="amount" class="form-control" id="amount">
             </div>
         </div>
 
         <div class="mb-3 mt-3 row">
             <label for="inputFloor" class="col-sm-3 col-form-label align-self-center">Floor No.</label>
             <div class="col-sm-3">
-                <select id="inputfloorNo" name="floorNo" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                <select id="floornumber" name="floornumber" class="form-select">
                 </select>
             </div>
 
             <label for="inputFloor" class="col-sm-2 col-form-label align-self-center">Stall No.</label>
             <div class="col-sm-3">
-                <select id="inputfloorNo" name="floorNo" class="form-select">
-                    <option selected>Choose...</option>
-                    <option>101</option>
-                    <option>102</option>
-                    <option>103</option>
+                <select id="stallnumber" name="stallnumber" class="form-select">
                 </select>
             </div>
         </div>
@@ -99,7 +90,7 @@
                   <label for="inputName" class="form-label">Selected Stall</label>
                 </div>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" id="inputName">
+                  <input type="text" class="form-control" name="selectedstall" id="selectedstall">
                 </div>
               </div>
     </div>
