@@ -64,7 +64,7 @@
           <input type="emailadd" name="emailadd" id="emailadd" class="form-control" value="{{ $data->emailadd }}" disabled>
         </div>
       </div>
-      <div class="mb-3 row">
+      {{--<div class="mb-3 row">
         <label for="stallnum" class="col-sm-3 col-form-label align-self-center">Stall Number</label>
         <div class="col-sm-9">
           <input type="text" name="stallnum" class="form-control" id="stallnum" value="{{ $data->stallnum }}" disabled>
@@ -96,7 +96,7 @@
         <div class="col-sm-9">
           <input id="stallprice" name="stallprice" class="form-control" value="{{ $data->stallprice }}" readonly>
         </div>
-      </div>
+      </div>--}}
     </div>
   </div>
   <div class="d-flex justify-content-center align-items-center">

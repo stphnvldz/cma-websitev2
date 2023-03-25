@@ -49,7 +49,7 @@
                             <div class="collapse" id="collapseStalls" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a href="/stalladd" class="nav-link" aria-current="page">Add</a>
-                                    <a href="/tenantlists" class="nav-link" aria-current="page">View</a>
+                                    <a href="/stallview" class="nav-link" aria-current="page">View</a>
                                 </nav>
                             </div>
 
@@ -61,7 +61,7 @@
                             <div class="collapse" id="collapseFloor" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a href="/flooradd" class="nav-link" aria-current="page">Add</a>
-                                    <a href="/tenantlists" class="nav-link" aria-current="page">View</a>
+                                    <a href="/floorview" class="nav-link" aria-current="page">View</a>
                                 </nav>
                             </div>
 
