@@ -71,4 +71,5 @@ Route::get('/floorview', [App\Http\Controllers\FloorController::class, 'showFloo
 //stalls
 Route::get('/stalladd', [App\Http\Controllers\StallController::class, 'showForm'])->name('stalladd');
 Route::post('/stalladd', [App\Http\Controllers\StallController::class, 'saveStall'])->name('saveStall');
+Route::get('/stallview', [App\Http\Controllers\StallController::class, 'showStalls'])->name('stallview');
 
