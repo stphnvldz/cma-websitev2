@@ -45,13 +45,13 @@
         </div>
         <div class="carousel-inner" style="max-height: 70rem">
         <div class="carousel-item active">
-            <img src="assets/img/cma.jpg" style="width:1500px;height:600px; " >
+            <img src="assets/img/cma2.png" style="width:1500px;height:600px; " >
         </div>
         <div class="carousel-item">
             <img src="assets/img/cma.jpg"  style="width:1500px;height:600px;">
         </div>
         <div class="carousel-item">
-            <img src="assets/img/cma.jpg"  style="width:1500px;height:600px;">
+            <img src="assets/img/cma3.png"  style="width:1500px;height:600px;">
         </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -98,6 +98,9 @@
       </div>
     
     </div>
+
+
+    
 
 
     <script src="assets/js/bootstrap.js"></script>
