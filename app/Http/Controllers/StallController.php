@@ -12,9 +12,10 @@ class StallController extends Controller
     public function showForm()
     {
         $floors = Floor::pluck('floornumber', 'id');
-        $lastStallNumber = Stall::max('stallnumber');
-        $newStallNumber = str_pad(intval(substr($lastStallNumber, 0, 3)) + 1, 3, '0', STR_PAD_LEFT);
-        return view('admin.stall.stalladd', compact('floors', 'newStallNumber'));
+        //$lastStallNumber = Stall::max('stallnumber');
+        //$newStallNumber = str_pad(intval(substr($lastStallNumber, 0, 3)) + 1, 3, '0', STR_PAD_LEFT);
+        //return view('admin.stall.stalladd', compact('floors', 'newStallNumber'));
+        return view('admin.stall.stalladd', compact('floors'));
     }
     public function saveStall(Request $request)
     {

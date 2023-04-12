@@ -11,7 +11,7 @@ class TenantListController extends Controller
 {
     public function index()
     {
-        $tenants = DB::table('tenant')->select('id','fullname','stallname' ,'stallnum', 'stalltype')->get();
+        $tenants = DB::table('tenant')->select('id','fullname','contact', 'emailadd')->get();
         return view('admin.tenantlists', compact('tenants'));
     }
 

@@ -35,7 +35,7 @@
               <select id="floornumber" name="floornumber" class="form-select">
                 <option value="">Choose Floor</option>
                 @foreach($floors as $id => $floornumber)
-                  <option value="{{ $id }}">{{ $floornumber }}</option>
+                  <option value="{{ $floornumber }}">{{ $floornumber }}</option>
                 @endforeach
               </select>
             </div>
@@ -43,7 +43,7 @@
           <div class="mb-3 row">
             <label for="inputStallNumber" class="col-sm-3 col-form-label align-self-center">Stall Number</label>
             <div class="col-sm-9">
-                <input type="stallnumber" name="stallnumber" class="form-control" id="stallnumber" readonly >
+                <input type="stallnumber" name="stallnumber" class="form-control" id="stallnumber" placeholder="floor#(1)-stall#(001)">
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@
     </div>
   </div>
 </form>
-    {{--selected floor value to calculate the new stall number--}}
+    {{--selected floor value to calculate the new stall number
     <script>
       const floorSelect = document.querySelector('#floornumber');
       const stallNumberInput = document.querySelector('#stallnumber');
@@ -65,7 +65,7 @@
         const newStall = `${newStallNumber}-${floor}`;
         stallNumberInput.value = newStall.padStart(5, '0');
     });
-    </script>  
+    </script>--}}
     <script src="assets/js/bootstrap.js"></script>
 </body>
 </html>
