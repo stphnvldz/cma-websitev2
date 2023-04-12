@@ -19,11 +19,6 @@ class TenantController extends Controller
         $tenant->address = $request->input('address');
         $tenant->contact = $request->input('contact');
         $tenant->emailadd = $request->input('emailadd');
-        $tenant->stallnum = $request->input('stallnum');
-        $tenant->stallname = $request->input('stallname');
-        $tenant->stalltype = $request->input('stalltype');
-        $tenant->payment = $request->input('payment');
-        $tenant->stallprice = $request->input('stallprice');
         
         if ($request->hasFile('image')) {
             $image = $request->file('image');

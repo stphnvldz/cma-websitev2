@@ -30,7 +30,7 @@
     <div class="text-center col-6">
       <div class="d-flex flex-column align-items-center">
         <img src="/public/img/{{ $data->image }}" alt="Image" class="photo2b2 mt-5 mb-3">
-        <input class="text-center form-control" name="image" type="file" id="image" style="height: 38px; width: 20rem;">
+        <input class="text-center form-control" name="image" type="file" id="image" style="height: 38px; width: 20rem;" disabled>
       </div>
     </div>
     <div class="col-6">
@@ -118,9 +118,7 @@
     var addressInput = document.getElementById("address");
     var contactInput = document.getElementById("contact");
     var emailaddInput = document.getElementById("emailadd");
-    var stallnumInput = document.getElementById("stallnum");
-    var stallnameInput = document.getElementById("stallname");
-    var stalltypeInput = document.getElementById("stalltype");
+    var imageInput = document.getElementById("image");
     var saveButton = document.getElementById("save");
     // Add an event listener to the edit button
     editButton.addEventListener("click", function() {
@@ -130,9 +128,7 @@
       addressInput.removeAttribute("disabled");
       contactInput.removeAttribute("disabled");
       emailaddInput.removeAttribute("disabled");
-      stallnumInput.removeAttribute("disabled");
-      stallnameInput.removeAttribute("disabled");
-      stalltypeInput.removeAttribute("disabled");
+      imageInput.removeAttribute("disabled");
       saveButton.removeAttribute("disabled");
     });
     </script>

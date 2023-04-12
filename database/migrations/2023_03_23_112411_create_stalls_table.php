@@ -16,6 +16,7 @@ class CreateStallsTable extends Migration
         Schema::create('stalls', function (Blueprint $table) {
             $table->id();
             $table->string('floornumber');
+            //$table->string('floor_id');
             $table->string('stallnumber');
             $table->timestamps();
         });

@@ -20,7 +20,19 @@
             </tr>
         </thead>
         <tbody>
-            
+            <script>
+                // get the floor data from the server
+                let stall = {!! json_encode($stall) !!};
+
+                // loop through the floors and display the data in the table
+                for (let i = 0; i < stall.length; i++) {
+                    let stalls = stall[i];
+                    document.write('<tr>');
+                    document.write('<td>' + stalls.floornumber +'</td>');
+                    document.write('<td>' + stalls.stallnumber + '</td>');
+                    document.write('</tr>');
+                }
+            </script>
         </tbody>
     </table>
     <script src="assets/js/bootstrap.js"></script>
