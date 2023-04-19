@@ -39,6 +39,12 @@ Route::get('/stallview', function () {
 Route::get('/rent', function () {
     return view('admin.rent');
 });
+Route::get('/announcement', function () {
+    return view('admin.announcement');
+});
+Route::get('/lostfound', function () {
+    return view('admin.lostfound');
+});
 
 
 

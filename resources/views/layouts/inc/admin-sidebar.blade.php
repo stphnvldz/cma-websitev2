@@ -16,7 +16,7 @@
                             </a>
                             <div class="collapse" id="collapseHomepage" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-announcement.html">Announcement Board</a>
+                                    <a href="/announcement" class="nav-link" aria-current="page">Announcement Board</a>
                                     <a class="nav-link" href="layout-preview.html">Preview</a>
                                     <a class="nav-link" href="layout-requirements.html">Requirements</a>
                                     <a class="nav-link" href="layout-operatinghours.html">Operating Hours</a>
@@ -64,12 +64,6 @@
                                     <a href="/floorview" class="nav-link" aria-current="page">View</a>
                                 </nav>
                             </div>
-
-
-                            <a class="nav-link" href="/stalls">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Stalls 
-                            </a>
                     
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseReports" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -84,7 +78,7 @@
                             </div>
 
                             <div class="sb-sidenav-menu-heading">Add-ons</div>
-                            <a class="nav-link" href="lostandfound.html">
+                            <a href="/lostfound" class="nav-link" aria-current="page">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Lost and Found
                             </a>

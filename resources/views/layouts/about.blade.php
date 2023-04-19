@@ -33,13 +33,13 @@
         </div>
       </nav>
       
-      <div style="margin-bottom: 50px; font-family: Arial, sans-serif mt-5; font-size: 50px; font-weight: bold; color: #333; text-align: center;">
+      <div style="margin-bottom: 50px;margin-top: 50px; font-family: Arial, sans-serif; font-size: 50px; font-weight: bold; color: #333; text-align: center;">
         CITY MALL OF ANTIPOLO
       </div>
      
      
       <div>
-        <div style="float: left; margin-right: 10px; margin-left: 10px; margin-top: 10px;">
+        <div style="float: left; margin-right: 10px; margin-left: 100px; margin-top: 10px;">
           <img src="assets/img/cma2.png" style="width:400px;height:300px;">
         </div>
         <div style="margin-top: 5px; margin-left: 10px; padding: 10px; font-size: 20.7px; background-color: #ffffff;">
@@ -57,10 +57,10 @@
       </div>
 
       <div>  
-        <div style="float: right; margin-left: 10px; margin-right: 100px;">
+        <div style="float: right; margin-left: 10px; margin-right: 100px; margin-top: 10px;">
           <img src="assets/img/hotline.png" style="width:500px;height:500px;">
         </div>
-        <div class="container px-4 mt-2" style="font-size: 17px; float: left; margin-right: 20px; margin-left: 100px; width:550px;height:455px;border: 1px solid rgb(39, 38, 38);border-radius: 4px;">
+        <div class="container px-4 mt-4" style="font-size: 17px; float: left; margin-right: 20px; margin-left: 100px; width:550px;height:455px;border: 1px solid rgb(39, 38, 38);border-radius: 4px;">
           <p style="font-weight: bold;">CITY HALL - ANNEX III
             SERVICES OFFERED:</p>
             <p>MEDICAL CONSULTATIONS</p>
