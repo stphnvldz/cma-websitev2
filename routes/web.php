@@ -37,10 +37,7 @@ Route::get('/stallview', function () {
 });
 
 //rent folder
-//Route::get('/rent', function () {
-//    return view('admin.rent');
 
-//});
 
 
 
