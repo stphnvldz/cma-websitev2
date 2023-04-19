@@ -16,68 +16,68 @@
 
 <div class="d-flex justify-content-end">
     <form class="d-flex" role="search">
-        <button type="button" class="btn btn-outline-success me-2 mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Select Tenant</button>
-        <button type="button" class="btn btn-outline-success me-2 mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Add New Tenant</button>
+        <button type="button" class="btn btn-outline-success me-2 mt-2" data-bs-toggle="modal" data-bs-target="#Select" data-bs-whatever="@Select">Select Tenant</button>
+        <button type="button" class="btn btn-outline-success me-2 mt-2" data-bs-toggle="modal" data-bs-target="#Add" data-bs-whatever="@Add">Add New Tenant</button>
     </form>
 </div>
 
-{{--modal for selecting tenant
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{--modal for selecting tenant--}}
+<div class="modal fade" id="Select" tabindex="-1" aria-labelledby="Select" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="addtenantmodal" >SELECT TENANT</h1>
+        <h1 class="modal-title fs-5" id="Select">SELECT TENANT</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-          <div class="modal-body">
-            <table class="table table-striped table-hover mt-2">
-              <thead>
-                  <tr>
-                      <th scope="col">Full Name</th>
-                      <th scope="col">Contact</th>
-                      <th scope="col">Email Address</th>
-                      <th scope="col"><input type="text" id="search" name="search" style="width: 300px" placeholder="Search"></th>
-                  </tr>
-              </thead>
-              <tbody>
-                @if(isset($tenants))
-                <script>
-                  // get the tenant data from the server
-                  let tenants = {!! json_encode($tenants) !!};
-      
-                  // loop through the tenants and display the data in the table
-                  for (let i = 0; i < tenants.length; i++) {
-                      let tenant = tenants[i];
-                      document.write('<tr>');
-                      document.write('<td>' + tenant.fullname +'</td>');
-                      document.write('<td>' + tenant.contact + '</td>');
-                      document.write('<td>' + tenant.emailadd + '</td>');
-                      document.write('<td>');
-                      document.write('<div class="btn-group" role="group" aria-label="Tenant Actions">');
-                      document.write('<a href="/rent?id=' + tenant.id + '" class="btn btn-primary">Select</a>');
-                      document.write('</td>');
-                      document.write('</tr>');
-                      //{{ route("viewTenantTable", ["id" => "' + tenant.id + '"]) }}
-                  }
-              </script>
-              @endif
-              </tbody>
-          </table>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
+      <div class="modal-body">
+        <table class="table table-striped table-hover mt-2">
+          <thead>
+              <tr>
+                  <th scope="col">Full Name</th>
+                  <th scope="col">Contact</th>
+                  <th scope="col">Email Address</th>
+                  <th scope="col"><input type="text" id="search" name="search" style="width: 300px" placeholder="Search"></th>
+              </tr>
+          </thead>
+          <tbody id="tableBody">
+            @if(isset($tenants))
+            <script>
+              // get the tenant data from the server
+              let tenants = {!! json_encode($tenants) !!};
+  
+              // loop through the tenants and display the data in the table
+              for (let i = 0; i < tenants.length; i++) {
+                  let tenant = tenants[i];
+                  document.write('<tr>');
+                  document.write('<td>' + tenant.fullname +'</td>');
+                  document.write('<td>' + tenant.contact + '</td>');
+                  document.write('<td>' + tenant.emailadd + '</td>');
+                  document.write('<td>');
+                  document.write('<div class="btn-group" role="group" aria-label="Tenant Actions">');
+                  document.write('<a href="/rent?id=' + tenant.id + '" class="btn btn-primary">Select</a>');
+                  document.write('</td>');
+                  document.write('</tr>');
+                  //{{ route("viewTenantTable", ["id" => "' + tenant.id + '"]) }}
+              }
+            </script>
+            @endif
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
-</div>--}}
+</div>
 
 
 {{--modal for add new tenant--}}
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="Add" tabindex="-1" aria-labelledby="Add" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="addtenantmodal">ADD NEW TENANT</h1>
+        <h1 class="modal-title fs-5" id="Add">ADD NEW TENANT</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
         <form action="/tenantadd" method="post" enctype="multipart/form-data">
@@ -182,22 +182,21 @@
         <div class="mb-3 mt-3 row">
             <label for="inputFloor" class="col-sm-3 col-form-label align-self-center">Floor No.</label>
             <div class="col-sm-3">
-                <select id="floornumber" name="floornumber" class="form-select">
-                    <option value="">Choose Floor</option>
-                    @foreach($floors as $id => $floornumber)
-                    <option value="{{ $floornumber }}">{{ $floornumber }}</option>
-                  @endforeach
-                  </select>
+              <select id="floorNumberDropdown" name="floornumber" class="form-select">
+                <option value="">Select Floor Number</option>
+                @if(isset($floors))
+                    @foreach($floors as $floor)
+                        <option value="{{ $floor->id }}">{{ $floor->floornumber }}</option>
+                    @endforeach
+                @endif
+              </select>
             </div>
 
             <label for="inputFloor" class="col-sm-2 col-form-label align-self-center">Stall No.</label>
             <div class="col-sm-3">
-                <select id="stallnumber" name="stallnumber" class="form-select">
-                  <option value="">Choose Stall</option>
-                  {{--@foreach($stalls as $id => $stallnumber)
-                    <option value="{{ $stallnumber }}">{{ $stallnumber }}</option>
-                  @endforeach--}}
-                </select>
+              <select id="stallNumberDropdown" name="stallnumber" class="form-select">
+                <option value="">Select Stall Number</option>
+              </select>
             </div>
         </div>
 
@@ -220,63 +219,41 @@
     <button class="btn btn-primary me-2 mt-2 mx-auto" type="submit" href="/tenant"  style="font-size: 16px; padding: 10px 30px;">Process</button>
 </div>
 
-        {{--floor select and stall select
+        {{--floor number and stall numebr--}}
         <script>
-        // Get the floornumber and stallnumber dropdowns
-        var floornumberDropdown = document.getElementById('floornumber');
-        var stallnumberDropdown = document.getElementById('stallnumber');
-        
-        // Add change event listener to floornumber dropdown
-        floornumberDropdown.addEventListener('change', function() {
-            // Clear the stallnumber dropdown
-            stallnumberDropdown.innerHTML = '';
-            
-            // Get the selected floornumber value
-            var floornumber = floornumberDropdown.value;
-            
-            // Generate stallnumber options based on the selected floornumber
-            var defaultOption = document.createElement('option');
-            defaultOption.value = '';
-            defaultOption.text = 'Choose Stall';
-            stallnumberDropdown.add(defaultOption);
-            
-            for (var i = 1; i <= 5; i++) {
-                var option = document.createElement('option');
-                var stallnumber = floornumber + '-' + ('00' + i).slice(-3);
-                option.value = stallnumber;
-                option.text = stallnumber;
-                stallnumberDropdown.add(option);
-                }
-        });
-
-        // Add click event listener to select button
-        document.getElementById('select-btn').addEventListener('click', function() {
-            // Get the selected stallnumber value
-            var selectedStall = stallnumberDropdown.value;
-            
-            // Get the current value of the selected stall textbox
-            var currentSelectedStall = document.getElementById('selectedstall').value;
-            
-            // Check if the selected stall is not already in the selected stall textbox
-            if (selectedStall !== '' && currentSelectedStall.indexOf(selectedStall) === -1) {
-                // Check if the number of selected stalls is less than 2
-                if (currentSelectedStall.split(', ').length < 2) {
-                    // Append the selected stall to the selected stall textbox
-                    currentSelectedStall += (currentSelectedStall ? ', ' : '') + selectedStall;
-                    
-                    // Set the updated selected stall value to the selected stall textbox
-                    document.getElementById('selectedstall').value = currentSelectedStall;
-                } else {
-                    // Show a message box with maximum stall limit reached
-                    alert('Maximum of 2 stalls only');
-                    
-                    // Disable the floornumber and stallnumber dropdowns
-                    floornumberDropdown.disabled = true;
-                    stallnumberDropdown.disabled = true;
-                }
-            }
-        });
-        </script>--}}
+          // Get the floor number dropdown element
+          var floorNumberDropdown = document.getElementById('floorNumberDropdown');
+      
+          // Get the stall number dropdown element
+          var stallNumberDropdown = document.getElementById('stallNumberDropdown');
+      
+          // Create an object to store the stall numbers for each floor
+          var stallNumbers = {!! json_encode($stallNumbers) !!};
+      
+          // Add an event listener to the floor number dropdown
+          floorNumberDropdown.addEventListener('change', function() {
+              // Clear the stall number dropdown options
+              stallNumberDropdown.innerHTML = '<option value="">Select Stall Number</option>';
+      
+              // Get the selected floor number value
+              var floorNumberId = this.value;
+              // Check if stallNumbers variable is set
+              @if(isset($stallNumbers))   
+              // Get the stall numbers for the selected floor number from the stallNumbers object
+                  var floorStallNumbers = stallNumbers[floorNumberId];
+                  
+                  // Loop through the retrieved stall numbers and add them as options in the stall number dropdown
+                  if (floorStallNumbers) {
+                      floorStallNumbers.forEach(function(stallNumber) {
+                          var option = document.createElement('option');
+                          option.value = stallNumber;
+                          option.text = stallNumber;
+                          stallNumberDropdown.add(option);
+                      });
+                  }
+              @endif
+          });
+      </script>
 
         {{--type of payment--}}
         <script>
@@ -314,6 +291,7 @@
             }
           }
         </script>
+
 
 <script src="assets/js/bootstrap.js"></script>
 </body>
