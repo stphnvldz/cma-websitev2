@@ -39,8 +39,6 @@ Route::get('/stallview', function () {
 //rent folder
 
 
-
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -73,12 +71,7 @@ Route::post('/stalladd', [App\Http\Controllers\StallController::class, 'saveStal
 Route::get('/stallview', [App\Http\Controllers\StallController::class, 'showStalls'])->name('stallview');
 
 //rent
-//Route::get('/rent', [App\Http\Controllers\RentController::class, 'showFloor'])->name('rent');
-//Route::get('/rent', [App\Http\Controllers\RentController::class, 'showStall'])->name('rent');
 Route::post('/tenantadd', [App\Http\Controllers\RentController::class, 'addtenant'])->name('rent');
-Route::get('/rent', [App\Http\Controllers\RentController::class, 'viewTenantTable'])->name('viewTenantTable');
-//Route::get('/rent', [App\Http\Controllers\RentController::class, 'selectTenant'])->name('selectTenant');
-// Route to fetch floors data
 Route::get('/rent', [App\Http\Controllers\RentController::class, 'getFloors'])->name('getFloors');
 
 

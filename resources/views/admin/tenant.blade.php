@@ -52,54 +52,15 @@
           <input type="emailadd" name="emailadd" class="form-control" id="emailadd" placeholder="example@example.com">
         </div>
       </div>
-      {{--<div class="mb-3 row">
-        <label for="stallnum" class="col-sm-3 col-form-label align-self-center">Stall Number</label>
-        <div class="col-sm-9">
-          <input type="text" name="stallnum" class="form-control" id="stallnum" readonly value="{{ request('selectedStalls')}}">
-        </div>
-      </div>
       <div class="mb-3 row">
-        <label for="inputstallname4" class="col-sm-3 col-form-label align-self-center">Stall Name</label>
-        <div class="col-sm-9">  
-          <input type="stallname" name="stallname" class="form-control" id="stallname" placeholder="Babuyan ni Ethan">
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="inputstalltype" class="col-sm-3 col-form-label align-self-center">Stall Type</label>
-        <div class="col-sm-9"> 
-          <select id="inputstalltype" name="stalltype" class="form-select">
-            <option selected>Choose...</option>
-            <option>Regular</option>
-            <option>Temporary</option>
-          </select>
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="inputpayment" class="col-sm-3 col-form-label align-self-center">Choice of Payment</label>
+        <label for="formFile" class="col-sm-3 col-form-label align-self-center">Upload Photo Here</label>
         <div class="col-sm-9 d-flex align-items-center"> 
-          <select id="inputpayment" name="payment" class="form-select">
-            <option selected>Choose...</option>
-            <option value="Daily">Daily</option>
-            <option value="Monthly">Monthly</option>
-          </select>
+          <input class="d-flex justify-content-center form-control" name="image" type="file" id="image" style="height: 38px;">
         </div>
-    </div>
-    <div class="mb-3 row">
-      <label for="inputstallprice" class="col-sm-3 col-form-label align-self-center">Stall Price</label>
-      <div class="col-sm-9"> 
-        <input type="text" name="stallprice" class="form-control" id="stallprice" readonly>
       </div>
-    </div>--}}
-    <div class="mb-3 row">
-      <label for="formFile" class="col-sm-3 col-form-label align-self-center">Upload Photo Here</label>
-      <div class="col-sm-9 d-flex align-items-center"> 
-        <input class="d-flex justify-content-center form-control" name="image" type="file" id="image" style="height: 38px;">
+      <div class ="text-center col-12 md-2 mt-2 mx-4">
+        <button type="store" class="btn btn-primary">Submit</button>
       </div>
-    </div>
-
-    <div class ="text-center col-12 md-2 mt-2 mx-4">
-      <button type="store" class="btn btn-primary">Submit</button>
-    </div>
 </form> 
     
 {{--choice of payment tas mag bibigay ng value sa textbox ng stallprice--}}

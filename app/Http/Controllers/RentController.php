@@ -26,29 +26,25 @@ class RentController extends Controller
         return view('admin.rent', ['floors' => $floors , 'stallNumbers' => $formattedStallNumbers]);
     }
 
-    //public function addtenant(Request $request){
-        //$tenant = new tenant();
-        //$tenant->fullname = $request->input('fullname');
-        //$tenant->dateofbirth = $request->input('dateofbirth');
-        //$tenant->address = $request->input('address');
-        //$tenant->contact = $request->input('contact');
-        //$tenant->emailadd = $request->input('emailadd');
+    public function addtenant(Request $request){
+        $tenant = new tenant();
+        $tenant->fullname = $request->input('fullname');
+        $tenant->dateofbirth = $request->input('dateofbirth');
+        $tenant->address = $request->input('address');
+        $tenant->contact = $request->input('contact');
+        $tenant->emailadd = $request->input('emailadd');
         
-        //if ($request->hasFile('image')) {
-        //    $image = $request->file('image');
-        //    $filename = time().'.'.$image->getClientOriginalExtension();
-        //    $image->move(public_path('public/img'), $filename);
-        //    $tenant->image = $filename;
-        //}
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = time().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('public/img'), $filename);
+            $tenant->image = $filename;
+        }
 
-        //$tenant->save();
+        $tenant->save();
 
-        //return redirect('/rent');
-    //}
-    
-    public function viewTenantTable()
-    {
-        $tenants = Tenant::select('id', 'fullname', 'contact', 'emailadd')->get();
-        return view('admin.rent', compact('tenants'));
+        return redirect('/rent');
     }
+    
+    
 }

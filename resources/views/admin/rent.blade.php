@@ -39,28 +39,8 @@
                   <th scope="col"><input type="text" id="search" name="search" style="width: 300px" placeholder="Search"></th>
               </tr>
           </thead>
-          <tbody id="tableBody">
-            @if(isset($tenants))
-            <script>
-              // get the tenant data from the server
-              let tenants = {!! json_encode($tenants) !!};
-  
-              // loop through the tenants and display the data in the table
-              for (let i = 0; i < tenants.length; i++) {
-                  let tenant = tenants[i];
-                  document.write('<tr>');
-                  document.write('<td>' + tenant.fullname +'</td>');
-                  document.write('<td>' + tenant.contact + '</td>');
-                  document.write('<td>' + tenant.emailadd + '</td>');
-                  document.write('<td>');
-                  document.write('<div class="btn-group" role="group" aria-label="Tenant Actions">');
-                  document.write('<a href="/rent?id=' + tenant.id + '" class="btn btn-primary">Select</a>');
-                  document.write('</td>');
-                  document.write('</tr>');
-                  //{{ route("viewTenantTable", ["id" => "' + tenant.id + '"]) }}
-              }
-            </script>
-            @endif
+          <tbody>
+           
           </tbody>
         </table>
       </div>
@@ -70,7 +50,6 @@
     </div>
   </div>
 </div>
-
 
 {{--modal for add new tenant--}}
 <div class="modal fade" id="Add" tabindex="-1" aria-labelledby="Add" aria-hidden="true">
@@ -201,7 +180,7 @@
         </div>
 
             <div class ="text-center col-12 md-2 mt-2 mx-4">
-                <button type="button" class="btn btn-primary" name="select" id="select-btn" style="font-size: 16px; padding: 10px 30px;">Select</button>
+                <button type="button" class="btn btn-primary" name="selectButton" id="selectButton" style="font-size: 16px; padding: 10px 30px;">Select</button>
             </div>
 
             <div class="mb-3 mt-3 row">
@@ -209,7 +188,7 @@
                   <label for="inputName" class="form-label">Selected Stall</label>
                 </div>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" name="selectedstall" id="selectedstall" readonly>
+                  <input type="text" class="form-control" name="selectedStallTextbox" id="selectedStallTextbox" readonly>
                 </div>
               </div>
     </div>
@@ -221,39 +200,77 @@
 
         {{--floor number and stall numebr--}}
         <script>
-          // Get the floor number dropdown element
-          var floorNumberDropdown = document.getElementById('floorNumberDropdown');
-      
-          // Get the stall number dropdown element
-          var stallNumberDropdown = document.getElementById('stallNumberDropdown');
-      
-          // Create an object to store the stall numbers for each floor
-          var stallNumbers = {!! json_encode($stallNumbers) !!};
-      
-          // Add an event listener to the floor number dropdown
-          floorNumberDropdown.addEventListener('change', function() {
-              // Clear the stall number dropdown options
-              stallNumberDropdown.innerHTML = '<option value="">Select Stall Number</option>';
-      
-              // Get the selected floor number value
-              var floorNumberId = this.value;
-              // Check if stallNumbers variable is set
-              @if(isset($stallNumbers))   
-              // Get the stall numbers for the selected floor number from the stallNumbers object
-                  var floorStallNumbers = stallNumbers[floorNumberId];
-                  
-                  // Loop through the retrieved stall numbers and add them as options in the stall number dropdown
-                  if (floorStallNumbers) {
-                      floorStallNumbers.forEach(function(stallNumber) {
-                          var option = document.createElement('option');
-                          option.value = stallNumber;
-                          option.text = stallNumber;
-                          stallNumberDropdown.add(option);
-                      });
-                  }
-              @endif
-          });
-      </script>
+        // Get the floor number dropdown element
+            var floorNumberDropdown = document.getElementById('floorNumberDropdown');
+
+            // Get the stall number dropdown element
+            var stallNumberDropdown = document.getElementById('stallNumberDropdown');
+
+            // Get the "Select" button element
+            var selectButton = document.getElementById('selectButton');
+
+            // Get the selected stall number(s) textbox element
+            var selectedStallTextbox = document.getElementById('selectedStallTextbox');
+
+            // Create an object to store the stall numbers for each floor
+            var stallNumbers = {!! json_encode($stallNumbers) !!};
+
+            // Add an event listener to the floor number dropdown
+            floorNumberDropdown.addEventListener('change', function() {
+                // Clear the stall number dropdown options
+                stallNumberDropdown.innerHTML = '<option value="">Select Stall Number</option>';
+
+                // Get the selected floor number value
+                var floorNumberId = this.value;
+
+                // Check if stallNumbers variable is set
+                @if(isset($stallNumbers))
+                    // Get the stall numbers for the selected floor number from the stallNumbers object
+                    var floorStallNumbers = stallNumbers[floorNumberId];
+
+                    // Loop through the retrieved stall numbers and add them as options in the stall number dropdown
+                    if (floorStallNumbers) {
+                        floorStallNumbers.forEach(function(stallNumber) {
+                            var option = document.createElement('option');
+                            option.value = stallNumber;
+                            option.text = stallNumber;
+                            stallNumberDropdown.add(option);
+                        });
+                    }
+                @endif
+            });
+
+            
+            // Create an array to store the selected stall numbers
+            var selectedStallNumbers = [];
+
+            // Create an array to store the selected stall numbers
+            var selectedStallNumbers = [];
+
+            // Add an event listener to the select button
+            selectButton.addEventListener('click', function() {
+                // Get the selected stall number value
+                var stallNumberValue = stallNumberDropdown.value;
+
+                // Check if the selected stall number value is not already in the selectedStallNumbers array
+                if (!selectedStallNumbers.includes(stallNumberValue)) {
+                    // Add the selected stall number value to the selectedStallNumbers array
+                    selectedStallNumbers.push(stallNumberValue);
+
+                    // Check if the length of selectedStallNumbers array is less than or equal to 2
+                    if (selectedStallNumbers.length > 2) {
+                        alert('You can only select a maximum of two stalls.');
+                        // Disable the floor number dropdown and stall number dropdown
+                        floorNumberDropdown.disabled = true;
+                        stallNumberDropdown.disabled = true;
+                        return;
+                    } else {
+                        // Update the selected stall number textbox value
+                        selectedStallTextbox.value = selectedStallNumbers.join(', ');
+                    }
+                }
+            });
+        </script>
 
         {{--type of payment--}}
         <script>
