@@ -23,9 +23,9 @@
 <table class="table table-hover table-striped" style="margin-left: 20px">
   <thead>
       <tr>
-          <th scope="col">Full Name</th>
-          <th scope="col">Contact Number</th>
-          <th scope="col">Email Address</th>
+          <th scope="col">Item</th>
+          <th scope="col">Description</th>
+          <th scope="col">Date of lost</th>
       </tr>
   </thead>
 </table>
@@ -59,13 +59,13 @@
                 <div class="mb-3 row">
                   <label for="inputDescription" class="col-sm-3 col-form-label align-self-center">Description</label>
                   <div class="col-sm-9">
-                    <input type="description" name="description" class="form-control" id="description" style="height: 100px;" placeholder="123 BTSTXTENHASVT Street">
+                    <input type="description" name="description" class="form-control" id="description" style="height: 100px;" placeholder="">
                   </div>
                 </div>
                 <div class="mb-3 row">
                   <label for="formFile" class="col-sm-3 col-form-label align-self-center">Upload Photo</label>
                   <div class="col-sm-9 d-flex align-items-center"> 
-                    <input class="d-flex justify-content-center form-control" name="image" type="file" id="image" style="height: 38px;">
+                    <input class="d-flex justify-content-center form-control" name="lostfoundimage" type="file" id="lostfoundimage" style="height: 38px;">
                   </div>
                 </div>
               </div>
@@ -79,6 +79,27 @@
     </div>
   </div>
 </div>
+
+{{--pag upload ng image sa database--}}
+<script>
+  function previewImage() {
+    var preview = document.getElementById('preview');
+    var image = document.querySelector('input[name=lostfoundimage]').files[0];
+    var reader = new FileReader();
+  
+    reader.onloadend = function() {
+      preview.src = reader.result;
+      preview.style.display = 'block';
+    }
+  
+    if (lostfoundimage) {
+      reader.readAsDataURL(lostfoundimage);
+    } else {
+      preview.src = "";
+      preview.style.display = 'none';
+    }
+  }
+</script>
       
       <script src="assets/js/bootstrap.js"></script>
   

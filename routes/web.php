@@ -37,7 +37,21 @@ Route::get('/stallview', function () {
 });
 
 //rent folder
+Route::get('/rent', function () {
+    return view('admin.rent');
+});
+Route::get('/announcement', function () {
+    return view('admin.announcement');
+});
+//lost and found
+Route::get('/lostfound', function () {
+    return view('admin.lostfound');
+});
 
+//Route::get('/rent', function () {
+//    return view('admin.rent');
+
+//});
 
 Auth::routes();
 
@@ -73,6 +87,9 @@ Route::get('/stallview', [App\Http\Controllers\StallController::class, 'showStal
 //rent
 Route::post('/tenantadd', [App\Http\Controllers\RentController::class, 'addtenant'])->name('rent');
 Route::get('/rent', [App\Http\Controllers\RentController::class, 'getFloors'])->name('getFloors');
+
+//lost and found
+Route::post('/Lostadd', [App\Http\Controllers\LostFoundController::class, 'lostandfound'])->name('lostandfound');
 
 
 //tenant side
