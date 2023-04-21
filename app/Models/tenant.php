@@ -16,11 +16,6 @@ class Tenant extends Model
         'address',
         'contact',
         'emailadd',
-        'stallnum',
-        'stallname',
-        'stalltype',
-        'payment',
-        'stallprice',
         'image',
     ];
 }

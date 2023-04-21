@@ -36,11 +36,6 @@ class TenantListController extends Controller
             'address' => $request->input('address'),
             'contact' => $request->input('contact'),
             'emailadd' => $request->input('emailadd'),
-            'stallnum' => $request->input('stallnum'),
-            'stallname' => $request->input('stallname'),
-            'stalltype' => $request->input('stalltype'),
-            'payment' => $request->input('payment'),
-            'stallprice' => $request->input('stallprice'),
         ]);
 
         if($request->hasFile('image')){
