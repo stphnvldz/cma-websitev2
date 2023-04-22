@@ -8,12 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class LostFound extends Model
 {
     use HasFactory;
-    protected $table = 'lostandfound';
-    protected $fillable = 
-    [
-        'itemName',
-        'dateoflost',
-        'description',
-        'lostfoundimage',
-    ];
+    protected $table = "lostandfound";
 }
