@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TenantTableSeeder::class);
         $this->call(StallsTableSeeder::class);
         $this->call(FloorsTableSeeder::class);
+        $this->call(LostandfoundTableSeeder::class);
     }
 }

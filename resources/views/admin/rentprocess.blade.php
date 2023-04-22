@@ -11,7 +11,7 @@
 </head>
 <body>
 @section('content')
-
+    awit ampotek
 <script src="assets/js/bootstrap.js"></script>
 </body>
 </html>

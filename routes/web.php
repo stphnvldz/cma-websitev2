@@ -48,10 +48,6 @@ Route::get('/lostfound', function () {
     return view('admin.lostfound');
 });
 
-//Route::get('/rent', function () {
-//    return view('admin.rent');
-
-//});
 
 Auth::routes();
 
@@ -65,7 +61,7 @@ Route::post('/tenant/add', [App\Http\Controllers\TenantController::class, 'addte
 
 Route::get('/tenantlists', [App\Http\Controllers\TenantListController::class, 'index'])->name('tenantlists');
 
-Route::post('/tenants', [App\Http\Controllers\StallsController::class, 'tenants'])->name('tenants');
+//Route::post('/tenants', [App\Http\Controllers\StallsController::class, 'tenants'])->name('tenants');
 
 Route::get('/viewtenant', [App\Http\Controllers\TenantListController::class, 'viewTenantData'])->name('viewtenant');
 
@@ -89,8 +85,8 @@ Route::post('/tenantadd', [App\Http\Controllers\RentController::class, 'addtenan
 Route::get('/rent', [App\Http\Controllers\RentController::class, 'getFloors'])->name('getFloors');
 
 //lost and found
-Route::post('/Lostadd', [App\Http\Controllers\LostFoundController::class, 'lostandfound'])->name('lostandfound');
-
+Route::post('/lost-add', [App\Http\Controllers\LostFoundController::class, 'addlost'])->name('addlost');
+Route::get('/lostfound', [App\Http\Controllers\LostFoundController::class, 'showLostFound'])->name('lostfound');
 
 //tenant side
 

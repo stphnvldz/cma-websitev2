@@ -45,6 +45,4 @@ class RentController extends Controller
 
         return redirect('/rent');
     }
-    
-    
 }

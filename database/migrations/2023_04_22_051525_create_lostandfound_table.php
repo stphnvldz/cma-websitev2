@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLostfound extends Migration
+class CreateLostandfoundTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateLostfound extends Migration
      */
     public function up()
     {
-        Schema::create('lostfound', function (Blueprint $table) {
+        Schema::create('lostandfound', function (Blueprint $table) {
             $table->id();
-            $table->string('itemName');
+            $table->string('itemname');
             $table->string('dateoflost');
             $table->string('description');
-            $table->mediumText('lostfoundimage')->nullable();
+            $table->mediumText('image')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateLostfound extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lostfound');
+        Schema::dropIfExists('lostandfound');
     }
 }

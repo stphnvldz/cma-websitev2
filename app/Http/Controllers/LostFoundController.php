@@ -2,28 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\LostFound;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class LostFoundController extends Controller
 {
-    public function lostandfound(Request $request){
-        $lostandfound = new lostandfound();
-        $lostandfound->itemName = $request->input('itemName');
-        $lostandfound->dateoflost = $request->input('dateoflost');
-        $lostandfound->description = $request->input('description');
+    public function addlost(Request $request){
+        $lostfound = new lostfound();
+        $lostfound->itemname = $request->input('itemname');
+        $lostfound->dateoflost = $request->input('dateoflost');
+        $lostfound->description = $request->input('description');
         
-        if ($request->hasFile('lostfoundimage')) {
-            $image = $request->file('lostfoundimage');
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
             $filename = time().'.'.$image->getClientOriginalExtension();
             $image->move(public_path('public/img'), $filename);
-            $lostandfound->image = $filename;
+            $lostfound->image = $filename;
         }
 
-        $lostandfound->save();
+        $lostfound->save();
 
         return redirect('/lostfound');
+    }
+    public function showLostFound()
+    {
+        $lostfound = DB::table('lostandfound')->select('id','itemname','description','dateoflost')->get();
+        return view('admin.lostfound', compact('lostfound'));
     }
 }

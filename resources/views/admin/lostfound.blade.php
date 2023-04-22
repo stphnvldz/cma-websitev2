@@ -13,8 +13,8 @@
 <body>
 
 @section('content')
-<div>
-<button style="margin-left: 1040px;" type="button" class="btn btn-outline-success me-2 mt-2" data-bs-toggle="modal" data-bs-target="#AddLost" data-bs-whatever="@AddLost">Add New Lost</button>
+<div class="d-flex justify-content-end">
+  <button type="button" class="btn btn-outline-success me-2 mt-2" data-bs-toggle="modal" data-bs-target="#AddLost" data-bs-whatever="@AddLost">Add New Lost</button>
 </div>
 <div class="d-flex justify-content-center mt-2 mx-auto p-2">
   <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">LOST AND FOUND</label>
@@ -25,11 +25,29 @@
       <tr>
           <th scope="col">Item</th>
           <th scope="col">Description</th>
-          <th scope="col">Date of lost</th>
+          <th scope="col">Date of Lost</th>
       </tr>
   </thead>
-</table>
+  <tbody>
+    @if(isset($lostfound))
+    <script>
+      // get the floor data from the server
+      let lostfound = {!! json_encode($lostfound) !!};
 
+      // loop through the floors and display the data in the table
+      for (let i = 0; i < lostfound.length; i++) {
+          let lostandfound = lostfound[i];
+          document.write('<tr>');
+          document.write('<td>' + lostandfound.itemname +'</td>');
+          document.write('<td>' + lostandfound.description + '</td>');
+          document.write('<td>' + lostandfound.dateoflost +'</td>');
+          //document.write('<a href="/viewlostfound?id=' + lostfound.id + '" type="button" style="100px" class="btn btn-secondary">View</button>');
+          document.write('</tr>');
+      }
+  </script>
+  @endif
+  </tbody>
+</table>
 
 {{--modal for Lost and found--}}
 <div class="modal fade" id="AddLost" tabindex="-1" aria-labelledby="AddLost" aria-hidden="true">
@@ -39,7 +57,7 @@
         <h1 class="modal-title fs-5" id="addLostmodal">ADD NEW LOST</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-        <form action="/Lostadd" method="post" enctype="multipart/form-data">
+        <form action="/lost-add" method="post" enctype="multipart/form-data">
         @csrf
           <div class="modal-body">
             <div class="d-flex justify-content-center row">
@@ -47,7 +65,7 @@
                 <div class="mb-3 row">
                   <label for="inputItem" class="col-sm-3 col-form-label align-self-center">Item</label>
                   <div class="col-sm-9">
-                    <input type="itemName" name="itemName"class="form-control" id="itemName" placeholder="Name of Item">
+                    <input type="itemName" name="itemname"class="form-control" id="itemname" placeholder="Name of Item">
                   </div>
                 </div>
                 <div class="mb-3 row">
@@ -65,7 +83,7 @@
                 <div class="mb-3 row">
                   <label for="formFile" class="col-sm-3 col-form-label align-self-center">Upload Photo</label>
                   <div class="col-sm-9 d-flex align-items-center"> 
-                    <input class="d-flex justify-content-center form-control" name="lostfoundimage" type="file" id="lostfoundimage" style="height: 38px;">
+                    <input class="d-flex justify-content-center form-control" name="image" type="file" id="image" style="height: 38px;">
                   </div>
                 </div>
               </div>
@@ -73,7 +91,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="store" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </form>
     </div>
@@ -84,7 +102,7 @@
 <script>
   function previewImage() {
     var preview = document.getElementById('preview');
-    var image = document.querySelector('input[name=lostfoundimage]').files[0];
+    var image = document.querySelector('input[name=image]').files[0];
     var reader = new FileReader();
   
     reader.onloadend = function() {
@@ -93,7 +111,7 @@
     }
   
     if (lostfoundimage) {
-      reader.readAsDataURL(lostfoundimage);
+      reader.readAsDataURL(image);
     } else {
       preview.src = "";
       preview.style.display = 'none';
@@ -103,8 +121,8 @@
       
       <script src="assets/js/bootstrap.js"></script>
   
-  </body>
-  </html>
-  
-  @endsection
+</body>
+</html>
+
+@endsection
   
