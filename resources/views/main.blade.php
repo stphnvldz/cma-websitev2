@@ -69,21 +69,36 @@
         <div class= col>
           <div class="table-responsive ">
             <div class="table-wrapper">
-            <table class="table mt-3" style="width:1000px;">
-              <thead class="table-dark text-center">
-                <th scope="col">ANNOUNCEMENT</th>
-              </thead>
-              <tbody>
-                <th scope="row">  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</th>
-              </tbody>
-              <tbody>
-                <th scope="row">  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</th>
-              </tbody>
-            </table>
+            @if(isset($announcements) && count($announcements) > 0)
+                <table class="table mt-3" style="width:1000px;">
+                  <thead class="table-dark text-center">
+                    <th scope="col">ANNOUNCEMENT</th>
+                  </thead>
+                  <tbody>
+                    @foreach($announcements as $announcement)
+                      <tr>
+                          <td>{{ $announcement->eventname }}</td>
+                          <td>{{ $announcement->description }}</td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                  {{--<h1>Latest Announcement</h1>
+                    @if(isset($announcement))
+                    <div class="form-group">
+                      <label for="eventname">Event Name:</label>
+                      <input type="text" class="form-control" id="eventname" name="eventname" value="{{ $announcement->eventname }}" readonly>
+                    </div>
+                  
+                    <div class="form-group">
+                      <label for="description">Description:</label>
+                      <textarea class="form-control" id="description" name="description" readonly>{{ $announcement->description }}</textarea>
+                    </div>
+                  </div>
+                  @endif--}}
+                </table>
+              @else
+                <p>No announcements found.</p>
+            @endif
             </div>
           </div>
         </div>

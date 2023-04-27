@@ -16,7 +16,7 @@
 
 <div class="d-flex justify-content-end">
     <form class="d-flex" role="search">
-        <button type="button" class="btn btn-outline-success me-2 mt-2" data-bs-toggle="modal" data-bs-target="#Select" data-bs-whatever="@Select">Select Tenant</button>
+        <button type="button" class="btn btn-outline-success me-2 mt-2" data-bs-toggle="modal" data-bs-target="#Select">Select Tenant</button>
         <button type="button" class="btn btn-outline-success me-2 mt-2" data-bs-toggle="modal" data-bs-target="#Add" data-bs-whatever="@Add">Add New Tenant</button>
     </form>
 </div>
@@ -40,7 +40,20 @@
               </tr>
           </thead>
           <tbody>
-           
+            {{--@if(isset($tenants))
+              @foreach ($tenants as $tenant)
+                <tr>
+                    <td>{{ $tenant->fullname }}</td>
+                    <td>{{ $tenant->contact }}</td>
+                    <td>{{ $tenant->emailadd }}</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Tenant Actions">
+                            <a href="/select?id={{ $tenant->id }}" type="button" class="btn btn-primary">Select</a>
+                        </div>
+                    </td>
+                </tr>
+              @endforeach
+            @endif--}}
           </tbody>
         </table>
       </div>
@@ -117,11 +130,11 @@
     <div class="col-sm-6">
       <input type="hidden" name="id" id="id" {{--value="{{ isset($data->id) ? $data->id : '' }}"--}}>
         <label for="inputName4" class="col-form-label align-self-center">Full Name</label>
-        <input type="fullname" name="fullname" class="form-control" id="fullname" placeholder="" readonly{{--value="{{ $data ? $data->fullname : '' }}"--}}>
+        <input type="fullname" name="fullname" class="form-control" id="fullname" placeholder="" readonly>
     </div>
     <div class="col-sm-6">
         <label for="inputName4" class="col-form-label align-self-center">Contact Number</label>
-        <input type="contact" name="contact" class="form-control" id="contact" placeholder="" readonly{{--value="{{ $data ? $data->contact : '' }}"--}}>
+        <input type="contact" name="contact" class="form-control" id="contact" placeholder="" readonly>
     </div>
 </div>
 
@@ -195,8 +208,120 @@
 </div>
 
 <div class="d-flex justify-content-end">
-    <button class="btn btn-primary me-2 mt-2 mx-auto" type="submit" href="/tenant"  style="font-size: 16px; padding: 10px 30px;">Process</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#process"  style="font-size: 16px; padding: 10px 30px;">Process</button>
 </div>
+<div class="modal fade" id="process" tabindex="-1" aria-labelledby="process" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Rent Stall Process</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex justify-content-center row">
+          <div class="mb-3 row">
+            <p1>Please check if details are correct.</p1>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputName4" class="col-sm-3 col-form-label align-self-center">Full Name</label>
+            <div class="col-sm-9">
+              <input type="fullname" name="fullname"class="form-control" id="fullname" readonly>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputBirthday4" class="col-sm-3 col-form-label align-self-center">Contact</label>
+            <div class="col-sm-9">
+              <input type="dateofbirth" name="dateofbirth" class="form-control" id="dateofbirth"readonly>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputAddress" class="col-sm-3 col-form-label align-self-center">Stall Type</label>
+            <div class="col-sm-9">
+              <input type="address" name="address" class="form-control" id="address" readonly>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputcontact4" class="col-sm-3 col-form-label align-self-center">Stall Name</label>
+            <div class="col-sm-9">
+              <input type="contact" name="contact" class="form-control" id="contact"readonly>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputEmail4" class="col-sm-3 col-form-label align-self-center">Type of Payment</label>
+            <div class="col-sm-9">
+              <input type="emailadd" name="emailadd" class="form-control" id="emailadd" readonly>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputEmail4" class="col-sm-3 col-form-label align-self-center">Amount of Stall</label>
+            <div class="col-sm-9">
+              <input type="emailadd" name="emailadd" class="form-control" id="emailadd"readonly>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputEmail4" class="col-sm-3 col-form-label align-self-center">Selected Stall</label>
+            <div class="col-sm-9">
+              <input type="emailadd" name="emailadd" class="form-control" id="emailadd"readonly>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputEmail4" class="col-sm-3 col-form-label align-self-center">Total Amount of Stall</label>
+            <div class="col-sm-9">
+              <input type="emailadd" name="emailadd" class="form-control" id="emailadd"readonly>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Checkout</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        
+        {{--jQuery code to display the data in the modal--}}
+        <script>
+          $(document).ready(function() {
+              // Fetch tenants data via AJAX
+              $.get('/show-tenant', function(data) {
+                  // Populate table with tenants data
+                  $.each(data, function(index, tenant) {
+                      var row = $('<tr>');
+                      row.append('<td>' + tenant.fullname + '</td>');
+                      row.append('<td>' + tenant.contact + '</td>');
+                      row.append('<td>' + tenant.emailadd + '</td>');
+                      row.append('<td><button type="button" class="btn btn-primary select-tenant" data-tenant-id="' + tenant.id + '">Select</button></td>');
+                      $('#Select tbody').append(row);
+                      $('#Select tbody').append(row);
+                  });
+      
+                  // Search filter for the table
+                  $('#search').on('keyup', function() {
+                      var value = $(this).val().toLowerCase();
+                      $('#Select tbody tr').filter(function() {
+                          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                      });
+                  });
+
+                  // Handle click events on "Select" buttons
+                  $('#Select').on('click', '.select-tenant', function() {
+                      var tenantId = $(this).data('tenant-id');
+                      var fullname = $(this).closest('tr').find('td:eq(0)').text();
+                      var contact = $(this).closest('tr').find('td:eq(1)').text();
+                      console.log('Selected tenant ID:', tenantId);
+                      console.log('Selected tenant fullname:', fullname);
+                      console.log('Selected tenant contact:', contact);
+                      $('#fullname').val(fullname);
+                      $('#contact').val(contact);
+                      $('#Select').modal('hide');
+                      $('body').removeClass('modal-open');
+                      $('.modal-backdrop').remove();
+                  });
+              });
+          });
+        </script>
 
         {{--floor number and stall numebr--}}
         <script>
@@ -211,7 +336,7 @@
 
             // Get the selected stall number(s) textbox element
             var selectedStallTextbox = document.getElementById('selectedStallTextbox');
-
+            @if(isset($stallNumbers))
             // Create an object to store the stall numbers for each floor
             var stallNumbers = {!! json_encode($stallNumbers) !!};
 
@@ -222,9 +347,9 @@
 
                 // Get the selected floor number value
                 var floorNumberId = this.value;
-
+                
                 // Check if stallNumbers variable is set
-                @if(isset($stallNumbers))
+                
                     // Get the stall numbers for the selected floor number from the stallNumbers object
                     var floorStallNumbers = stallNumbers[floorNumberId];
 

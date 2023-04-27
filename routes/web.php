@@ -71,6 +71,10 @@ Route::get('/archivetenant', function () {
     return view('admin.archives');
 });
 
+//annoucement
+Route::post('/announcementadd', [App\Http\Controllers\AnnouncementController::class, 'saveAnnouncement'])->name('saveAnnouncement');
+Route::get('/', [App\Http\Controllers\AnnouncementController::class, 'showAnnouncementForm'])->name('showAnnouncementForm');
+
 //floor
 Route::post('/save-floor', [App\Http\Controllers\FloorController::class, 'saveFloor'])->name('saveFloor');
 Route::get('/floorview', [App\Http\Controllers\FloorController::class, 'showFloors'])->name('floorview');
@@ -83,6 +87,9 @@ Route::get('/stallview', [App\Http\Controllers\StallController::class, 'showStal
 //rent
 Route::post('/tenantadd', [App\Http\Controllers\RentController::class, 'addtenant'])->name('rent');
 Route::get('/rent', [App\Http\Controllers\RentController::class, 'getFloors'])->name('getFloors');
+//select tenant modal -- rent parin
+Route::get('/rent', [App\Http\Controllers\RentController::class, 'index'])->name('indext');
+Route::get('/show-tenant', [App\Http\Controllers\RentController::class, 'showTenant'])->name('showTenant');
 
 //lost and found
 Route::post('/lost-add', [App\Http\Controllers\LostFoundController::class, 'addlost'])->name('addlost');
