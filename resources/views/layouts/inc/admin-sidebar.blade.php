@@ -17,8 +17,8 @@
                             <div class="collapse" id="collapseHomepage" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a href="/announcement" class="nav-link" aria-current="page">Announcement Board</a>
-                                    <a class="nav-link" href="layout-preview.html">Preview</a>
-                                    <a class="nav-link" href="layout-requirements.html">Requirements</a>
+                                    <a href="/preview" class="nav-link" aria-current="page">Preview</a>
+                                    <a href="/editRequirements" class="nav-link" aria-current="page">Requirements</a>
                                     <a class="nav-link" href="layout-operatinghours.html">Operating Hours</a>
                                 </nav>
                             </div>

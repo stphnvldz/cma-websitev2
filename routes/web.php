@@ -18,11 +18,18 @@ Route::get('/about', function () {
 Route::get('/stalls', function () {
     return view('layouts.stalls');
 });
+//admin side
 Route::get('/tenant', function () {
     return view('admin.tenant');
 })->name('tenant');
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
+});
+Route::get('/editRequirements', function () {
+    return view('admin.editRequirements');
+});
+Route::get('/preview', function () {
+    return view('admin.preview');
 });
 //stall folder
 Route::get('/stalladd', function () {
@@ -94,6 +101,7 @@ Route::get('/show-tenant', [App\Http\Controllers\RentController::class, 'showTen
 //lost and found
 Route::post('/lost-add', [App\Http\Controllers\LostFoundController::class, 'addlost'])->name('addlost');
 Route::get('/lostfound', [App\Http\Controllers\LostFoundController::class, 'showLostFound'])->name('lostfound');
+Route::get('/viewlostfound', [App\Http\Controllers\LostFoundController::class, 'viewLostFound'])->name('viewLostFound');
 
 //tenant side
 

@@ -20,7 +20,7 @@
   <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">LOST AND FOUND</label>
 </div>
 
-<table class="table table-hover table-striped" style="margin-left: 20px">
+<table class="table table-hover table-striped" style="margin-left: 0px">
   <thead>
       <tr>
           <th scope="col">Item</th>
@@ -42,6 +42,8 @@
           document.write('<td>' + lostandfound.description + '</td>');
           document.write('<td>' + lostandfound.dateoflost +'</td>');
           //document.write('<a href="/viewlostfound?id=' + lostfound.id + '" type="button" style="100px" class="btn btn-secondary">View</button>');
+          document.write('<td><a href="/viewlostfound?id=' + lostandfound.id + '" type="button" class="btn btn-secondary">View</a></td>');
+        
           document.write('</tr>');
       }
   </script>

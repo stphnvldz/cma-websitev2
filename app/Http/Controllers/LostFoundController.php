@@ -30,4 +30,15 @@ class LostFoundController extends Controller
         $lostfound = DB::table('lostandfound')->select('id','itemname','description','dateoflost')->get();
         return view('admin.lostfound', compact('lostfound'));
     }
+
+    public function viewLostFound(Request $request){
+        $id = $request->input('id');
+
+        $db = DB::table('lostandfound')
+        ->where('id', '=', $id)
+        ->first();
+        
+        return view('admin.viewlostfound', ['data' => $db]);
+    }
 }
+
