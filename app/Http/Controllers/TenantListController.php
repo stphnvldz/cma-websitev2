@@ -14,6 +14,13 @@ class TenantListController extends Controller
         $tenants = DB::table('tenant')->select('id','fullname','contact', 'emailadd')->get();
         return view('admin.tenantlists', compact('tenants'));
     }
+    public function markAsUnaccounted($id)
+    {
+        $tenant = Tenant::find($id);
+        $tenant->status = 'unaccounted';
+        $tenant->save();
+        return view('partials.unaccounted-row', ['tenant' => $tenant]);
+    }
 
     public function viewTenantData(Request $request){
         $id = $request->input('id');
@@ -24,6 +31,15 @@ class TenantListController extends Controller
         
         return view('admin.viewtenant', ['data' => $db]);
     }
+    //public function BillTenant(Request $request){
+    //    $id = $request->input('id');
+
+    //    $db = DB::table('tenant')
+    //    ->where('id', '=', $id)
+    //    ->first();
+        
+    //   return view('admin.tenantlists', ['data' => $db]);
+    //}
 
     public function updateTenantData(Request $request){
         $id = $request->input('id');
@@ -53,5 +69,20 @@ class TenantListController extends Controller
         }
 
         return redirect()->back()->with('success', 'Tenant information updated successfully');
+    }
+
+    public function archiveTenant($id)
+    {
+        // Get the tenant with the specified id
+        $tenant = Tenant::find($id);
+
+        // Set the is_archived field to true
+        $tenant->is_archived = true;
+
+        // Save the changes
+        $tenant->save();
+
+        // Redirect back to the tenant list page
+        return redirect()->route('tenant.list');
     }
 }
