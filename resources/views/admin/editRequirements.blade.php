@@ -25,7 +25,7 @@
             <label for="inputDescription" class="col-sm-3 col-form-label align-self-center"></label>
             <p style="font-size: 15px; font-weight: bold;">Notes</p>
                 <div class="col-sm-9">
-                <input type="event" name="event" class="form-control" id="event" style="height: 100px;" placeholder="">
+                <input type="event" name="event" class="form-control" id="notes" style="height: 100px;" placeholder="">
                 </div>
     
         <div style="position: relative;">

@@ -45,16 +45,11 @@ class RentController extends Controller
 
         return redirect('/rent');
     }
-    //public function showTenant()
-    //{
-    //    $tenants = DB::table('tenant')->select('id','fullname','contact', 'emailadd')->get();
-    //    return view('admin.rent', compact('tenants'));
-    //}
 
-    public function index()
-    {
-        return view('admin.rent');
-    }
+    //public function index()
+    //{
+    //    return view('admin.rent');
+    //}
 
     public function showTenant()
     {

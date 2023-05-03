@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stall Add</title>
+    <title>Rent</title>
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -288,13 +288,14 @@
               $.get('/show-tenant', function(data) {
                   // Populate table with tenants data
                   $.each(data, function(index, tenant) {
-                      var row = $('<tr>');
-                      row.append('<td>' + tenant.fullname + '</td>');
-                      row.append('<td>' + tenant.contact + '</td>');
-                      row.append('<td>' + tenant.emailadd + '</td>');
-                      row.append('<td><button type="button" class="btn btn-primary select-tenant" data-tenant-id="' + tenant.id + '">Select</button></td>');
-                      $('#Select tbody').append(row);
-                      $('#Select tbody').append(row);
+                    var row = $('<tr>');
+                    row.append('<td>' + tenant.fullname + '</td>');
+                    row.append('<td>' + tenant.contact + '</td>');
+                    row.append('<td>' + tenant.emailadd + '</td>');
+                    var selectButton = $('<button type="button" class="btn btn-primary select-tenant">Select</button>');
+                    selectButton.attr('data-tenant-id', tenant.id); // Add data-tenant-id attribute
+                    row.append($('<td>').append(selectButton));
+                    $('#Select tbody').append(row);
                   });
       
                   // Search filter for the table
@@ -306,18 +307,13 @@
                   });
 
                   // Handle click events on "Select" buttons
-                  $('#Select').on('click', '.select-tenant', function() {
-                      var tenantId = $(this).data('tenant-id');
-                      var fullname = $(this).closest('tr').find('td:eq(0)').text();
-                      var contact = $(this).closest('tr').find('td:eq(1)').text();
-                      console.log('Selected tenant ID:', tenantId);
-                      console.log('Selected tenant fullname:', fullname);
-                      console.log('Selected tenant contact:', contact);
-                      $('#fullname').val(fullname);
-                      $('#contact').val(contact);
-                      $('#Select').modal('hide');
-                      $('body').removeClass('modal-open');
-                      $('.modal-backdrop').remove();
+                  $('.select-tenant').on('click', function() {
+                    var tenantId = $(this).data('tenant-id');
+                    var fullname = $(this).closest('tr').find('td:nth-child(1)').text();
+                    var contact = $(this).closest('tr').find('td:nth-child(2)').text();
+                    $('#fullname').val(fullname);
+                    $('#contact').val(contact);
+                    $('#Select').modal('hide');
                   });
               });
           });
