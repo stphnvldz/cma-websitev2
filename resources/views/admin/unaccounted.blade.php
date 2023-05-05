@@ -19,13 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            @if(isset($tenant))
-            <tr id="unaccounted-{{ $tenant->id }}">
-                <td>{{ $tenant->fullname }}</td>
-                <td>{{ $tenant->contact }}</td>
-                <td>{{ $tenant->emailadd }}</td>
-            </tr>
-            @endif
+            
         </tbody>
     </table>
 

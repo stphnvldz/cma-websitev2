@@ -1,6 +1,40 @@
-@section('tenant-sidebar')
-@include('tenant-sidebar')
+<script>
+    document.getElementById('sidebarToggle').addEventListener('click', function () {
+        document.getElementById('tenantSidenav_nav').classList.toggle('active');
+        const sidebarToggle = document.getElementById("sidebarToggle");
+const sidebarContainer = document.getElementById("tenantSidenav_nav");
+
+// Add a click event listener to the toggle button
+sidebarToggle.addEventListener("click", function () {
+  // Toggle the 'show' class on the sidebar container
+  sidebarContainer.classList.toggle("show");
+});
+    });
+</script>
+
+<style>
+    #tenantSidenav_nav.active {
+        display: block;
+    }
+    #tenantSidenav_nav {
+        display: none;
+    }
+    #tenantSidenav_nav {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  height: 100vh;
+  width: 250px;
+  background-color: #222;
+  z-index: 999;
+  transition: all 0.3s ease-in-out; /* Add transition property */
+}
+#tenantSidenav_nav.show {
+  left: 0;
+}
+</style>
 <div id="tenantSidenav_nav">
+    
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
@@ -62,4 +96,3 @@
                     </div>
                 </nav>
             </div>
-            @endsection

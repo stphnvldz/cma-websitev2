@@ -151,7 +151,15 @@
         $('#billModal .modal-body p').text(`You are about to bill ${tenantName} (ID: ${tenantId}, Email: ${tenantEmail}).`);
     });
     </script>  
-        
+        <script>
+          // Search filter for the table
+          $('#search').on('keyup', function() {
+                      var value = $(this).val().toLowerCase();
+                      $('#Select tbody tr').filter(function() {
+                          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                      });
+                  });
+          </script>
     <script src="assets/js/bootstrap.js"></script>
 
 </body>
