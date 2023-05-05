@@ -55,7 +55,7 @@
             <p>2. Applicants must have no derogatory remarks in their NBI Clearance or 
               any criminal records; therefore has a good morale.</p>
             
-       
+              
         </div>
 
 

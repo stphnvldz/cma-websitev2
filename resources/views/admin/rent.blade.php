@@ -80,7 +80,7 @@
                 <div class="mb-3 row">
                   <label for="inputName4" class="col-sm-3 col-form-label align-self-center">Full Name</label>
                   <div class="col-sm-9">
-                    <input type="fullname" name="fullname"class="form-control" id="fullname" placeholder="Ethan D. Batumbakal">
+                    <input type="fullname" name="fullname"class="form-control" id="fullname" placeholder="Please input your fullname">
                   </div>
                 </div>
                 <div class="mb-3 row">
@@ -92,13 +92,12 @@
                 <div class="mb-3 row">
                   <label for="inputAddress" class="col-sm-3 col-form-label align-self-center">Address</label>
                   <div class="col-sm-9">
-                    <input type="address" name="address" class="form-control" id="address" style="height: 100px;" placeholder="123 BTSTXTENHASVT Street">
-                  </div>
+                    <input type="address" name="address" class="form-control" id="address" style="height: 100px;" placeholder="Please input your complete address">
                 </div>
                 <div class="mb-3 row">
                   <label for="inputcontact4" class="col-sm-3 col-form-label align-self-center">Contact No.</label>
                   <div class="col-sm-9">
-                    <input type="contact" name="contact" class="form-control" id="contact" placeholder="09123456789">
+                    <input type="contact" name="contact" class="form-control" id="contact" placeholder="Please input your contact number">
                   </div>
                 </div>
                 <div class="mb-3 row">
@@ -123,7 +122,7 @@
         </form>
     </div>
   </div>
-</div>--}}
+
 
 {{--textbox for fullname adn contact. dito mapupunta yung na select na tenant sa modal
 <div class="mb-3 mt-5 mx-2 row">

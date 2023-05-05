@@ -56,6 +56,8 @@ Route::get('/lostfound', function () {
 });
 
 
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -117,6 +119,10 @@ Route::get('/paymentreports', function () {
 });
 
 //tenant side
+Route::get('/tenant-dashboard', function () {
+    return view('admin.tenantside.tenant-dashboard');
+});
+
 Route::get('/payment', function () {
     return view('admin.tenantside.payment');
 });
