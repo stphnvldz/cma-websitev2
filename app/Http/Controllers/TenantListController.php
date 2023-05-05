@@ -11,40 +11,24 @@ class TenantListController extends Controller
 {
     public function index()
     {
-        $tenants = DB::table('tenant')->select('id','fullname','contact', 'emailadd')->get();
-        return view('admin.tenantlists', compact('tenants'));
-    }
-    public function markAsUnaccounted($id)
-    {
-        $tenant = Tenant::find($id);
-        $tenant->status = 'unaccounted';
-        $tenant->save();
-        return view('partials.unaccounted-row', ['tenant' => $tenant]);
+        $rent = DB::table('rentstall')->select('id','fullname','contact', 'emailadd')->get();
+        return view('admin.tenantlists', compact('rent'));
     }
 
     public function viewTenantData(Request $request){
         $id = $request->input('id');
 
-        $db = DB::table('tenant')
+        $db = DB::table('rentstall')
         ->where('id', '=', $id)
         ->first();
         
         return view('admin.viewtenant', ['data' => $db]);
     }
-    //public function BillTenant(Request $request){
-    //    $id = $request->input('id');
-
-    //    $db = DB::table('tenant')
-    //    ->where('id', '=', $id)
-    //    ->first();
-        
-    //   return view('admin.tenantlists', ['data' => $db]);
-    //}
 
     public function updateTenantData(Request $request){
         $id = $request->input('id');
 
-        $db = DB::table('tenant')
+        $db = DB::table('rentstall')
         ->where('id', '=', $id)
         ->update([
             'fullname' => $request->input('fullname'),
@@ -52,18 +36,24 @@ class TenantListController extends Controller
             'address' => $request->input('address'),
             'contact' => $request->input('contact'),
             'emailadd' => $request->input('emailadd'),
+            'stalltype' => $request->input('stalltype'),
+            'stallname' => $request->input('stallname'),
+            'payment' => $request->input('payment'),
+            'amount' => $request->input('amount'),
+            'selectedStallTextbox' => $request->input('selectedStallTextbox'),
+            'totalamount' => $request->input('totalamount'),
         ]);
 
         if($request->hasFile('image')){
-            $tenant = DB::table('tenant')->where('id', '=', $id)->first();
+            $rent = DB::table('rentstall')->where('id', '=', $id)->first();
 
-            File::delete('public/img/' . $tenant->image);
+            File::delete('public/img/' . $rent->image);
 
             $image = $request->file('image');
-            $filename = time().'.'.$image->getClientOriginalExtension();
+            $filename = $image->getClientOriginalName();
             $image->move(public_path('public/img'), $filename);
 
-            DB::table('tenant')
+            DB::table('rentstall')
             ->where('id', '=', $id)
             ->update(['image' => $filename,]);
         }
@@ -71,18 +61,18 @@ class TenantListController extends Controller
         return redirect()->back()->with('success', 'Tenant information updated successfully');
     }
 
-    public function archiveTenant($id)
-    {
+    //public function archiveTenant($id)
+    //{
         // Get the tenant with the specified id
-        $tenant = Tenant::find($id);
+    //    $tenant = Tenant::find($id);
 
         // Set the is_archived field to true
-        $tenant->is_archived = true;
+    //    $tenant->is_archived = true;
 
         // Save the changes
-        $tenant->save();
+    //    $tenant->save();
 
         // Redirect back to the tenant list page
-        return redirect()->route('tenant.list');
-    }
+    //    return redirect()->route('tenant.list');
+    //}
 }

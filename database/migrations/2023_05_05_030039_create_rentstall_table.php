@@ -4,14 +4,16 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateRentstallTable extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('tenant', function (Blueprint $table) {
+        Schema::create('rentstall', function (Blueprint $table) {
             $table->id();
             $table->string('fullname');
             $table->string('dateofbirth');
@@ -19,15 +21,23 @@ return new class extends Migration
             $table->string('contact');
             $table->string('emailadd');
             $table->mediumText('image')->nullable();
+            $table->string('stalltype');
+            $table->string('stallname');
+            $table->string('payment');
+            $table->string('amount');
+            $table->string('selectedStallTextbox');
+            $table->string('totalamount');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('tenant');
+        Schema::dropIfExists('rentstall');
     }
-};
+}

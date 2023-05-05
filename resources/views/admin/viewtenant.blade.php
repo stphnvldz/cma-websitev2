@@ -32,9 +32,7 @@
         <img src="/public/img/{{ $data->image }}" alt="Image" class="photo2b2 mt-5 mb-3">
         <input class="text-center form-control" name="image" type="file" id="image" style="height: 38px; width: 20rem;" disabled>
       </div>
-    </div>
-    <div class="col-6">
-      <div class="mb-3 row">
+      <div class="mb-3 mt-2 row">
         <label for="inputName4" class="col-sm-3 col-form-label align-self-center">Full Name</label>
         <div class="col-sm-9">
           <input type="fullname" name="fullname" class="form-control" id="fullname" disabled value="{{ $data->fullname }}">
@@ -49,9 +47,11 @@
       <div class="mb-3 row">
         <label for="inputAddress" class="col-sm-3 col-form-label align-self-center">Address</label>
         <div class="col-sm-9">
-          <input type="address" name="address" class="form-control" id="address" style="height: 100px;"  value="{{ $data->address }}" disabled>
+          <input type="address" name="address" class="form-control" id="address" value="{{ $data->address }}" disabled>
         </div>
       </div>
+    </div>
+    <div class="col-6">
       <div class="mb-3 row">
         <label for="inputcontact4" class="col-sm-3 col-form-label align-self-center">Contact No.</label>
         <div class="col-sm-9">
@@ -64,46 +64,48 @@
           <input type="emailadd" name="emailadd" id="emailadd" class="form-control" value="{{ $data->emailadd }}" disabled>
         </div>
       </div>
-      {{--<div class="mb-3 row">
-        <label for="stallnum" class="col-sm-3 col-form-label align-self-center">Stall Number</label>
-        <div class="col-sm-9">
-          <input type="text" name="stallnum" class="form-control" id="stallnum" value="{{ $data->stallnum }}" disabled>
-        </div>
-      </div>
       <div class="mb-3 row">
-        <label for="stallname" class="col-sm-3 col-form-label align-self-center">Stall Name</label>
+        <label for="inputFloor" class="col-sm-3 col-form-label align-self-center">Stall Type</label>
         <div class="col-sm-9">
-          <input id="stallname" name="stallname" class="form-control" value="{{ $data->stallname }}" disabled>
+            <input type="text" name="stalltype" class="form-control" id="stalltype" value="{{ $data->stalltype }}" disabled>
         </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="stalltype" class="col-sm-3 col-form-label align-self-center">Stall Type</label>
+    </div>
+    <div class="mb-3 row">
+        <label for="inputStallAmount" class="col-sm-3 col-form-label align-self-center">Stall Name</label>
         <div class="col-sm-9">
-          <select id="stalltype" name="stalltype" class="form-control" disabled>
-            <option value="Regular" {{ $data->stalltype == 'Regular' ? 'selected' : '' }}>Regular</option>
-            <option value="Temporary" {{ $data->stalltype == 'Temporary' ? 'selected' : '' }}>Temporary</option>
-        </select>
+            <input type="text" name="stallname" class="form-control" id="stallname" value="{{ $data->stallname }}" disabled>
         </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="payment" class="col-sm-3 col-form-label align-self-center">Choice of Payment</label>
-        <div class="col-sm-9 d-flex align-items-center">
-          <input id="payment" name="payment" class="form-control" value="{{ $data->payment }}" readonly>
-        </div>
-      </div>
-      <div class="mb-3 row">
-        <label for="stallprice" class="col-sm-3 col-form-label align-self-center">Stall Price</label>
+    </div>
+    <div class="mb-3 row">
+        <label for="inputFloor" class="col-sm-3 col-form-label align-self-center">Type of Payment</label>
         <div class="col-sm-9">
-          <input id="stallprice" name="stallprice" class="form-control" value="{{ $data->stallprice }}" readonly>
+            <input type="text" name="payment" class="form-control" id="payment" value="{{ $data->payment }}" disabled>
         </div>
-      </div>--}}
+    </div>
+    <div class="mb-3 row">
+        <label for="inputStallAmount" class="col-sm-3 col-form-label align-self-center">Amount of Stall</label>
+        <div class="col-sm-9">
+            <input type="text" name="amount" class="form-control" id="amount" value="{{ $data->amount }}" disabled>
+        </div>
+    </div>
+    <div class="mb-3 mt-3 row">
+        <label for="inputName" class="col-sm-3 col-form-label align-self-center">Selected Stall</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" name="selectedStallTextbox" id="selectedStallTextbox"value="{{ $data->selectedStallTextbox }}" disabled>
+        </div>
+    </div>
+    <div class="mb-3 mt-3 row">
+        <label for="inputName" class="col-sm-3 col-form-label align-self-center">Total Amount of Stall</label>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" name="totalamount" id="totalamount" value="{{ $data->totalamount }}" disabled>
+        </div>
     </div>
   </div>
   <div class="d-flex justify-content-center align-items-center">
-    <div class="text-center md-2 mx-2">
+    <div class="text-center mx-2">
       <button type="button" class="btn btn-primary" id="edit">Edit Information</button>
     </div>
-    <div class="text-center md-2 mx-2">
+    <div class="text-center mx-2">
       <button type="submit" id="save"class="btn btn-primary"disabled>Save</button>
     </div>
   </div>
@@ -118,6 +120,12 @@
     var addressInput = document.getElementById("address");
     var contactInput = document.getElementById("contact");
     var emailaddInput = document.getElementById("emailadd");
+    var stalltypeInput = document.getElementById("stalltype");
+    var stallnameInput = document.getElementById("stallname");
+    var paymentInput = document.getElementById("payment");
+    var amountInput = document.getElementById("amount");
+    var selectedInput = document.getElementById("selectedStallTextbox");
+    var totalamountInput = document.getElementById("totalamount");
     var imageInput = document.getElementById("image");
     var saveButton = document.getElementById("save");
     // Add an event listener to the edit button
@@ -128,6 +136,12 @@
       addressInput.removeAttribute("disabled");
       contactInput.removeAttribute("disabled");
       emailaddInput.removeAttribute("disabled");
+      stalltypeInput.removeAttribute("disabled");
+      stallnameInput.removeAttribute("disabled");
+      paymentInput.removeAttribute("disabled");
+      amountInput.removeAttribute("disabled");
+      selectedInput.removeAttribute("disabled");
+      totalamountInput.removeAttribute("disabled");
       imageInput.removeAttribute("disabled");
       saveButton.removeAttribute("disabled");
     });

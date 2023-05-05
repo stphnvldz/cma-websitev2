@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\tenant;
+use App\Models\RentStall;
 use App\Models\Stall;
 use App\Models\Floor;
 use Illuminate\Support\Facades\DB;
@@ -26,22 +26,29 @@ class RentController extends Controller
         return view('admin.rent', ['floors' => $floors , 'stallNumbers' => $formattedStallNumbers]);
     }
 
-    public function addtenant(Request $request){
-        $tenant = new tenant();
-        $tenant->fullname = $request->input('fullname');
-        $tenant->dateofbirth = $request->input('dateofbirth');
-        $tenant->address = $request->input('address');
-        $tenant->contact = $request->input('contact');
-        $tenant->emailadd = $request->input('emailadd');
+    public function renting(Request $request){
+        $rent = new RentStall();
+        $rent->fullname = $request->input('fullname');
+        $rent->dateofbirth = $request->input('dateofbirth');
+        $rent->address = $request->input('address');
+        $rent->contact = $request->input('contact');
+        $rent->emailadd = $request->input('emailadd');
         
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $filename = time().'.'.$image->getClientOriginalExtension();
+            $filename = $image->getClientOriginalName();
             $image->move(public_path('public/img'), $filename);
-            $tenant->image = $filename;
+            $rent->image = $filename;
         }
 
-        $tenant->save();
+        $rent->stalltype = $request->input('stalltype');
+        $rent->stallname = $request->input('stallname');
+        $rent->payment = $request->input('payment');
+        $rent->amount = $request->input('amount');
+        $rent->selectedStallTextbox = $request->input('selectedStallTextbox');
+        $rent->totalamount = $request->input('totalamount');
+
+        $rent->save();
 
         return redirect('/rent');
     }
@@ -51,9 +58,9 @@ class RentController extends Controller
     //    return view('admin.rent');
     //}
 
-    public function showTenant()
-    {
-        $tenants = DB::table('tenant')->select('id', 'fullname', 'contact', 'emailadd')->get();
-        return response()->json($tenants);
-    }
+    //public function showTenant()
+    //{
+    //    $tenants = DB::table('tenant')->select('id', 'fullname', 'contact', 'emailadd')->get();
+    //    return response()->json($tenants);
+    //}
 }
