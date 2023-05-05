@@ -31,9 +31,9 @@
                             </a>
                             <div class="collapse" id="collapseTenants" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a href="/tenant" class="nav-link" aria-current="page">Tenant Profiling</a>
-                                    <a href="/tenantlists" class="nav-link" aria-current="page">List of Tenants</a>
+                                    {{--<a href="/tenant" class="nav-link" aria-current="page">Tenant Profiling</a>--}}
                                     <a href="/rent" class="nav-link" aria-current="page">Rent Stall</a>
+                                    <a href="/tenantlists" class="nav-link" aria-current="page">List of Tenants</a>
                                     {{--<a class="nav-link" href="layout-contracts.html">Contracts</a>--}}
                                     <a class="nav-link" href="/unaccounted" aria-current="page">Unaccounted Tenants</a>
                                     <a href="/archivetenant" class="nav-link" aria-current="page">Archives</a>

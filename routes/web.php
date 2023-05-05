@@ -82,7 +82,7 @@ Route::get('/archivetenant', function () {
 
 //Route::get('/archivetenant/{id}', 'TenantListController@archiveTenant')->name('tenant.archive');
 
-Route::post('/mark-as-unaccounted/{id}', 'TenantListController@markAsUnaccounted');
+//Route::post('/mark-as-unaccounted/{id}', 'TenantListController@markAsUnaccounted');
 
 Route::get('/unaccounted', function () {
     return view('admin.unaccounted');
@@ -102,8 +102,9 @@ Route::post('/stalladd', [App\Http\Controllers\StallController::class, 'saveStal
 Route::get('/stallview', [App\Http\Controllers\StallController::class, 'showStalls'])->name('stallview');
 
 //rent
-Route::post('/tenantadd', [App\Http\Controllers\RentController::class, 'addtenant'])->name('rent');
+Route::post('/rentadd', [App\Http\Controllers\RentController::class, 'renting'])->name('rent');
 Route::get('/rent', [App\Http\Controllers\RentController::class, 'getFloors'])->name('getFloors');
+
 //select tenant modal -- rent parin
 //sRoute::get('/rent', [App\Http\Controllers\RentController::class, 'index'])->name('index');
 Route::get('/show-tenant', [App\Http\Controllers\RentController::class, 'showTenant'])->name('showTenant');
@@ -139,4 +140,9 @@ Route::get('/developer', function () {
 //bills notice
 Route::get('/billsnotice', function () {
     return view('admin.tenantside.billsnotice');
+});
+
+//try lang
+Route::get('/renttry', function () {
+    return view('admin.renttry');
 });
