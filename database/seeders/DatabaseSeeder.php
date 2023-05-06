@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(StallsTableSeeder::class);
         $this->call(FloorsTableSeeder::class);
         $this->call(LostandfoundTableSeeder::class);
+        $this->call(RentstallTableSeeder::class);
     }
 }

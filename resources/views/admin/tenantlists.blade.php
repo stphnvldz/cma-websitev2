@@ -8,6 +8,7 @@
     <title>LIST OF TENANTS</title>
 
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     @section('content')
@@ -18,7 +19,7 @@
         </form>
     </div>
 
-    <table class="table table-hover table-striped">
+    <table class="table table-hover table-striped" id="rentstall">
         <thead>
             <tr>
                 <th scope="col">Full Name</th>

@@ -26,6 +26,7 @@
           <th scope="col">Item</th>
           <th scope="col">Description</th>
           <th scope="col">Date of Lost</th>
+          <th scope="col">Status</th>
       </tr>
   </thead>
   <tbody>
@@ -41,7 +42,6 @@
           document.write('<td>' + lostandfound.itemname +'</td>');
           document.write('<td>' + lostandfound.description + '</td>');
           document.write('<td>' + lostandfound.dateoflost +'</td>');
-          //document.write('<a href="/viewlostfound?id=' + lostfound.id + '" type="button" style="100px" class="btn btn-secondary">View</button>');
           document.write('<td><a href="/viewlostfound?id=' + lostandfound.id + '" type="button" class="btn btn-secondary">View</a></td>');
         
           document.write('</tr>');

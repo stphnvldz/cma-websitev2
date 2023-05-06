@@ -56,7 +56,7 @@
         
           <input type="hidden" name="id" value="{{ $data->id }}">
           <div class="row p-5">
-            <div class="text-center col-6">
+            <div class="col-6">
               <div class="d-flex flex-column align-items-center">
                 <img src="/public/img/{{ $data->image }}" alt="Image" class="photo2b2 mt-5 mb-3">
                 <input class="text-center form-control" name="image" type="file" id="image" style="height: 38px; width: 20rem;" disabled>
@@ -64,32 +64,32 @@
             </div>
             <div class="col-6">
               <div class="mb-3 row">
-                <label for="inputName4" class="col-sm-3 col-form-label align-self-center">Item Name</label>
-                <div class="col-sm-9">
-                  <input type="text" name="itemName" class="form-control" id="itemName" disabled value="{{ $data->itemname }}">
+                <label for="inputName4" class="col-sm-4 col-form-label align-self-center">Item Name</label>
+                <div class="col-sm-10">
+                  <input type="text" name="itemName" class="form-control" id="itemName" style="width: 560px" disabled value="{{ $data->itemname }}">
                 </div>
               </div>
               <div class="mb-3 row">
-                <label for="inputDateoflost" class="col-sm-3 col-form-label align-self-center">Date of Lost</label>
-                <div class="col-sm-9">
-                  <input type="dateoflost" name="dateoflost" class="form-control" id="dateoflost" disabled value="{{ $data->dateoflost }}">
+                <label for="inputDateoflost" class="col-sm-4 col-form-label align-self-center">Date of Lost</label>
+                <div class="col-sm-10">
+                  <input type="dateoflost" name="dateoflost" class="form-control" id="dateoflost" style="width: 560px" disabled value="{{ $data->dateoflost }}">
                 </div>
               </div>
               <div class="mb-3 row">
-                <label for="inputDescription" class="col-sm-3 col-form-label align-self-center">Description</label>
-                <div class="col-sm-9">
-                  <input type="description" name="description" class="form-control" id="ddescription" style="height: 100px;"  value="{{ $data->description }}" disabled>
+                <label for="inputDescription" class="col-sm-4 col-form-label align-self-center">Description</label>
+                <div class="col-sm-10">
+                  <input type="description" name="description" class="form-control" id="description" style="width: 560px" value="{{ $data->description }}" disabled>
                 </div>
               </div>
               </div>
             </div>
-          </div>
-          <div class="d-flex justify-content-center align-items-center">
-            <div class="text-center md-2 mx-2">
-              <button type="button" class="btn btn-primary" id="edit">Edit Information</button>
-            </div>
-            <div class="text-center md-2 mx-2">
-              <button type="submit" id="save"class="btn btn-primary"disabled>Save</button>
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="text-center md-2 mx-2">
+                <button type="button" class="btn btn-primary" id="edit">Edit Information</button>
+              </div>
+              <div class="text-center md-2 mx-2">
+                <button type="submit" id="save"class="btn btn-primary"disabled>Save</button>
+              </div>
             </div>
           </div>
         </form>
