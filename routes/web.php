@@ -26,8 +26,12 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
 Route::get('/editRequirements', function () {
-    return view('admin.editRequirements');
+    return view('admin.homepage.editRequirements');
 });
+Route::post('/reqadd', [App\Http\Controllers\RequirementsController::class, 'req'])->name('req');
+Route::get('/requirements', [App\Http\Controllers\RequirementsController::class, 'showreq'])->name('showreq');
+
+
 Route::get('/preview', function () {
     return view('admin.preview');
 });
@@ -48,7 +52,7 @@ Route::get('/rent', function () {
     return view('admin.rent');
 });
 Route::get('/announcement', function () {
-    return view('admin.announcement');
+    return view('admin.homepage.announcement');
 });
 //lost and found
 Route::get('/lostfound', function () {
@@ -114,21 +118,19 @@ Route::post('/lost-add', [App\Http\Controllers\LostFoundController::class, 'addl
 Route::get('/lostfound', [App\Http\Controllers\LostFoundController::class, 'showLostFound'])->name('lostfound');
 Route::get('/viewlostfound', [App\Http\Controllers\LostFoundController::class, 'viewLostFound'])->name('viewLostFound');
 //reports
-Route::get('/paymentreports', function () {
-    return view('admin.repors.paymentreports');
-});
+Route::get('/paymentreports', [App\Http\Controllers\PaymentReportController::class, 'viewReports'])->name('viewReports');
+//Route::get('/paymentreports', [App\Http\Controllers\PaymentReportController::class, 'viewTenantPayment'])->name('viewTenantPayment');
 
 //tenant side
 Route::get('/tenant-dashboard', function () {
     return view('admin.tenantside.tenant-dashboard');
 });
-
+//paymemt
 Route::get('/payment', function () {
     return view('admin.tenantside.payment');
 });
-Route::get('/paymenthistory', function () {
-    return view('admin.tenantside.paymenthistory');
-});
+Route::post('/payment-add', [App\Http\Controllers\PaymentController::class, 'payment'])->name('payment');
+Route::get('/paymenthistory', [App\Http\Controllers\PaymentController::class, 'viewPayment'])->name('viewPayment');
 //about-tenant side
 Route::get('/cmainfo', function () {
     return view('admin.tenantside.about.cmainfo');
@@ -140,9 +142,4 @@ Route::get('/developer', function () {
 //bills notice
 Route::get('/billsnotice', function () {
     return view('admin.tenantside.billsnotice');
-});
-
-//try lang
-Route::get('/renttry', function () {
-    return view('admin.renttry');
 });

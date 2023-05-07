@@ -71,7 +71,6 @@
                   <tbody>
                     @foreach($announcements as $announcement)
                       <tr>
-                          <td>{{ $announcement->eventname }}</td>
                           <td>{{ $announcement->description }}</td>
                       </tr>
                     @endforeach

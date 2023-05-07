@@ -16,13 +16,30 @@
                 <th scope="col">Full Name</th>
                 <th scope="col">Stall Number</th>
                 <th scope="col">Contact Number</th>
-                <th scope="col">Date</th>
+                <th scope="col">Type of Payment</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Date From</th>
+                <th scope="col">Date To</th>
                 <th scope="col">Mode of Payment</th>
                 <th scope="col">Status</th>
             </tr>
         </thead>
         <tbody>
-        
+            @if(isset($payment))
+            @foreach($payment as $payments)
+            <tr>
+                <td>{{ $payments->fullname }}</td>
+                <td>{{ $payments->stallnumber }}</td>
+                <td>{{ $payments->contact }}</td>
+                <td>{{ $payments->type }}</td>
+                <td>{{ $payments->amount }}</td>
+                <td>{{ $payments->datefrom }}</td>
+                <td>{{ $payments->dateto }}</td>
+                <td>{{ $payments->payment }}</td>
+                <td>{{ $payments->status }}</td>
+            </tr>
+            @endforeach
+        @endif
         </tbody>
     </table>
 </body>
