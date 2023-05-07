@@ -76,6 +76,12 @@
                       </div>
                     </div>
                     <div class="mb-3 row">
+                        <label for="inputName4" class="col-sm-3 col-form-label align-self-center">Type of Payment</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="payment" class="form-control" id="payment"readonly>
+                        </div>
+                      </div>
+                    <div class="mb-3 row">
                         <label for="inputName4" class="col-sm-3 col-form-label align-self-center">Total Amount</label>
                         <div class="col-sm-9">
                             <input type="text" name="amount" class="form-control" id="amount"readonly>
@@ -94,10 +100,16 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="inputName4" class="col-sm-3 col-form-label align-self-center">Date</label>
+                        <label for="inputPayment4" class="col-sm-3 col-form-label align-self-center">Date From</label>
                         <div class="col-sm-9">
-                          <input type="text" name="date" class="form-control" id="date">
+                          <input type="date" name="datefrom" class="form-control" id="datefrom">
                         </div>
+                    </div>
+                    <div class="mb-3 row">
+                      <label for="inputPayment4" class="col-sm-3 col-form-label align-self-center">Date To</label>
+                      <div class="col-sm-9">
+                        <input type="date" name="dateto" class="form-control" id="dateto">
+                      </div>
                     </div>
                 </div>
             <div class="modal-footer">

@@ -75,8 +75,8 @@
                 <p>ASSISTANCE IN CRISIS SITUATION</p>
                   <p>REFERRAL TO PUBLIC EMPLOYMENT SERVICE OFFICE
             (PESO) FOR LOCAL AND OVERSEAS JOB HIRING</p>
-       
         </div>
+      </div>
 
          
  
