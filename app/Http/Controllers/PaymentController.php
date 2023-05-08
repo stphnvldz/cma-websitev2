@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Payment;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File; 
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 
 
@@ -22,7 +22,7 @@ class PaymentController extends Controller
         $payment->payment = $request->input('payment');
         $payment->refnumber = $request->input('refnumber');
         $payment->status= $request->input('status');
-        
+
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $filename = $image->getClientOriginalName();
@@ -38,5 +38,5 @@ class PaymentController extends Controller
         $payment = DB::table('payment')->select('id','fullname','stallnumber','contact', 'type','amount','datefrom','dateto','payment','status')->get();
         return view('admin.tenantside.paymenthistory', compact('payment'));
     }
-    
+
 }

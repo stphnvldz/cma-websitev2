@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 
@@ -73,7 +74,8 @@ Route::prefix('admin')->middleware(['auth'])->group(function() {
 Route::post('/tenant/add', [App\Http\Controllers\TenantController::class, 'addtenant'])->name('addtenant');
 
 Route::get('/tenantlists', [App\Http\Controllers\TenantListController::class, 'index'])->name('tenantlists');
-
+Route::post('/tenantlists/postbill', [App\Http\Controllers\TenantListController::class, 'postBill'])->name('postBill');
+Route::post('/tenantlists/postallbill', [App\Http\Controllers\TenantListController::class, 'postAllBill'])->name('postAllBill');
 //Route::post('/tenants', [App\Http\Controllers\StallsController::class, 'tenants'])->name('tenants');
 
 Route::get('/viewtenant', [App\Http\Controllers\TenantListController::class, 'viewTenantData'])->name('viewtenant');
@@ -141,5 +143,9 @@ Route::get('/developer', function () {
 
 //bills notice
 Route::get('/billsnotice', function () {
-    return view('admin.tenantside.billsnotice');
+    // SEEZA todo: WHERE from renstall.id
+    // $results = DB::table('tenant_bills')->where([['status', '=', '0'],['rentstall_id', '=', '1'] ])->get();
+    $results = DB::table('tenant_bills')->where('status', '=', '0')->get();
+
+    return view('admin.tenantside.billsnotice', compact(['results']));
 });

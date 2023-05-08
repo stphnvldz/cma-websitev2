@@ -108,7 +108,7 @@
             <div class="mb-3 row">
               <label for="inputName4" class="col-sm-3 col-form-label align-self-center">Type the reference no.</label>
               <div class="col-sm-9">
-                <input type="text" name="refnumber"class="form-control" id="refnumber"  required>
+                <input type="text" name="refnumber" class="form-control" id="refnumber"  required>
               </div>
             </div>
             <div class="mb-3 row">
@@ -117,7 +117,6 @@
                 <input class="d-flex justify-content-center form-control" name="image" type="file" id="image" style="height: 38px;">
               </div>
             </div>
-              <input type="hidden" name="status" class="form-control" id="status" value="Pending">
           </div>
         </div>
         <div class="modal-footer">
@@ -140,12 +139,11 @@
             <div class="mb-3 row text-center">
               <h5>Please visit the cashier in CMA Treasury office.</h5>
               <h6>Godbless!</h6>
-              <input type="hidden" name="refnumber"class="form-control" id="refnumber" value="cash">
               <input class="d-flex justify-content-center form-control" name="image" type="hidden" id="image" value="cash">
-              <input type="hidden" name="status" class="form-control" id="status" value="Pending">
             </div>
           </div>
         </div>
+
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="store" class="btn btn-primary">Confirm</button>
@@ -153,6 +151,7 @@
       </div>
     </div>
   </div>
+  <input type="hidden" name="status" class="form-control" id="status" value="Pending">
 </form>
 
       <!-- Script to show the appropriate modal dialog based on the selected radio button -->
@@ -163,6 +162,7 @@
               $("#gcash-modal").modal("show");
             } else if ($("#codPaymentRadio").is(":checked")) {
               $("#codPayment-modal").modal("show");
+              $("#refnumber").val('cash')
             }
           });
         });
