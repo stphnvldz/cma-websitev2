@@ -1,44 +1,52 @@
 @extends('layouts.master')
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Archives</title>
+    <title>LIST OF TENANTS</title>
 
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
     @section('content')
-    
-    <table class="table table-hover table-striped" id="archives">
-        <thead>
-            <tr>
-                <th scope="col">Full Name</th>
-                <th scope="col">Contact Number</th>
-                <th scope="col">Email Address</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{--<script>
-                let archivedTenants = {!! json_encode($archivedTenants) !!};
 
-                for (let i = 0; i < archivedTenants.length; i++) {
-                    let tenant = archivedTenants[i];
-                    let row = '<tr>';
-                    row += '<td>' + tenant.fullname + '</td>';
-                    row += '<td>' + tenant.contact + '</td>';
-                    row += '<td>' + tenant.emailadd + '</td>';
-                    row += '</tr>';
-                    $('#archives tbody').append(row);
-                }
-            </script>--}}
-        </tbody>
-    </table>
+        @if (Session::has('message'))
+            <div class='p-3'>
+                <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
+                <div>
+        @endif
 
-    <script src="assets/js/bootstrap.js"></script>
-</body>
-</html>
+        <table class="table table-hover table-striped" id="rentstall">
+            <thead>
+                <tr>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Contact Number</th>
+                    <th scope="col">Email Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (isset($rent))
+                    @foreach ($rent as $rents)
+                        <tr>
+                            <td>{{ $rents->fullname }}</td>
+                            <td>{{ $rents->contact }}</td>
+                            <td>{{ $rents->emailadd }}</td>
+
+                        </tr>
+                    @endforeach
+                @endif
+            </tbody>
+        </table>
+
+
+    </body>
+
+
+
+    </html>
 @endsection

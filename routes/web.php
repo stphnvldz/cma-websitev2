@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -76,6 +77,7 @@ Route::post('/tenant/add', [App\Http\Controllers\TenantController::class, 'addte
 Route::get('/tenantlists', [App\Http\Controllers\TenantListController::class, 'index'])->name('tenantlists');
 Route::post('/tenantlists/postbill', [App\Http\Controllers\TenantListController::class, 'postBill'])->name('postBill');
 Route::post('/tenantlists/postallbill', [App\Http\Controllers\TenantListController::class, 'postAllBill'])->name('postAllBill');
+Route::post('/tenantlists/archive', [App\Http\Controllers\TenantListController::class, 'archiveTenant'])->name('archive-tenant');
 //Route::post('/tenants', [App\Http\Controllers\StallsController::class, 'tenants'])->name('tenants');
 
 Route::get('/viewtenant', [App\Http\Controllers\TenantListController::class, 'viewTenantData'])->name('viewtenant');
@@ -83,7 +85,11 @@ Route::get('/viewtenant', [App\Http\Controllers\TenantListController::class, 'vi
 Route::post('/tenant/update', [App\Http\Controllers\TenantListController::class,'updateTenantData'])->name('updateTenantData');
 
 Route::get('/archivetenant', function () {
-    return view('admin.archives');
+    $rent = DB::table('rentstall')->select('id','fullname','contact', 'emailadd', 'payment','totalamount')
+            ->where('is_archived', '=', '1')
+            ->get();
+
+    return view('admin.archives', compact('rent'));
 });
 
 //Route::get('/archivetenant/{id}', 'TenantListController@archiveTenant')->name('tenant.archive');
@@ -145,7 +151,14 @@ Route::get('/developer', function () {
 Route::get('/billsnotice', function () {
     // SEEZA todo: WHERE from renstall.id
     // $results = DB::table('tenant_bills')->where([['status', '=', '0'],['rentstall_id', '=', '1'] ])->get();
-    $results = DB::table('tenant_bills')->where('status', '=', '0')->get();
+    $results = DB::table('tenant_bills')
+    ->leftJoin('rentstall', 'tenant_bills.rentstall_id', '=', 'rentstall.id')
+    ->where([['status', '=', '0'], ['rentstall.emailadd', '=', Auth::user()->email]])->get();
 
     return view('admin.tenantside.billsnotice', compact(['results']));
 });
+
+
+
+// tenant pages
+

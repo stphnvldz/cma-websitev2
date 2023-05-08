@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RentStall;
 use Illuminate\Http\Request;
 use App\Models\tenant;
 use App\Models\TenantBills;
@@ -15,7 +16,9 @@ class TenantListController extends Controller
 {
     public function index()
     {
-        $rent = DB::table('rentstall')->select('id','fullname','contact', 'emailadd', 'payment','totalamount')->get();
+        $rent = DB::table('rentstall')->select('id','fullname','contact', 'emailadd', 'payment','totalamount')
+            ->where('is_archived', '=', '0')
+            ->get();
         return view('admin.tenantlists', compact('rent'));
     }
 
@@ -106,6 +109,14 @@ class TenantListController extends Controller
 
         }
 
+    }
+
+    public function archiveTenant(Request $request) {
+        $id = $request->input('id');
+        $result = RentStall::find($id);
+        $result->is_archived = 1;
+        $result->save();
+        return Redirect::back()->with('message','Operation Successful !');
     }
     //public function archiveTenant($id)
     //{

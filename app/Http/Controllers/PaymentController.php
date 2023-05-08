@@ -6,7 +6,7 @@ use App\Models\Payment;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
@@ -22,6 +22,7 @@ class PaymentController extends Controller
         $payment->payment = $request->input('payment');
         $payment->refnumber = $request->input('refnumber');
         $payment->status= $request->input('status');
+        $payment->email= Auth::user()->email;
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -35,7 +36,12 @@ class PaymentController extends Controller
         return redirect('/payment');
     }
     public function viewPayment(Request $request){
-        $payment = DB::table('payment')->select('id','fullname','stallnumber','contact', 'type','amount','datefrom','dateto','payment','status')->get();
+
+        $payment = DB::table('payment')
+            ->select('id','fullname','stallnumber','contact', 'type','amount','datefrom','dateto','payment','status')
+            ->where([['email','=', Auth::user()->email]])
+            ->get();
+
         return view('admin.tenantside.paymenthistory', compact('payment'));
     }
 

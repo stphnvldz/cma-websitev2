@@ -55,8 +55,12 @@
                                         class="btn btn-primary unaccounted-button">Unaccounted</button>
                                     <a href="/viewtenant?id={{ $rents->id }}" type="button"
                                         class="btn btn-secondary">View</a>
-                                    <a href="/archivetenant?id={{ $rents->id }}" data-row-id="{{ $rents->id }}"
-                                        type="button" class="btn btn-danger archive-button">Archive</a>
+                                        <form action="tenantlists/archive" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            <input type="hidden" name='id' value="{{ $rents->id }}">
+                                            <button type="submit" class="btn btn-danger archive-button">Archive</button>
+                                        </form>
+
                                     <button type="button" class="btn btn-success bill-button bill-btn"
                                         data-bs-toggle="modal" data-bs-target="#billModal" data-row-id="{{ $rents->id }}"
                                         data-fullName="{{ $rents->fullname }}" data-contact="{{ $rents->contact }}"
