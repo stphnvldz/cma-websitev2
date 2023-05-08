@@ -13,7 +13,6 @@
     <table class="table table-hover table-striped">
         <thead>
             <tr>
-                <th scope="col">Full Name</th>
                 <th scope="col">Stall Number</th>
                 <th scope="col">Contact Number</th>
                 <th scope="col">Type of Payment</th>
@@ -28,7 +27,6 @@
             @if(isset($payment))
             @foreach($payment as $payments)
             <tr>
-                <td>{{ $payments->fullname }}</td>
                 <td>{{ $payments->stallnumber }}</td>
                 <td>{{ $payments->contact }}</td>
                 <td>{{ $payments->type }}</td>
