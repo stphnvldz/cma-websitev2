@@ -17,6 +17,7 @@ class CreatePaymentTable extends Migration
             $table->id();
             $table->string('fullname');
             $table->string('stallnumber');
+            $table->string('email');
             $table->string('contact');
             $table->string('type');
             $table->string('amount');

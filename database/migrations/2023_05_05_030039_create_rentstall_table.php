@@ -27,6 +27,7 @@ class CreateRentstallTable extends Migration
             $table->string('amount');
             $table->string('selectedStallTextbox');
             $table->string('totalamount');
+            $table->integer('is_archived')->default(0);
             $table->timestamps();
         });
     }

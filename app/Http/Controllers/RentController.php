@@ -15,14 +15,25 @@ class RentController extends Controller
     {
         // Fetch floors data from your floor table
         $floors = Floor::all();
-    
+
+
+        $rentedStalls = DB::table('rentstall')->select('selectedStallTextBox')
+            ->where('is_archived', '=', '0')
+            ->get();
+        $implode = $rentedStalls->implode('selectedStallTextBox', ', ');
+        $rentedStallsArray = explode(', ', $implode);
         $stallNumbers = Floor::leftJoin('stalls', 'floors.floornumber', '=', 'stalls.floornumber')
-        ->select('stalls.stallnumber' , 'floors.id')->get();
+        ->select('stalls.stallnumber' , 'floors.id')
+        ->whereNotIn('stalls.stallnumber', $rentedStallsArray)
+        ->get();
+
+
+
         $formattedStallNumbers = [];
             foreach ($stallNumbers as $key => $value) {
                 $formattedStallNumbers[$value['id']][] = $value['stallnumber'];
             }
-        
+
         return view('admin.rent', ['floors' => $floors , 'stallNumbers' => $formattedStallNumbers]);
     }
 
@@ -33,7 +44,7 @@ class RentController extends Controller
         $rent->address = $request->input('address');
         $rent->contact = $request->input('contact');
         $rent->emailadd = $request->input('emailadd');
-        
+
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $filename = $image->getClientOriginalName();
