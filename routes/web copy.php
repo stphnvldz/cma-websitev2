@@ -131,7 +131,7 @@ Route::get('/paymentreports', [App\Http\Controllers\PaymentReportController::cla
 Route::get('/tenant-dashboard', function () {
     return view('admin.tenantside.tenant-dashboard');
 });
-//paymemt
+//payment
 Route::get('/payment', function () {
     return view('admin.tenantside.payment');
 });

@@ -53,7 +53,6 @@
 
       <form action="/tenant/update" method="post" enctype="multipart/form-data">
         @csrf
-        
           <input type="hidden" name="id" value="{{ $data->id }}">
           <div class="row p-5">
             <div class="col-6">

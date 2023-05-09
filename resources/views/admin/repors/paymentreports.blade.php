@@ -9,11 +9,13 @@
     <title>Payment Reports</title>
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="extensions/print/bootstrap-table-print.js"></script>
 
 </head>
 <body>
     @section('content')
-    <table class="table table-hover table-striped">
+<div class="payment-table">
+    <table class="table table-hover table-striped" id="printTable">
         <thead>
             <tr>
                 <th scope="col">Full Name</th>
@@ -24,6 +26,7 @@
                 <th scope="col">Date To</th>
                 <th scope="col">Mode of Payment</th>
                 <th scope="col">Status</th>
+                <th scopr="col"><a class="printPage" href="#">Print</a></th>
             </tr>
         </thead>
         <tbody>
@@ -44,6 +47,7 @@
         @endif
         </tbody>
     </table>
+</div>
     <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
@@ -52,11 +56,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" name="id" >
                     <div class="d-flex justify-content-center row">
                         <div class="col-6">
                             <div class="d-flex flex-column align-items-center">
-                                <img src="/public/img/"{{--{{ $data->image }}"--}} alt="Image" class="photo2b2 mt-5 mb-3">
+                                {{--<input type="hidden" name="id" value="{{ $data->id }}">--}}
+                                <img src="/public/img/{{--{{ $data->image }}--}}" alt="Image" class="photo2b2 mt-5 mb-3">
                             </div>
                             <div class="mb-3 row">
                                 <label for="inputStallAmount" class="col-sm-3 col-form-label align-self-center">Fullname</label>
@@ -117,7 +121,7 @@
                             <div class="mb-3 row">
                                 <label for="inputFloor" class="col-sm-3 col-form-label align-self-center">Status</label>
                                 <div class="col-sm-9">
-                                    <select id="status" name="status" class="form-select" {{--value="{{ $data->status }}"--}} >
+                                    <select id="status" name="status" class="form-select" {{--value="{{ $data->status }}"--}}>
                                         <option selected value="Pending">Pending</option>
                                         <option value="Paid">Paid</option>
                                         <option value="">Kulang</option>
@@ -129,11 +133,52 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Confirm</button>
+                <button type="store" class="btn btn-primary">Confirm</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+    $('a.printPage').click(function(){
+        window.print();
+        return false;
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            function resetModal() {
+                $("#fullname").val('');
+                $("#stallnumber").val('');
+                $("#contact").val('');
+                $("#type").val('');
+                $("#amount").val('');
+                $("#datefrom").val('');
+                $("#dateto").val('');
+                $("#payment").val('');
+                $("#image").val('');
+                $("#refnumber").val('');
+                $("#status").val('');
+            }
+        $('view-button').click(function() {
+                resetModal();
+                $("#fullname").val(this.dataset.fullname);
+                $("#stallnumber").val(this.dataset.stallnumber);
+                $("#contact").val(this.dataset.contact);
+                $("#type").val(this.dataset.type);
+                $("#amount").val(this.dataset.amount);
+                $("#datefrom").val(this.dataset.datefrom);
+                $("#dateto").val(this.dataset.dateto);
+                $("#payment").val(this.dataset.payment);
+                $("#image").val(this.dataset.image);
+                $("#refnumber").val(this.dataset.refnumber);
+                $("#status").val(this.dataset.status);
+            });
+
+        });
+    </script>
+    
     <script src="assets/js/bootstrap.js"></script>
 </body>
 </html>
