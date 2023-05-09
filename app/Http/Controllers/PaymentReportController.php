@@ -13,6 +13,7 @@ class PaymentReportController extends Controller
         $payment = DB::table('payment')->select('id','fullname','stallnumber','contact', 'type','amount','datefrom','dateto','payment','status')->get();
         return view('admin.repors.paymentreports', compact('payment'));
     }
+    
     //public function viewTenantPayment(Request $request){
     //    $id = $request->input('id');
 
