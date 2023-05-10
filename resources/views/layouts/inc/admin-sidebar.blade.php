@@ -74,6 +74,7 @@
                             <div class="collapse" id="collapseReports" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     {{--<a class="nav-link" href="layout-tenantreport.html">Tenant Reports</a>--}}
+                                    <a class="nav-link" href="/billreports" aria-current="page">Bill Reports</a>
                                     <a class="nav-link" href="/paymentreports" aria-current="page">Payment Reports</a>
                                 </nav>
                             </div>

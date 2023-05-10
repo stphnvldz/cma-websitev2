@@ -21,28 +21,29 @@
   <div class="row p-3">
       <div class="d-flex justify-content-center row">
           <div class="text-center col-6">
+            <input type="hidden" name="id" id="id" value="{{ $data->id }}">
               <div class="mb-4 row">
                   <label for="inputPayment4" class="col-sm-4 col-form-label align-self-center">Full Name</label>
                   <div class="col-sm-8">
-                    <input type="text" name="fullname" class="form-control" id="fullname">
+                    <input type="text" name="fullname" class="form-control" id="fullname" readonly value="{{ $data->fullname }}">
                   </div>
               </div>
               <div class="mb-4 row">
                   <label for="inputPayment4" class="col-sm-4 col-form-label align-self-center">Stall Number</label>
                   <div class="col-sm-8">
-                    <input type="text" name="stallnumber" class="form-control" id="stallnumber">
+                    <input type="text" name="stallnumber" class="form-control" id="stallnumber" readonly value="{{ $data->stallnumber }}">
                   </div>
               </div>
               <div class="mb-4 row">
                   <label for="inputPayment4" class="col-sm-4 col-form-label align-self-center">Contact Number</label>
                   <div class="col-sm-8">
-                    <input type="text" name="contact" class="form-control" id="contact">
+                    <input type="text" name="contact" class="form-control" id="contact" readonly value="{{ $data->contact }}">
                   </div>
               </div>
               <div class="mb-4 row">
                 <label for="inputPayment4" class="col-sm-4 col-form-label align-self-center">Type of Payment</label>
                 <div class="col-sm-8">
-                  <input type="text" name="type" class="form-control" id="type">
+                  <input type="text" name="type" class="form-control" id="type" readonly value="{{ $data->type }}">
                 </div>
               </div>
               <div class="mb-4 row">
@@ -54,13 +55,13 @@
               <div class="mb-2 row">
                   <label for="inputPayment4" class="col-sm-4 col-form-label align-self-center">Date From</label>
                   <div class="col-sm-8">
-                    <input type="date" name="datefrom" class="form-control" id="datefrom">
+                    <input type="text" name="datefrom" class="form-control" id="datefrom" readonly value="{{ $data->datefrom }}">
                   </div>
               </div>
               <div class="mb-2 row">
                 <label for="inputPayment4" class="col-sm-4 col-form-label align-self-center">Date To</label>
                 <div class="col-sm-8">
-                  <input type="date" name="dateto" class="form-control" id="dateto">
+                  <input type="text" name="dateto" class="form-control" id="dateto" readonly value="{{ $data->dateto }}">
                 </div>
               </div>
           </div>

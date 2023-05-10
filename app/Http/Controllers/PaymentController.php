@@ -12,6 +12,7 @@ class PaymentController extends Controller
 {
     public function payment(Request $request){
         $payment = new Payment();
+        //$payment->tenant_bills_id = $request->input('tenant_bills_id');
         $payment->fullname = $request->input('fullname');
         $payment->stallnumber = $request->input('stallnumber');
         $payment->contact = $request->input('contact');
@@ -45,4 +46,13 @@ class PaymentController extends Controller
         return view('admin.tenantside.paymenthistory', compact('payment'));
     }
 
+    public function billPay(Request $request){
+        $id = $request->input('id');
+
+        $db = DB::table('payment')
+        ->where('id', '=', $id)
+        ->first();
+        
+        return view('admin.tenantside.payment', ['data' => $db]);
+    }
 }

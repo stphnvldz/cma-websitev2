@@ -210,7 +210,7 @@
                 <div class="mb-3 row">
                     <label for="inputStallAmount" class="col-sm-3 col-form-label align-self-center">Amount of Stall</label>
                     <div class="col-sm-9">
-                        <input type="text" name="amountt" class="form-control" id="amountt" readonly>
+                        <input type="text" name="amountt" class="form-control" id="amountt">
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -504,18 +504,7 @@
 
         {{--floor number and stall numebr--}}
         <script>
-          const paymentSelect = document.querySelector('#paymentt');
-            const amount = document.querySelector('#amountt');
-            
-            paymentSelect.addEventListener('change', (event) => {
-            const paymentOption = event.target.value;
-            const tenant = {
-                Daily: 400,
-                Monthly: 1500,
-            };
-
-            amount.value = tenant[paymentOption];
-          });
+          
           // Get the total amount of stall textbox element
           var totalAmountTextbox = document.getElementById('totalamountt');
 

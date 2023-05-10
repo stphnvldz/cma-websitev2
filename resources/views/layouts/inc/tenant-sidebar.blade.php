@@ -2,27 +2,23 @@
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
-                <div class="sb-sidenav-menu-heading">Interface</div>
 
+                <div class="sb-sidenav-menu-heading">Core</div>
+                    <a href="/tenant-dashboard" class="nav-link" aria-current="page">Dashboard</a>
+                
+
+                <div class="sb-sidenav-menu-heading">Interface</div>
+                {{-- // tenant-dashboard, payment, paymenthistory, cmainfo, developer, billsnotice --}}
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTenants" aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Payments
+                    Transaction
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                <div class="collapse" id="collapseTenants" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                    <nav class="sb-sidenav-menu-nested nav">
-                        <a href="/payment" class="nav-link" aria-current="page">Payment</a>
-                        <a href="/tenantlists" class="nav-link" aria-current="page">Payment History</a>
-                    </nav>
-                </div>
-
-                {{-- // tenant-dashboard, payment, paymenthistory, cmainfo, developer, billsnotice --}}
 
                 <div class="collapse" id="collapseTenants" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a href="/tenant-dashboard" class="nav-link" aria-current="page">Dashboard</a>
+                        <a href="/billsnotice" class="nav-link" aria-current="page">Bill Notice</a>
                         <a href="/paymenthistory" class="nav-link" aria-current="page">Payment History</a>
-                        <a href="/billsnotice" class="nav-link" aria-current="page">Bills Notice</a>
                     </nav>
                 </div>
 

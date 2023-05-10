@@ -20,17 +20,15 @@
                 <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
                 <div>
         @endif
-        <div class='p-3'>
-            <button type="button" class="btn btn-success bill-button bill-btn" data-bs-toggle="modal"
-                data-bs-target="#AllBillModal">All Bills</button>
-        </div>
 
 
         <div class="d-flex justify-content-end">
             <form class="d-flex" role="search">
                 <input type="text" class="mt-2 mx-2" id="search" name="search" style="width: 400px; height: 40px;"
                     placeholder="Search">
-                <button class="btn btn-outline-success me-2 mt-2" type="submit">Sort</button>
+                <button type="button" class="btn btn-outline-success me-2 mt-2" style="height: 40px;" type="submit">Sort</button>
+                <button type="button" class="btn btn-outline-success bill-button bill-btn" style="height: 40px;" data-bs-toggle="modal"
+                        data-bs-target="#AllBillModal">All Bills</button>
             </form>
         </div>
 

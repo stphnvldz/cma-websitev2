@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bills Notice</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     @section('content')
@@ -25,7 +27,8 @@
                         <td>{{ $result->amount }}</td>
                         <td>{{ $result->notice }}</td>
                         <td>{{ $result->description }}</td>
-                        <td>{{ DateTime::createFromFormat('Y-m-d', $result->date_from)->format('M Y') . ' to ' . DateTime::createFromFormat('Y-m-d', $result->date_to)->format('M Y')  }}</td>
+                        <td>{{ DateTime::createFromFormat('Y-m-d', $result->date_from)->format('d M Y') . ' to ' . DateTime::createFromFormat('Y-m-d', $result->date_to)->format('d M Y')  }}</td>
+                        <td><a href="/payment?id={{ $result->id }}" type="button" class="btn btn-primary">Payment</a></td>
                     </tr>
                 @endforeach
         </tbody>
