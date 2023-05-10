@@ -134,8 +134,10 @@ Route::middleware([isAdmin::class, 'auth'])->group(function () {
     //reports
     Route::get('/paymentreports', [App\Http\Controllers\PaymentReportController::class, 'viewReports'])->name('viewReports');
     //Route::get('/paymentreports', [App\Http\Controllers\PaymentReportController::class, 'viewTenantPayment'])->name('viewTenantPayment');
-
-
+    Route::get('/billreports', function () {
+        return view('admin.repors.billreports');
+    });
+   
 
 });
 
@@ -157,6 +159,7 @@ Route::get('/payment', function () {
 });
 Route::post('/payment-add', [App\Http\Controllers\PaymentController::class, 'payment'])->name('payment');
 Route::get('/paymenthistory', [App\Http\Controllers\PaymentController::class, 'viewPayment'])->name('viewPayment');
+Route::get('/payment', [App\Http\Controllers\PaymentController::class, 'billPay'])->name('billPay');
 
 //about-tenant side
 Route::get('/cmainfo', function () {

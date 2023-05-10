@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="container-fluid px-4">
+{{--<div class="container-fluid px-4">
                         <h1 class="mt-4">Dashboard</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Dashboard</li>
@@ -37,12 +37,13 @@
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
-                            </div>{{--yung total sales na lang dito kesa total floor--}}
+                            </div>{{--yung total sales na lang dito kesa total floor
 
 
                             
 </div>
-</div>
+</div>--}}
+<img src="/assets/img/cma3.png" alt="" style="width:1500px;height:600px;" class="align-middle">
 
 
 
