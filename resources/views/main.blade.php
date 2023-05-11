@@ -13,40 +13,43 @@
 
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark" data-bs-theme="dark">
-    <div class="container-fluid">
-      <img src="/assets/img/cma_logo.png" alt="" style="width:100px;height:50px;">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-3">
-          <li class="nav-item">
-            <a class="nav-link active " aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/requirements">Requirements</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/location">Location</a>
-          </li>
-      </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="/assets/img/cma_logo.png" alt="" style="width:100px;height:50px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/requirements">Requirements</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/location">Location</a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </nav>
+</nav>
 
   <div id="carouselExampleFade" class="carousel slide carousel-fade">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="assets/img/cma3.png" class="d-block w-100" alt="..." style="width:1500px;height:600px; ">
+        <img src="assets/img/cma.jpg" class="d-block w-100" alt="..." style="width:1500px;height:600px; ">
       </div>
       <div class="carousel-item">
         <img src="assets/img/cma2.png" class="d-block w-100" alt="..." style="width:1500px;height:600px; ">
       </div>
       <div class="carousel-item">
-        <img src="assets/img/cma.jpg" class="d-block w-100" alt="..." style="width:1500px;height:600px; ">
+        <img src="assets/img/cma3.png" class="d-block w-100" alt="..." style="width:1500px;height:600px; ">
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -59,53 +62,40 @@
     </button>
   </div>
 
-      <div class= "row">
-        <div class= col>
-          <div class="table-responsive ">
-            <div class="table-wrapper">
-            @if(isset($announcements) && count($announcements) > 0)
-                <table class="table mt-3" style="width:1000px;">
-                  <thead class="table-dark text-center">
-                    <th scope="col">ANNOUNCEMENT</th>
-                  </thead>
-                  <tbody>
-                    @foreach($announcements as $announcement)
-                      <tr>
-                          <td>{{ $announcement->description }}</td>
-                      </tr>
-                    @endforeach
-                  </tbody>
-                  {{--<h1>Latest Announcement</h1>
-                    @if(isset($announcement))
-                    <div class="form-group">
-                      <label for="eventname">Event Name:</label>
-                      <input type="text" class="form-control" id="eventname" name="eventname" value="{{ $announcement->eventname }}" readonly>
-                    </div>
-                  
-                    <div class="form-group">
-                      <label for="description">Description:</label>
-                      <textarea class="form-control" id="description" name="description" readonly>{{ $announcement->description }}</textarea>
-                    </div>
-                  </div>
-                  @endif--}}
-                </table>
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="table-responsive">
+          <table class="table mt-3">
+            <thead class="table-dark text-center">
+              <th scope="col">ANNOUNCEMENT</th>
+            </thead>
+            <tbody>
+              @if(isset($announcements) && count($announcements) > 0)
+              @foreach($announcements as $announcement)
+              <tr>
+                <td>{{ $announcement->description }}</td>
+              </tr>
+              @endforeach
               @else
-                <p>No announcements found.</p>
-            @endif
-            </div>
-          </div>
+              <tr>
+                <td>No announcements found.</td>
+              </tr>
+              @endif
+            </tbody>
+          </table>
         </div>
-        <div class= "col mt-2">
-          <div class= "row  mt-3 d-flex justify-content-center">
-            <img src="assets/img/rizal_seal.jpg" style="width:200px;height:150px; " >
-          
-          </div>
-          <div class= "row  mt-3 d-flex justify-content-center">
-            <img src="assets/img/antipolo_seal.jpg" style="width:200px;height:150px; " >
-          </div>
       </div>
-    
+      <div class="col-md-4 mt-2">
+        <div class="row mt-3 justify-content-center">
+          <img src="assets/img/rizal_seal.jpg" class="img-fluid" alt="Rizal Seal" style="max-width: 200px; height: 150px;">
+        </div>
+        <div class="row mt-3 justify-content-center">
+          <img src="assets/img/antipolo_seal.jpg" class="img-fluid" alt="Antipolo Seal" style="max-width: 200px; height: 150px;">
+        </div>
+      </div>
     </div>
+  </div>
 
 
     
