@@ -9,18 +9,11 @@ use Illuminate\Http\Request;
 
 class PaymentReportController extends Controller
 {
+    //payment reports
     public function viewReports(Request $request){
-        $payment = DB::table('payment')->select('id','fullname','stallnumber','contact', 'type','amount','datefrom','dateto','payment','status')->get();
+        $payment = DB::table('payment')
+        ->leftJoin('tenant_bills', 'payment.tenant_bills_id', '=', 'tenant_bills.id')
+        ->get();
         return view('admin.repors.paymentreports', compact('payment'));
     }
-    
-    //public function viewTenantPayment(Request $request){
-    //    $id = $request->input('id');
-
-    //    $db = DB::table('payment')
-    //    ->where('id', '=', $id)
-    //    ->first();
-        
-    //    return view('admin.repors.paymentreports', ['data' => $db]);
-    //}
 }

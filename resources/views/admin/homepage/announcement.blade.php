@@ -9,9 +9,11 @@
     <title>Announcement</title>
 
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
+  <table
 @section('content')
 <form action="/announcementadd" method="post">
   @csrf

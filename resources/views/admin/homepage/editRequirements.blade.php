@@ -13,28 +13,61 @@
 </head>
 <body>
     @section('content')
-<form action="reqadd" method="post">
-@csrf
-    <div class="container px-4 mt-4" style="font-size: 20px; float: left; margin-right: 20px; margin-left: 200px; width:800px;height:480px;border: 1px solid rgb(39, 38, 38);border-radius: 4px;">
-        <p style="font-weight: bold; ">Update List of Requirement</p>
-    
-        <label for="inputDescription" class="col-sm-3 col-form-label align-self-center"></label>
-        <p style="font-size: 15px; font-weight: bold;">Requirements</p>
-            <div class="col-sm-9">
-                <input type="requirement" name="requirements" class="form-control" id="requirements" style="height: 100px;" placeholder="Please input Requirements">
-            </div>
-            <label for="inputDescription" class="col-sm-3 col-form-label align-self-center"></label>
-            <p style="font-size: 15px; font-weight: bold;">Notes</p>
-                <div class="col-sm-9">
-                    <input type="event" name="notes" class="form-control" id="notes" style="height: 100px;" placeholder="">
-                </div>
-    
-        <div style="position: relative;">
-            <button type="store" class="btn btn-primary" style="position: absolute; top: 50px; right: 80px;">Upload</button>
-            <button type="button" class="btn btn-secondary" style="position: absolute; top: 50px; right: 0;">Cancel</button>
+    <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-outline-success me-2 mt-2" data-bs-toggle="modal" data-bs-target="#AddReq" data-bs-whatever="@AddReq">Add Requirements</button>
+      </div>
+      <div class="d-flex justify-content-center mt-2 mx-auto p-2">
+        <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">ADD REQUIREMENTS</label>
+      </div>
+    <table class="table table-hover table-striped" style="margin-left: 0px">
+        <thead>
+            <tr>
+                <th scope="col">Requirements</th>
+                <th scope="col">Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+      </table>
+
+{{--modal for add requirements--}}
+<div class="modal fade" id="AddReq" tabindex="-1" aria-labelledby="AddReqLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="addLostmodal">ADD NEW LOST</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+          <form action="/reqadd" method="post">
+          @csrf
+            <div class="modal-body">
+                <div class="d-flex justify-content-center row">
+                    <div class="col-6 text-center">
+                        <p style="font-weight: bold; ">Update List of Requirement</p>
+                        <div class="mb-3 row">
+                            <p style="font-size: 15px; font-weight: bold;">Requirements</p>
+                            <div class="col-sm-9">
+                                <input type="requirement" name="requirements" class="form-control" id="requirements" style="height: 100px; width: 550px" placeholder="Please input Requirements">
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <p style="font-size: 15px; font-weight: bold;">Notes</p>
+                            <div class="col-sm-9">
+                                <input type="event" name="notes" class="form-control" id="notes" style="height: 100px;" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="store" class="btn btn-primary">Save</button>
+            </div>
+          </form>
+      </div>
     </div>
-</form>
+  </div>
     
 
     <script src="assets/js/bootstrap.js"></script>

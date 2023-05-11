@@ -14,133 +14,6 @@
 
 @section('content')
 
-{{--<div class="d-flex justify-content-end">
-    <form class="d-flex" role="search">
-        <button type="button" class="btn btn-outline-success me-2 mt-2" data-bs-toggle="modal" data-bs-target="#Select">Select Tenant</button>
-        <button type="button" class="btn btn-outline-success me-2 mt-2" data-bs-toggle="modal" data-bs-target="#Add" data-bs-whatever="@Add">Add New Tenant</button>
-    </form>
-</div>
-
-{{--modal for selecting tenant
-<div class="modal fade" id="Select" tabindex="-1" aria-labelledby="Select" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="Select">SELECT TENANT</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <table class="table table-striped table-hover mt-2">
-          <thead>
-              <tr>
-                  <th scope="col">Full Name</th>
-                  <th scope="col">Contact</th>
-                  <th scope="col">Email Address</th>
-                  <th scope="col"><input type="text" id="search" name="search" style="width: 300px" placeholder="Search"></th>
-              </tr>
-          </thead>
-          <tbody>
-            {{--@if(isset($tenants))
-              @foreach ($tenants as $tenant)
-                <tr>
-                    <td>{{ $tenant->fullname }}</td>
-                    <td>{{ $tenant->contact }}</td>
-                    <td>{{ $tenant->emailadd }}</td>
-                    <td>
-                        <div class="btn-group" role="group" aria-label="Tenant Actions">
-                            <a href="/select?id={{ $tenant->id }}" type="button" class="btn btn-primary">Select</a>
-                        </div>
-                    </td>
-                </tr>
-              @endforeach
-            @endif--}}
-          {{--</tbody>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-{{--modal for add new tenant
-<div class="modal fade" id="Add" tabindex="-1" aria-labelledby="Add" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="Add">ADD NEW TENANT</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-        <form action="/tenantadd" method="post" enctype="multipart/form-data">
-        @csrf
-          <div class="modal-body">
-            <div class="d-flex justify-content-center row">
-              <div class="col-6">
-                <div class="mb-3 row">
-                  <label for="inputName4" class="col-sm-3 col-form-label align-self-center">Full Name</label>
-                  <div class="col-sm-9">
-                    <input type="fullname" name="fullname"class="form-control" id="fullname" placeholder="Please input your fullname">
-                  </div>
-                </div>
-                <div class="mb-3 row">
-                  <label for="inputBirthday4" class="col-sm-3 col-form-label align-self-center">Date of Birth</label>
-                  <div class="col-sm-9">
-                    <input type="dateofbirth" name="dateofbirth" class="form-control" id="dateofbirth" placeholder="MM/DD/YYYY">
-                  </div>
-                </div>
-                <div class="mb-3 row">
-                  <label for="inputAddress" class="col-sm-3 col-form-label align-self-center">Address</label>
-                  <div class="col-sm-9">
-                    <input type="address" name="address" class="form-control" id="address" style="height: 100px;" placeholder="Please input your complete address">
-                </div>
-                <div class="mb-3 row">
-                  <label for="inputcontact4" class="col-sm-3 col-form-label align-self-center">Contact No.</label>
-                  <div class="col-sm-9">
-                    <input type="contact" name="contact" class="form-control" id="contact" placeholder="Please input your contact number">
-                  </div>
-                </div>
-                <div class="mb-3 row">
-                  <label for="inputEmail4" class="col-sm-3 col-form-label align-self-center">Email Address</label>
-                  <div class="col-sm-9">
-                    <input type="emailadd" name="emailadd" class="form-control" id="emailadd" placeholder="example@example.com">
-                  </div>
-                </div>
-                <div class="mb-3 row">
-                  <label for="formFile" class="col-sm-3 col-form-label align-self-center">Upload Photo</label>
-                  <div class="col-sm-9 d-flex align-items-center"> 
-                    <input class="d-flex justify-content-center form-control" name="image" type="file" id="image" style="height: 38px;">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="store" class="btn btn-primary">Submit</button>
-          </div>
-        </form>
-    </div>
-  </div>
-
-
-{{--textbox for fullname adn contact. dito mapupunta yung na select na tenant sa modal
-<div class="mb-3 mt-5 mx-2 row">
-    <div class="col-sm-6">
-      <input type="hidden" name="id" id="id" {{--value="{{ isset($data->id) ? $data->id : '' }}"--}}
-        {{--<label for="inputName4" class="col-form-label align-self-center">Full Name</label>
-        <input type="fullname" name="fullname" class="form-control" id="fullname" placeholder="" readonly>
-    </div>
-    <div class="col-sm-6">
-        <label for="inputName4" class="col-form-label align-self-center">Contact Number</label>
-        <input type="contact" name="contact" class="form-control" id="contact" placeholder="" readonly>
-    </div>
-</div>--}}
-
-{{--<div class="d-flex justify-content-center row p-5">
-    <div class="container px-4 text-center mt-2 ml-2 " style="height:300px;width:5000px;border: 1px solid rgb(39, 38, 38);border-radius: 4px;">--}}
-        
-
             <div class="d-flex justify-content-center row p-3">
               <div class="col-6">
                 <div class="mb-3 row">
@@ -171,14 +44,9 @@
                   <label for="inputEmail4" class="col-sm-3 col-form-label align-self-center">Email Address</label>
                   <div class="col-sm-9">
                     <input type="text" name="emailaddt" class="form-control" id="emailaddt" placeholder="example@example.com">
+{{-- nag iincrement na password<input type="hidden" name="pass"class="form-control" id="pass" value="tenant001">--}}
                   </div>
                 </div>
-                {{--<div class="mb-3 row">
-                  <label for="formFile" class="col-sm-3 col-form-label align-self-center">Upload Photo</label>
-                  <div class="col-sm-9 d-flex align-items-center"> 
-                    <input class="d-flex justify-content-center form-control" name="imaget" type="file" id="imaget" style="height: 38px;">
-                  </div>
-                </div>--}}
               </div>
               <div class="col-6">
                 <div class="mb-3 row">
@@ -210,7 +78,7 @@
                 <div class="mb-3 row">
                     <label for="inputStallAmount" class="col-sm-3 col-form-label align-self-center">Amount of Stall</label>
                     <div class="col-sm-9">
-                        <input type="text" name="amountt" class="form-control" id="amountt">
+                        <input type="text" name="amountt" class="form-control" id="amountt" readonly>
                     </div>
                 </div>
                 <div class="mb-3 row">
@@ -355,60 +223,7 @@
                   </div>
               </div>
           </div>
-        </div>
-        {{--<div class="d-flex justify-content-center row">
-          <div class="mb-3 row">
-            <p1>Please check if details are correct.</p1>
-          </div>
-          <div class="mb-3 row">
-            <label for="inputName4" class="col-sm-3 col-form-label align-self-center">Full Name</label>
-            <div class="col-sm-9">
-              <input type="fullname" name="fullname"class="form-control" id="fullname" readonly>
-            </div>
-          </div>
-          <div class="mb-3 row">
-            <label for="inputBirthday4" class="col-sm-3 col-form-label align-self-center">Contact</label>
-            <div class="col-sm-9">
-              <input type="dateofbirth" name="dateofbirth" class="form-control" id="dateofbirth"readonly>
-            </div>
-          </div>
-          <div class="mb-3 row">
-            <label for="inputAddress" class="col-sm-3 col-form-label align-self-center">Stall Type</label>
-            <div class="col-sm-9">
-              <input type="address" name="address" class="form-control" id="address" readonly>
-            </div>
-          </div>
-          <div class="mb-3 row">
-            <label for="inputcontact4" class="col-sm-3 col-form-label align-self-center">Stall Name</label>
-            <div class="col-sm-9">
-              <input type="contact" name="contact" class="form-control" id="contact"readonly>
-            </div>
-          </div>
-          <div class="mb-3 row">
-            <label for="inputEmail4" class="col-sm-3 col-form-label align-self-center">Type of Payment</label>
-            <div class="col-sm-9">
-              <input type="emailadd" name="emailadd" class="form-control" id="emailadd" readonly>
-            </div>
-          </div>
-          <div class="mb-3 row">
-            <label for="inputEmail4" class="col-sm-3 col-form-label align-self-center">Amount of Stall</label>
-            <div class="col-sm-9">
-              <input type="emailadd" name="emailadd" class="form-control" id="emailadd"readonly>
-            </div>
-          </div>
-          <div class="mb-3 row">
-            <label for="inputEmail4" class="col-sm-3 col-form-label align-self-center">Selected Stall</label>
-            <div class="col-sm-9">
-              <input type="emailadd" name="emailadd" class="form-control" id="emailadd"readonly>
-            </div>
-          </div>
-          <div class="mb-3 row">
-            <label for="inputEmail4" class="col-sm-3 col-form-label align-self-center">Total Amount of Stall</label>
-            <div class="col-sm-9">
-              <input type="emailadd" name="emailadd" class="form-control" id="emailadd"readonly>
-            </div>
-          </div>
-        </div>--}}
+        </div
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -451,60 +266,25 @@
       $('#totalamount').val(totalamount);
 
     })
-
-      //Display selected image in modal
-      //$("#imaget").change(function () {
-      //  var file = this.files[0];
-      //  var reader = new FileReader();
-      //  reader.onload = function (e) {
-      //      $("#image").attr("src", e.target.result);
-      //  }
-      //  reader.readAsDataURL(file);
-      //});
   });
 </script>
         
-        {{--jQuery code to display the data in the modal
-        <script>
-          $(document).ready(function() {
-              // Fetch tenants data via AJAX
-              $.get('/show-tenant', function(data) {
-                  // Populate table with tenants data
-                  $.each(data, function(index, tenant) {
-                    var row = $('<tr>');
-                    row.append('<td>' + tenant.fullname + '</td>');
-                    row.append('<td>' + tenant.contact + '</td>');
-                    row.append('<td>' + tenant.emailadd + '</td>');
-                    var selectButton = $('<button type="button" class="btn btn-primary select-tenant">Select</button>');
-                    selectButton.attr('data-tenant-id', tenant.id); // Add data-tenant-id attribute
-                    row.append($('<td>').append(selectButton));
-                    $('#Select tbody').append(row);
-                  });
-      
-                  // Search filter for the table
-                  $('#search').on('keyup', function() {
-                      var value = $(this).val().toLowerCase();
-                      $('#Select tbody tr').filter(function() {
-                          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                      });
-                  });
-
-                  // Handle click events on "Select" buttons
-                  $('.select-tenant').on('click', function() {
-                    var tenantId = $(this).data('tenant-id');
-                    var fullname = $(this).closest('tr').find('td:nth-child(1)').text();
-                    var contact = $(this).closest('tr').find('td:nth-child(2)').text();
-                    $('#fullname').val(fullname);
-                    $('#contact').val(contact);
-                    $('#Select').modal('hide');
-                  });
-              });
-          });
-        </script>--}}
+        
 
         {{--floor number and stall numebr--}}
         <script>
-          
+            const paymentSelect = document.querySelector('#paymentt');
+            const amount = document.querySelector('#amountt');
+            
+            paymentSelect.addEventListener('change', (event) => {
+            const paymentOption = event.target.value;
+            const tenant = {
+                Daily: 133,
+                Monthly: 4000,
+            };
+
+            amount.value = tenant[paymentOption];
+            });
           // Get the total amount of stall textbox element
           var totalAmountTextbox = document.getElementById('totalamountt');
 
@@ -586,22 +366,6 @@
                 }
             });
         </script>
-
-        {{--type of payment
-        <script>
-            const paymentSelect = document.querySelector('#paymentt');
-            const amount = document.querySelector('#amountt');
-            
-            paymentSelect.addEventListener('change', (event) => {
-            const paymentOption = event.target.value;
-            const tenant = {
-                Daily: 400,
-                Monthly: 1500,
-            };
-
-            amount.value = tenant[paymentOption];
-            });
-        </script>--}}
   
         {{--pag upload ng image sa database--}}
         <script>

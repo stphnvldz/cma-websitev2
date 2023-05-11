@@ -14,6 +14,12 @@
 </head>
 <body>
     @section('content')
+
+    <div class="d-flex justify-content-end">
+        <input type="text" class="mt-2 mx-2" id="search" name="search" style="width: 400px; height: 40px;"placeholder="Search">
+        <button type="button" class="btn btn-outline-success me-2 mt-2" style="height: 40px;" type="submit">Sort</button>
+    </div>
+    
 <div class="payment-table">
     <table class="table table-hover table-striped" id="printTable">
         <thead>
@@ -143,39 +149,6 @@
     $('a.printPage').click(function(){
         window.print();
         return false;
-        });
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            function resetModal() {
-                $("#fullname").val('');
-                $("#stallnumber").val('');
-                $("#contact").val('');
-                $("#type").val('');
-                $("#amount").val('');
-                $("#datefrom").val('');
-                $("#dateto").val('');
-                $("#payment").val('');
-                $("#image").val('');
-                $("#refnumber").val('');
-                $("#status").val('');
-            }
-        $('view-button').click(function() {
-                resetModal();
-                $("#fullname").val(this.dataset.fullname);
-                $("#stallnumber").val(this.dataset.stallnumber);
-                $("#contact").val(this.dataset.contact);
-                $("#type").val(this.dataset.type);
-                $("#amount").val(this.dataset.amount);
-                $("#datefrom").val(this.dataset.datefrom);
-                $("#dateto").val(this.dataset.dateto);
-                $("#payment").val(this.dataset.payment);
-                $("#image").val(this.dataset.image);
-                $("#refnumber").val(this.dataset.refnumber);
-                $("#status").val(this.dataset.status);
-            });
-
         });
     </script>
     

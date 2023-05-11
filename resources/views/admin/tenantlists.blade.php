@@ -8,6 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LIST OF TENANTS</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -49,8 +52,8 @@
                             <td>{{ $rents->emailadd }}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Tenant Actions">
-                                    <button id="unaccountedButton-{{ $rents->id }}" type="button"
-                                        class="btn btn-primary unaccounted-button">Unaccounted</button>
+                                    {{--<button id="unaccountedButton-{{ $rents->id }}" type="button"
+                                        class="btn btn-primary unaccounted-button">Unaccounted</button>--}}
                                     <a href="/viewtenant?id={{ $rents->id }}" type="button"
                                         class="btn btn-secondary">View</a>
                                         <form action="tenantlists/archive" method="post" enctype="multipart/form-data">
@@ -65,6 +68,10 @@
                                         data-emailadd="{{ $rents->emailadd }}" data-payment="{{ $rents->payment }}"
                                         data-totalamount="{{ $rents->totalamount }}"
                                         data-rentstall_id="{{ $rents->id }}">Bill</button>
+
+                                        <button id="dropdownButton" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      
+                                        </button>
                                 </div>
                             </td>
                         </tr>

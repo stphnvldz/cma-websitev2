@@ -21,47 +21,49 @@
   <div class="row p-3">
       <div class="d-flex justify-content-center row">
           <div class="text-center col-6">
-            <input type="hidden" name="id" id="id" value="{{ $data->id }}">
+            <input type="hidden" name="id" id="id" value="{{ $db->id }}">
               <div class="mb-4 row">
                   <label for="inputPayment4" class="col-sm-4 col-form-label align-self-center">Full Name</label>
                   <div class="col-sm-8">
-                    <input type="text" name="fullname" class="form-control" id="fullname" readonly value="{{ $data->fullname }}">
+                    <input type="text" name="fullname" class="form-control" id="fullname" readonly value="{{ $db->fullname }}">
                   </div>
               </div>
               <div class="mb-4 row">
                   <label for="inputPayment4" class="col-sm-4 col-form-label align-self-center">Stall Number</label>
                   <div class="col-sm-8">
-                    <input type="text" name="stallnumber" class="form-control" id="stallnumber" readonly value="{{ $data->stallnumber }}">
+                    <input type="text" name="stallnumber" class="form-control" id="stallnumber" readonly value="{{ $db->selectedStallTextbox }}">
                   </div>
               </div>
               <div class="mb-4 row">
                   <label for="inputPayment4" class="col-sm-4 col-form-label align-self-center">Contact Number</label>
                   <div class="col-sm-8">
-                    <input type="text" name="contact" class="form-control" id="contact" readonly value="{{ $data->contact }}">
+                    <input type="text" name="contact" class="form-control" id="contact" readonly value="{{ $db->contact }}">
                   </div>
               </div>
               <div class="mb-4 row">
                 <label for="inputPayment4" class="col-sm-4 col-form-label align-self-center">Type of Payment</label>
                 <div class="col-sm-8">
-                  <input type="text" name="type" class="form-control" id="type" readonly value="{{ $data->type }}">
+                  <input type="text" name="type" class="form-control" id="type" readonly value="{{ $db->payment }}">
                 </div>
               </div>
               <div class="mb-4 row">
                 <label for="inputPayment4" class="col-sm-4 col-form-label align-self-center">Amount</label>
                 <div class="col-sm-8">
-                  <input type="text" name="amount" class="form-control" id="amount">
+                  <input type="text" name="amount" class="form-control" id="amount" readonly value="{{ $db->amount }}">
                 </div>
               </div>
               <div class="mb-2 row">
                   <label for="inputPayment4" class="col-sm-4 col-form-label align-self-center">Date From</label>
                   <div class="col-sm-8">
-                    <input type="text" name="datefrom" class="form-control" id="datefrom" readonly value="{{ $data->datefrom }}">
+                    <input type="text" name="datefrom" class="form-control" id="datefrom" readonly value="{{ $db->date_from }}">
                   </div>
               </div>
               <div class="mb-2 row">
                 <label for="inputPayment4" class="col-sm-4 col-form-label align-self-center">Date To</label>
                 <div class="col-sm-8">
-                  <input type="text" name="dateto" class="form-control" id="dateto" readonly value="{{ $data->dateto }}">
+                  <input type="text" name="dateto" class="form-control" id="dateto" readonly value="{{ $db->date_to }}">
+                  <input type="hidden" name="status" class="form-control" id="status" value="Pending">
+                  <input type="hidden" name="tenant_bills_id" class="form-control" id="tenant_bills_id" value="{{ $id }}">
                 </div>
               </div>
           </div>
@@ -152,7 +154,6 @@
       </div>
     </div>
   </div>
-  <input type="hidden" name="status" class="form-control" id="status" value="Pending">
 </form>
 
       <!-- Script to show the appropriate modal dialog based on the selected radio button -->
