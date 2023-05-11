@@ -4,7 +4,7 @@
             <div class="nav">
 
                 <div class="sb-sidenav-menu-heading">Core</div>
-                    <a href="/tenant-dashboard" class="nav-link" aria-current="page">Dashboard</a>
+                    <a href="/tenant-dashboard" class="nav-link" aria-current="page">Homepage</a>
                 
 
                 <div class="sb-sidenav-menu-heading">Interface</div>

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Redirect;
 use Laravel\Ui\Presets\React;
 
 class TenantListController extends Controller
-{
+{//pag show ng lists
     public function index()
     {
         $rent = DB::table('rentstall')->select('id','fullname','contact', 'emailadd', 'payment','totalamount')
@@ -118,18 +118,34 @@ class TenantListController extends Controller
         $result->save();
         return Redirect::back()->with('message','Operation Successful !');
     }
-    //public function archiveTenant($id)
-    //{
-        // Get the tenant with the specified id
-    //    $tenant = Tenant::find($id);
-
-        // Set the is_archived field to true
-    //    $tenant->is_archived = true;
-
-        // Save the changes
-    //    $tenant->save();
-
-        // Redirect back to the tenant list page
-    //    return redirect()->route('tenant.list');
-    //}
+    //paglagay ng laman sa bill reports
+    public function billRep()
+    {
+        $bill = DB::table('tenant_bills')
+        ->leftJoin('rentstall', 'tenant_bills.rentstall_id', '=', 'rentstall.id')
+        ->get();
+        return view('admin.repors.billreports', compact('bill'));
+    }
+    //pag update ng status
+    public function paid_process(Request $request){
+        $query = $request->query();
+        
+        $fetch = DB::table('tenant_bills')
+        ->where('id', $query['id'])
+        ->update([
+        'status' => 1,
+        ]);
+        return redirect('/billreports');
+    }
+        public function unpaid_process(Request $request){
+            $query = $request->query();
+            
+            $fetch = DB::table('tenant_bills')
+            ->where('id', $query['id'])
+            ->update([
+            'status' => 0,
+            ]);
+            return redirect('/billreports');
+        }
+    
 }

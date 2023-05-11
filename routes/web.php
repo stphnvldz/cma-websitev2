@@ -11,10 +11,13 @@ Route::get('/', function () {
     return view('main');
 });
 
+Route::get('/', [App\Http\Controllers\AnnouncementController::class, 'showAnnouncementForm'])->name('showAnnouncementForm');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/requirements', function () {
     return view('layouts.requirements');
 });
+Route::get('/requirements', [App\Http\Controllers\RequirementsController::class, 'showreq'])->name('showreq');
 Route::get('/location', function () {
     return view('layouts.location');
 });
@@ -33,6 +36,20 @@ Auth::routes();
 Route::middleware([isAdmin::class, 'auth'])->group(function () {
 
     //admin side
+
+    Route::get('/admin-accountsettings', function () {
+        return view('admin.admin-accountsettings');
+    });
+    Route::get('/admin-accountsettings', function () {
+        return view('admin.admin-accountsettings');
+    });
+    Route::get('/admin-accountsettings', function () {
+        return view('admin.admin-accountsettings');
+    });
+    Route::get('/admin-activitylog', function () {
+        return view('admin.admin-activitylog');
+    });
+
     Route::get('/tenant', function () {
         return view('admin.tenant');
     })->name('tenant');
@@ -44,7 +61,6 @@ Route::middleware([isAdmin::class, 'auth'])->group(function () {
         return view('admin.homepage.editRequirements');
     });
     Route::post('/reqadd', [App\Http\Controllers\RequirementsController::class, 'req'])->name('req');
-    Route::get('/requirements', [App\Http\Controllers\RequirementsController::class, 'showreq'])->name('showreq');
 
 
     Route::get('/preview', function () {
@@ -108,7 +124,7 @@ Route::middleware([isAdmin::class, 'auth'])->group(function () {
 
     //annoucement
     Route::post('/announcementadd', [App\Http\Controllers\AnnouncementController::class, 'saveAnnouncement'])->name('saveAnnouncement');
-    Route::get('/', [App\Http\Controllers\AnnouncementController::class, 'showAnnouncementForm'])->name('showAnnouncementForm');
+    
 
     //floor
     Route::post('/save-floor', [App\Http\Controllers\FloorController::class, 'saveFloor'])->name('saveFloor');
@@ -137,8 +153,10 @@ Route::middleware([isAdmin::class, 'auth'])->group(function () {
     Route::get('/billreports', function () {
         return view('admin.repors.billreports');
     });
-   
+    Route::get('/billreports', [App\Http\Controllers\TenantListController::class, 'billRep'])->name('billRep');
 
+    Route::get('/paid_process', [App\Http\Controllers\TenantListController::class, 'paid_process'])->name('paid_process');
+    Route::get('/unpaid_process', [App\Http\Controllers\TenantListController::class, 'unpaid_process'])->name('unpaid_process');
 });
 
 
@@ -151,7 +169,13 @@ Route::get('/tenant-dashboard', function () {
     return view('admin.tenantside.tenant-dashboard');
 });
 
+Route::get('/tenant-accountsettings', function () {
+    return view('admin.tenantside.tenant-accountsettings');
+});
 
+Route::get('/tenant-activitylog', function () {
+    return view('admin.tenantside.tenant-activitylog');
+});
 
 //paymemt
 Route::get('/payment', function () {
