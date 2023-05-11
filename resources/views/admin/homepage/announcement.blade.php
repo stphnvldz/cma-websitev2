@@ -13,8 +13,8 @@
 </head>
 
 <body>
-  <table
 @section('content')
+
 <form action="/announcementadd" method="post">
   @csrf
   <div class="container px-4 mt-4" style="font-size: 20px; float: left; margin-right: 20px; margin-left: 200px; width:800px;height:455px;border: 1px solid rgb(39, 38, 38);border-radius: 4px;">

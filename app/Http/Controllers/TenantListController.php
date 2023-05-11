@@ -18,9 +18,13 @@ class TenantListController extends Controller
     {
         $rent = DB::table('rentstall')->select('id','fullname','contact', 'emailadd', 'payment','totalamount')
             ->where('is_archived', '=', '0')
+            ->count()
             ->get();
+            
         return view('admin.tenantlists', compact('rent'));
     }
+
+
 
     public function viewTenantData(Request $request){
         $id = $request->input('id');

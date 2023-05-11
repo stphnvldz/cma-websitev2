@@ -27,13 +27,25 @@
             </tr>
         </thead>
         <tbody>
-            
+            @if(isset($req))
+                @foreach ($req as $reqs)
+                    <tr>
+                        <td>{{ $reqs->requirements }}</td>
+                        <td>{{ $reqs->notes }}</td>
+                        <td><button type="button" class="btn btn-success bill-button bill-btn"
+                            data-bs-toggle="modal" data-bs-target="#billModal" data-row-id="{{ $reqs->id }}"
+                            data-fullName="{{ $reqs->requirements }}" data-contact="{{ $reqs->notes }}"
+                            >Edit</button>
+                        </td>
+                    </tr>
+                @endforeach
+            @endif
         </tbody>
       </table>
 
 {{--modal for add requirements--}}
 <div class="modal fade" id="AddReq" tabindex="-1" aria-labelledby="AddReqLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="addLostmodal">ADD NEW LOST</h1>
@@ -44,17 +56,17 @@
             <div class="modal-body">
                 <div class="d-flex justify-content-center row">
                     <div class="col-6 text-center">
-                        <p style="font-weight: bold; ">Update List of Requirement</p>
-                        <div class="mb-3 row">
-                            <p style="font-size: 15px; font-weight: bold;">Requirements</p>
+                        <label for="inputName4" class="col-sm-9 col-form-label align-self-center" style="font-size: 20px; font-weight: bold;">Update List of Requirement</label>
+                        <div class="mb-3 mt-3 row text-center">
+                            <label for="inputName4" class="col-sm-9 col-form-label align-self-center" style="font-size: 15px; font-weight: bold;">Requirements</label>
                             <div class="col-sm-9">
                                 <input type="requirement" name="requirements" class="form-control" id="requirements" style="height: 100px; width: 550px" placeholder="Please input Requirements">
                             </div>
                         </div>
-                        <div class="mb-3 row">
-                            <p style="font-size: 15px; font-weight: bold;">Notes</p>
+                        <div class="mb-3 row text-center">
+                            <label for="inputName4" class="col-sm-9 col-form-label align-self-center" style="font-size: 15px; font-weight: bold;">Notes</label>
                             <div class="col-sm-9">
-                                <input type="event" name="notes" class="form-control" id="notes" style="height: 100px;" placeholder="">
+                                <input type="event" name="notes" class="form-control" id="notes" style="height: 100px; width: 550px" placeholder="">
                             </div>
                         </div>
                     </div>
@@ -69,7 +81,19 @@
     </div>
   </div>
     
+  <script>
+    $(document).ready(function() {
+        function resetModal() {
+            $("#requirements").val('');
+            $("#notes").val('');
+        }
 
+        $('.edit-button').click(function() {
+            resetModal();
+            $("#requirements").val(this.dataset.requirements);
+            $("#notes").val(this.dataset.notes);
+        });
+    });
     <script src="assets/js/bootstrap.js"></script>
 </body>
 </html>

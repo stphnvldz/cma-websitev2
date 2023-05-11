@@ -61,6 +61,7 @@ Route::middleware([isAdmin::class, 'auth'])->group(function () {
         return view('admin.homepage.editRequirements');
     });
     Route::post('/reqadd', [App\Http\Controllers\RequirementsController::class, 'req'])->name('req');
+    Route::get('/editRequirements', [App\Http\Controllers\RequirementsController::class, 'listofreqs'])->name('listofreqs');
 
 
     Route::get('/preview', function () {
