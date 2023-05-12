@@ -22,6 +22,8 @@
       <div class="d-flex justify-content-center row">
           <div class="text-center col-6">
             <input type="hidden" name="id" id="id" value="{{ $data->id }}">
+            <input type="hidden" name="tenant_bills_id" id="id" value="{{ $data->id }}">
+
               <div class="mb-4 row">
                   <label for="inputPayment4" class="col-sm-4 col-form-label align-self-center">Full Name</label>
                   <div class="col-sm-8">

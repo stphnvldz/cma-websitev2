@@ -30,7 +30,7 @@
                         <td>{{ $result->description }}</td>
                         <td>{{ DateTime::createFromFormat('Y-m-d', $result->date_from)->format('d M Y') . ' to ' . DateTime::createFromFormat('Y-m-d', $result->date_to)->format('d M Y')  }}</td>
                         <td>{{ $result->status}}</td>
-                        <td><a href="/payment?id={{ $result->id }}" type="button" class="btn btn-primary">Payment</a></td>
+                        <td><a href="/payment?id={{ $result->tenant_bills_id }}" type="button" class="btn btn-primary">Payment</a></td>
                     </tr>
                 @endforeach
         </tbody>
