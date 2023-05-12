@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Floor;
 use App\Models\Payment;
 use App\Models\RentStall;
+use App\Models\Stall;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class DasboardController extends Controller
     {
 
         $totalRegisteredTenants = User::where([['role_as', '=', 0]])->get()->count();
-        $totalStalls = RentStall::all()->count();
+        $totalStalls = Stall::all()->count();
 
 
         $rentedStalls = DB::table('rentstall')->select('selectedStallTextBox')
