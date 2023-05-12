@@ -109,9 +109,9 @@ Route::middleware([isAdmin::class, 'auth'])->group(function () {
     //reports
     Route::get('/paymentreports', [App\Http\Controllers\PaymentReportController::class, 'viewReports'])->name('viewReports');
     //Route::get('/paymentreports', [App\Http\Controllers\PaymentReportController::class, 'viewTenantPayment'])->name('viewTenantPayment');
-    Route::get('/billreports', function () {
-        return view('admin.repors.billreports');
-    });
+    // Route::get('/billreports', function () {
+    //     return view('admin.repors.billreports');
+    // });
     Route::get('/billreports', [App\Http\Controllers\TenantListController::class, 'billRep'])->name('billRep');
 
     Route::get('/paid_process', [App\Http\Controllers\TenantListController::class, 'paid_process'])->name('paid_process');
@@ -159,10 +159,6 @@ Route::post('/payment-add', [App\Http\Controllers\PaymentController::class, 'pay
 Route::get('/paymenthistory', [App\Http\Controllers\PaymentController::class, 'viewPayment'])->name('viewPayment');
 Route::get('/payment', [App\Http\Controllers\PaymentController::class, 'billPay'])->name('billPay');
 
-    //navbar
-    Route::get('/tenant-accountsettings', function () {
-        return view('admin.tenantside.tenant-accountsettings');
-    });
     Route::get('/tenant-activitylog', function () {
         return view('admin.tenantside.tenant-activitylog');
     });
