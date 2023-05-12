@@ -161,8 +161,6 @@ class TenantListController extends Controller
     //paglagay ng laman sa bill reports
     public function billRep()
     {
-        $id = $request->input('id');
-
         $bill = DB::table('tenant_bills')
         ->leftJoin('rentstall', 'tenant_bills.rentstall_id', '=', 'rentstall.id')
         ->select(
