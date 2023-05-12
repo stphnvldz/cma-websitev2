@@ -2,6 +2,11 @@
 
 use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\isTenant;
+use App\Models\Floor;
+use App\Models\Payment;
+use App\Models\RentStall;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -54,29 +59,19 @@ Route::middleware([isAdmin::class, 'auth'])->group(function () {
         return view('admin.tenant');
     })->name('tenant');
 
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    });
     Route::get('/editRequirements', function () {
         return view('admin.homepage.editRequirements');
     });
     Route::post('/reqadd', [App\Http\Controllers\RequirementsController::class, 'req'])->name('req');
     Route::get('/editRequirements', [App\Http\Controllers\RequirementsController::class, 'listofreqs'])->name('listofreqs');
 
-
     Route::get('/preview', function () {
         return view('admin.preview');
     });
-    //stall folder
-    Route::get('/stalladd', function () {
-        return view('admin.stall.stalladd');
-    });
-    //floor folder
+
+    //floor
     Route::get('/flooradd', function () {
         return view('admin.floor.flooradd');
-    });
-    Route::get('/stallview', function () {
-        return view('admin.stall.stallview');
     });
 
     //rent folder
@@ -125,7 +120,7 @@ Route::middleware([isAdmin::class, 'auth'])->group(function () {
 
     //annoucement
     Route::post('/announcementadd', [App\Http\Controllers\AnnouncementController::class, 'saveAnnouncement'])->name('saveAnnouncement');
-    
+
 
     //floor
     Route::post('/save-floor', [App\Http\Controllers\FloorController::class, 'saveFloor'])->name('saveFloor');
