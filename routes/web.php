@@ -172,13 +172,15 @@ Route::get('/tenant-accountsettings', function () {
 Route::post('/update-password', function (Request $request) {
 
     if ($request->input('password') !== $request->input('confirmPassword')) {
-        return redirect()->back()->with('success', 'Password does not match.');
+        return redirect()->back()->with('error', 'Password does not match.');
     }
     $tenant = User::where('email', '=', Auth::user()->email)->first();
     $tenant->password = Hash::make($request->input('password'));
     $tenant->save();
     return redirect()->back()->with('success', 'Tenant information updated successfully!');
 });
+
+Route::post('/tenant/update2', [App\Http\Controllers\TenantListController::class,'updateTenantData2'])->name('updateTenantData2');
 
 Route::get('/tenant-activitylog', function () {
     return view('admin.tenantside.tenant-activitylog');
