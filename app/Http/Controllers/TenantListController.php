@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\tenant;
 use App\Models\TenantBills;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
@@ -20,7 +21,7 @@ class TenantListController extends Controller
             ->where('is_archived', '=', '0')
             ->count()
             ->get();
-            
+
         return view('admin.tenantlists', compact('rent'));
     }
 
@@ -66,6 +67,42 @@ class TenantListController extends Controller
 
             DB::table('rentstall')
             ->where('id', '=', $id)
+            ->update(['image' => $filename,]);
+        }
+
+        return redirect()->back()->with('success', 'Tenant information updated successfully');
+    }
+
+    public function updateTenantData2(Request $request){
+        $id = $request->input('id');
+
+        $db = DB::table('rentstall')
+        ->where('emailadd', '=', Auth::user()->email)
+        ->update([
+            'fullname' => $request->input('fullname'),
+            'dateofbirth' => $request->input('dateofbirth'),
+            'address' => $request->input('address'),
+            'contact' => $request->input('contact'),
+            'emailadd' => $request->input('emailadd'),
+            'stalltype' => $request->input('stalltype'),
+            'stallname' => $request->input('stallname'),
+            'payment' => $request->input('payment'),
+            'amount' => $request->input('amount'),
+            'selectedStallTextbox' => $request->input('selectedStallTextbox'),
+            'totalamount' => $request->input('totalamount'),
+        ]);
+
+        if($request->hasFile('image')){
+            $rent = DB::table('rentstall')->where('emailadd', '=', Auth::user()->email)->first();
+
+            // File::delete('public/img/' . $rent->image);
+
+            $image = $request->file('image');
+            $filename = $image->getClientOriginalName();
+            $image->move(public_path('public/img'), $filename);
+
+            DB::table('rentstall')
+            ->where('emailadd', '=', Auth::user()->email)
             ->update(['image' => $filename,]);
         }
 
@@ -133,7 +170,7 @@ class TenantListController extends Controller
     //pag update ng status
     public function paid_process(Request $request){
         $query = $request->query();
-        
+
         $fetch = DB::table('tenant_bills')
         ->where('id', $query['id'])
         ->update([
@@ -143,7 +180,7 @@ class TenantListController extends Controller
     }
         public function unpaid_process(Request $request){
             $query = $request->query();
-            
+
             $fetch = DB::table('tenant_bills')
             ->where('id', $query['id'])
             ->update([
@@ -151,5 +188,5 @@ class TenantListController extends Controller
             ]);
             return redirect('/billreports');
         }
-    
+
 }
