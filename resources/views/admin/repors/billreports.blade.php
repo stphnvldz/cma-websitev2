@@ -77,55 +77,9 @@
     </div>
 </div>
 </div>
-{{--
-    <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
-    </div>
-    <div class="datatable-container">
-    <table class="table table-hover table-striped display nowrap" id="printTable"  style="width:100%">
-        <thead>
-            <tr>
-                <th scope="col">Full Name</th>
-                <th scope="col">Stall Number</th>
-                <th scope="col">Type of Payment</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Date</th>
-                <th scope="col">Status</th>
-                <th scopr="col"><a class="printPage" href="#">Print</a></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($bill as $bills)
-                    <tr>
-                        <td>{{ $bills->fullname }}</td>
-                        <td>{{ $bills->selectedStallTextbox }}</td>
-                        <td>{{ $bills->payment }}</td>
-                        <td>{{ $bills->amount }}</td>
-                        <td>{{ DateTime::createFromFormat('Y-m-d', $bills->date_from)->format('d M Y') . ' to ' . DateTime::createFromFormat('Y-m-d', $bills->date_to)->format('d M Y')  }}</td>
-                        <td>{{ $bills->status == 1 ? 'Paid' : 'Unpaid'}}</td>
-                        <td><div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/paid_process?id={{$bills->id}}">Paid</a></li>
-                                <li><a class="dropdown-item" href="/unpaid_process?id={{$bills->id}}">Unpaid</a></li>
-                            </ul>
-                          </div>
-                        </td>
-                    </tr>
-            @endforeach
-        </tbody>
-        <div>
-    {{-- </div> --}}
-    {{-- </table> --}}
     <script>
-        // $('a.printPage').click(function(){
-        //     window.print();
-        //     return false;
-        //     });
 
         $('document').ready(function() {
-
-
             // DataTable
             var table = $('#example').DataTable({
                 // dom: 'lfrtip',
