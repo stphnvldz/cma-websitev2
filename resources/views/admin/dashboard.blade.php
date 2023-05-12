@@ -2,7 +2,6 @@
 @section('title','CMA Dashboard')
 
 @section('content')
-
 <div class="container-fluid px-4">
                         <h1 class="mt-4">Dashboard</h1>
                         <ol class="breadcrumb mb-4">
@@ -14,17 +13,16 @@
                                     <div class="card-body">Total Registered Tenants</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         {{--<a class="small text-white stretched-link" href="#">View Details</a>--}}
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i> {{ $dashboardInfo['totalRegisteredTenants']}}</div>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
                                     <div class="card-body">Total Stalls</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         {{--<a class="small text-white stretched-link" href="#">View Details</a>--}}
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i> {{ $dashboardInfo['totalStalls']}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -34,7 +32,7 @@
                                     <div class="card-body">Total Available Stalls</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         {{--<a class="small text-white stretched-link" href="#">View Details</a>--}}
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i> {{ $dashboardInfo['totalAvailableStalls']}} </div>
                                     </div>
                                 </div>
                             </div>
@@ -44,7 +42,7 @@
                                     <div class="card-body">Total Occupied Stalls</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         {{--<a class="small text-white stretched-link" href="#">View Details</a>--}}
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i> {{ $dashboardInfo['totalOccupiedStalls']}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +53,7 @@
                                     <div class="card-body">Daily Sales</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         {{--<a class="small text-white stretched-link" href="#">View Details</a>--}}
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i> ₱ {{ number_format((float)$dashboardInfo['dailySales'], 2, '.', '')}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +63,7 @@
                                     <div class="card-body">Weekly Sales</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         {{--<a class="small text-white stretched-link" href="#">View Details</a>--}}
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i> ₱ {{  number_format((float)$dashboardInfo['weeklySales'], 2, '.', '')}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -75,7 +73,7 @@
                                     <div class="card-body">Monthy Sales</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         {{--<a class="small text-white stretched-link" href="#">View Details</a>--}}
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i> ₱ {{  number_format((float)$dashboardInfo['monthlySales'], 2, '.', '')}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -85,13 +83,13 @@
                                     <div class="card-body">Yearly Sales</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         {{--<a class="small text-white stretched-link" href="#">View Details</a>--}}
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i> ₱ {{  number_format((float)$dashboardInfo['yearlySales'], 2, '.', '')}}</div>
                                     </div>
                                 </div>
                             </div>{{--yung total sales na lang dito kesa total floor--}}
 
 
-                            
+
 </div>
 </div>
 

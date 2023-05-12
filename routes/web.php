@@ -2,8 +2,11 @@
 
 use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\isTenant;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
     // guest pages
@@ -20,8 +23,8 @@ Auth::routes();
 
 // admin pages
 Route::middleware([isAdmin::class, 'auth'])->group(function () {
-
-    //navbar
+    //admin side
+    Route::get('/dashboard', [App\Http\Controllers\Admin\DasboardController::class, 'index']);
     Route::get('/admin-accountsettings', function () {
         return view('admin.admin-accountsettings');
     });
@@ -29,20 +32,15 @@ Route::middleware([isAdmin::class, 'auth'])->group(function () {
         return view('admin.admin-activitylog');
     });
 
-    //dashboard
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    });
-
     //Route::get('/tenant', function () {return view('admin.tenant');})->name('tenant');
-
-    //homepage
-    Route::get('/announcement', function () {
-        return view('admin.homepage.announcement');
-    });
     Route::post('/announcementadd', [App\Http\Controllers\AnnouncementController::class, 'saveAnnouncement'])->name('saveAnnouncement');
     Route::get('/announcement', [App\Http\Controllers\AnnouncementController::class, 'listofannouncements'])->name('listofannouncements');
     Route::delete('/anns/{id}', [App\Http\Controllers\AnnouncementController::class, 'destroy'])->name('delete-ann');
+
+    Route::get('/tenant', function () {
+        return view('admin.tenant');
+    })->name('tenant');
+
     Route::get('/editRequirements', function () {
         return view('admin.homepage.editRequirements');
     });
@@ -55,15 +53,20 @@ Route::middleware([isAdmin::class, 'auth'])->group(function () {
     Route::post('/stalladd', [App\Http\Controllers\StallController::class, 'saveStall'])->name('saveStall');
     Route::get('/stallview', [App\Http\Controllers\StallController::class, 'showStalls'])->name('stallview');
 
+    Route::get('/preview', function () {
+        return view('admin.preview');
+    });
+
     //floor
     Route::get('/flooradd', function () {
         return view('admin.floor.flooradd');
     });
+
     Route::post('/save-floor', [App\Http\Controllers\FloorController::class, 'saveFloor'])->name('saveFloor');
     Route::get('/floorview', [App\Http\Controllers\FloorController::class, 'showFloors'])->name('floorview');
 
     //rent
-    Route::get('/rent', function () {return view('admin.rent');});
+    Route::get('/rent', [App\Http\Controllers\RentController::class, 'getFloors'])->name('getFloors');
     Route::post('/rentadd', [App\Http\Controllers\RentController::class, 'renting'])->name('rent');
     Route::get('/rent', [App\Http\Controllers\RentController::class, 'getFloors'])->name('getFloors');
     Route::get('/show-tenant', [App\Http\Controllers\RentController::class, 'showTenant'])->name('showTenant');
@@ -74,9 +77,6 @@ Route::middleware([isAdmin::class, 'auth'])->group(function () {
     });
     Route::post('/lostfound/update', [App\Http\Controllers\LostFoundController::class, 'updateLostFound'])->name('updateLostFound');
 
-    Route::prefix('admin')->middleware(['auth'])->group(function() {
-        Route::get('/dashboard', [App\Http\Controllers\Admin\DasboardController::class, 'index']);
-    });
 
     //tenants
     Route::post('/tenant/add', [App\Http\Controllers\TenantController::class, 'addtenant'])->name('addtenant');
@@ -93,6 +93,14 @@ Route::middleware([isAdmin::class, 'auth'])->group(function () {
         return view('admin.archives', compact('rent'));
     });
 
+    //Route::get('/archivetenant/{id}', 'TenantListController@archiveTenant')->name('tenant.archive');
+
+    //Route::post('/mark-as-unaccounted/{id}', 'TenantListController@markAsUnaccounted');
+
+    Route::get('/unaccounted', function () {
+        return view('admin.unaccounted');
+    });
+
     //lost and found
     Route::post('/lost-add', [App\Http\Controllers\LostFoundController::class, 'addlost'])->name('addlost');
     Route::get('/lostfound', [App\Http\Controllers\LostFoundController::class, 'showLostFound'])->name('lostfound');
@@ -101,9 +109,9 @@ Route::middleware([isAdmin::class, 'auth'])->group(function () {
     //reports
     Route::get('/paymentreports', [App\Http\Controllers\PaymentReportController::class, 'viewReports'])->name('viewReports');
     //Route::get('/paymentreports', [App\Http\Controllers\PaymentReportController::class, 'viewTenantPayment'])->name('viewTenantPayment');
-    Route::get('/billreports', function () {
-        return view('admin.repors.billreports');
-    });
+    // Route::get('/billreports', function () {
+    //     return view('admin.repors.billreports');
+    // });
     Route::get('/billreports', [App\Http\Controllers\TenantListController::class, 'billRep'])->name('billRep');
 
     Route::get('/paid_process', [App\Http\Controllers\TenantListController::class, 'paid_process'])->name('paid_process');
@@ -115,15 +123,42 @@ Route::middleware([isAdmin::class, 'auth'])->group(function () {
 // tenant pages
 Route::middleware([isTenant::class, 'auth'])->group(function () {
 
-    //dashboard
-    Route::get('/tenant-dashboard', function () {
-        return view('admin.tenantside.tenant-dashboard');
-    });
+//tenant side
+Route::get('/tenant-dashboard', function () {
+    return view('admin.tenantside.tenant-dashboard');
+});
+Route::get('/tenant-accountsettings', function () {
+    $info = User::leftJoin('rentstall', 'rentstall.emailadd', '=', 'users.email')
+        ->where([['users.email', '=', Auth::user()->email]])
+        ->first();
+    return view('admin.tenantside.tenant-accountsettings', compact('info'));
+});
 
-    //navbar
-    Route::get('/tenant-accountsettings', function () {
-        return view('admin.tenantside.tenant-accountsettings');
-    });
+Route::post('/update-password', function (Request $request) {
+
+    if ($request->input('password') !== $request->input('confirmPassword')) {
+        return redirect()->back()->with('error', 'Password does not match.');
+    }
+    $tenant = User::where('email', '=', Auth::user()->email)->first();
+    $tenant->password = Hash::make($request->input('password'));
+    $tenant->save();
+    return redirect()->back()->with('success', 'Tenant information updated successfully!');
+});
+
+Route::post('/tenant/update2', [App\Http\Controllers\TenantListController::class,'updateTenantData2'])->name('updateTenantData2');
+
+Route::get('/tenant-activitylog', function () {
+    return view('admin.tenantside.tenant-activitylog');
+});
+
+//paymemt
+Route::get('/payment', function () {
+    return view('admin.tenantside.payment');
+});
+Route::post('/payment-add', [App\Http\Controllers\PaymentController::class, 'payment'])->name('payment');
+Route::get('/paymenthistory', [App\Http\Controllers\PaymentController::class, 'viewPayment'])->name('viewPayment');
+Route::get('/payment', [App\Http\Controllers\PaymentController::class, 'billPay'])->name('billPay');
+
     Route::get('/tenant-activitylog', function () {
         return view('admin.tenantside.tenant-activitylog');
     });
