@@ -42,8 +42,8 @@
           document.write('<td>' + lostandfound.itemname +'</td>');
           document.write('<td>' + lostandfound.description + '</td>');
           document.write('<td>' + lostandfound.dateoflost +'</td>');
+          document.write('<td>' + lostandfound.status +'</td>');
           document.write('<td><a href="/viewlostfound?id=' + lostandfound.id + '" type="button" class="btn btn-secondary">View</a></td>');
-        
           document.write('</tr>');
       }
   </script>
@@ -86,6 +86,7 @@
                   <label for="formFile" class="col-sm-3 col-form-label align-self-center">Upload Photo</label>
                   <div class="col-sm-9 d-flex align-items-center"> 
                     <input class="d-flex justify-content-center form-control" name="image" type="file" id="image" style="height: 38px;">
+                    <input type="hidden" name="status" id="status" value="Lost">
                   </div>
                 </div>
               </div>

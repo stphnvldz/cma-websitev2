@@ -51,7 +51,7 @@
       </div>
       @endif--}}
 
-      <form action="/tenant/update" method="post" enctype="multipart/form-data">
+      <form action="/lostfound/update" method="post" enctype="multipart/form-data">
         @csrf
           <input type="hidden" name="id" value="{{ $data->id }}">
           <div class="row p-5">
@@ -65,7 +65,7 @@
               <div class="mb-3 row">
                 <label for="inputName4" class="col-sm-4 col-form-label align-self-center">Item Name</label>
                 <div class="col-sm-10">
-                  <input type="text" name="itemName" class="form-control" id="itemName" style="width: 560px" disabled value="{{ $data->itemname }}">
+                  <input type="text" name="itemname" class="form-control" id="itemName" style="width: 560px" disabled value="{{ $data->itemname }}">
                 </div>
               </div>
               <div class="mb-3 row">
@@ -80,6 +80,15 @@
                   <input type="description" name="description" class="form-control" id="description" style="width: 560px" value="{{ $data->description }}" disabled>
                 </div>
               </div>
+              <div class="mb-3 row">
+                <div class="col-sm-10">
+                  <select id="status" name="status" class="form-select"disabled>
+                    <option>Status</option>
+                    <option>Lost</option>
+                    <option>Found</option>
+                  </select>
+                </div>
+              </div>
               </div>
             </div>
             <div class="d-flex justify-content-center align-items-center">
@@ -87,25 +96,32 @@
                 <button type="button" class="btn btn-primary" id="edit">Edit Information</button>
               </div>
               <div class="text-center md-2 mx-2">
-                <button type="submit" id="save"class="btn btn-primary"disabled>Save</button>
+                <button type="submit" name="save" id="saveB" class="btn btn-primary"disabled>Save</button>
               </div>
             </div>
           </div>
         </form>
+
           <script>
             // Get the edit button element
             var editButton = document.getElementById("edit");
                     
             // Get the input elements
-            var itemInput = document.getElementById("itemname");
+            var itemInput = document.getElementById("itemName");
+            var imageInput = document.getElementById("image");
             var dateoflostInput = document.getElementById("dateoflost");
             var descriptionInput = document.getElementById("description");
+            var statusOption = document.getElementById("status");
+            var saveButton = document.getElementById("saveB");
             // Add an event listener to the edit button
             editButton.addEventListener("click", function() {
               // Enable the input fields
+              imageInput.removeAttribute("disabled");
               itemInput.removeAttribute("disabled");
               dateoflostInput.removeAttribute("disabled");
               descriptionInput.removeAttribute("disabled");
+              statusOption.removeAttribute("disabled");
+              saveButton.removeAttribute("disabled");
             });
             </script>
 

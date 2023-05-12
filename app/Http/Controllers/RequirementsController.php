@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 
 class RequirementsController extends Controller
 {
-    public function req(Request $request){
+    public function req(Request $request)
+    {
         $req = new Requirements();
         $req->requirements = $request->input('requirements');
         $req->notes = $request->input('notes');
@@ -18,14 +19,25 @@ class RequirementsController extends Controller
 
         return redirect('/editRequirements')->with('success', 'Requirements uploaded successfully!');
     }
+//homepage/public view
     public function showreq(Request $request)
     {
         $req = Requirements::all();
         return view('layouts.requirements', compact('req'));
     }
+
     public function listofreqs()
     {
         $req = DB::table('requirements')->select('id','requirements','notes')->get();
         return view('admin.homepage.editRequirements', compact('req'));
     }
+
+    public function destroy($id)
+    {
+        $req = Requirements::findOrFail($id);
+        $req->delete();
+
+    return redirect()->back();
+    }
+    
 }

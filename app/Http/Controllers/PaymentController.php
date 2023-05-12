@@ -47,16 +47,45 @@ class PaymentController extends Controller
         return view('admin.tenantside.paymenthistory', compact('payment'));
     }
     //pagbayad ni tenant na hindi na pati fillable
+    //public function billPay(Request $request){
+
+    //    $data = array();
+    //    $query = $request->query();
+    //    $id = $request->input('id');
+
+    //    $data['db'] = DB::table('tenant_bills')
+    //    ->leftJoin('rentstall', 'tenant_bills.rentstall_id', '=', 'rentstall.id')
+    // /   ->select(
+    //        'rentstall.id',
+    //        'rentstall.fullname',
+    //        'rentstall.selectedStallTextbox',
+    //        'rentstall.contact',
+    //        'rentstall.payment',
+    //        'rentstall.amount',
+    //        'tenant_bills.date_from',
+     //       'tenant_bills.date_to',
+    //        )
+    //    ->first();
+    //    return view('admin.tenantside.payment', $data);
+    //}
     public function billPay(Request $request){
+        $id = $request->input('id');
 
-        $data = array();
-        $query = $request->query();
-        $data['id'] = $query['id'];
-
-        $data['db'] = DB::table('tenant_bills')
+        $db = DB::table('tenant_bills')
+        ->where('tenant_bills.id', '=', $id)
         ->leftJoin('rentstall', 'tenant_bills.rentstall_id', '=', 'rentstall.id')
+        ->select(
+            'tenant_bills.id',
+            'rentstall.fullname',
+            'rentstall.selectedStallTextbox',
+            'rentstall.contact',
+            'rentstall.payment',
+            'rentstall.amount',
+            'tenant_bills.date_from',
+            'tenant_bills.date_to',
+            )
         ->first();
 
-        return view('admin.tenantside.payment', $data);
+        return view('admin.tenantside.payment', ['data' => $db]);
     }
 }

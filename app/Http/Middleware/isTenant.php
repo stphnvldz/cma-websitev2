@@ -17,7 +17,7 @@ class isTenant
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->role_as == 1) {
+        if (Auth::user()->role_as == 0) {
             return $next($request);
         }
 

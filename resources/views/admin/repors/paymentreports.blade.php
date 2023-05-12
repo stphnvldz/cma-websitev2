@@ -128,9 +128,8 @@
                                 <label for="inputFloor" class="col-sm-3 col-form-label align-self-center">Status</label>
                                 <div class="col-sm-9">
                                     <select id="status" name="status" class="form-select" {{--value="{{ $data->status }}"--}}>
-                                        <option selected value="Pending">Pending</option>
+                                        <option value="Pending">Pending</option>
                                         <option value="Paid">Paid</option>
-                                        <option value="">Kulang</option>
                                     </select>
                                 </div>
                             </div>

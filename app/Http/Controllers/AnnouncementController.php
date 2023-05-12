@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Announcement;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 
 class AnnouncementController extends Controller
@@ -22,10 +24,24 @@ class AnnouncementController extends Controller
         // redirect to a success page
         return redirect('/announcement')->with('success', 'Announcement uploaded successfully!');
     }
+    //homepage/public view
     public function showAnnouncementForm(Request $request)
     {
         //$announcements = Announcement::latest()->take(10)->get(); // Fetch the latest 10 announcements
         $announcements = Announcement::all();
         return view('main', compact('announcements'));
+    }
+
+    public function listofannouncements()
+    {
+        $ann = DB::table('announcement')->select('id','eventname','description')->get();
+        return view('admin.homepage.announcement', compact('ann'));
+    }
+    public function destroy($id)
+    {
+        $ann = Announcement::findOrFail($id);
+        $ann->delete();
+
+    return redirect()->back();
     }
 }
