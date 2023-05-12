@@ -55,14 +55,14 @@ Route::middleware([isAdmin::class, 'auth'])->group(function () {
     Route::post('/stalladd', [App\Http\Controllers\StallController::class, 'saveStall'])->name('saveStall');
     Route::get('/stallview', [App\Http\Controllers\StallController::class, 'showStalls'])->name('stallview');
 
-    //floor 
+    //floor
     Route::get('/flooradd', function () {
         return view('admin.floor.flooradd');
     });
     Route::post('/save-floor', [App\Http\Controllers\FloorController::class, 'saveFloor'])->name('saveFloor');
     Route::get('/floorview', [App\Http\Controllers\FloorController::class, 'showFloors'])->name('floorview');
 
-    //rent 
+    //rent
     Route::get('/rent', function () {return view('admin.rent');});
     Route::post('/rentadd', [App\Http\Controllers\RentController::class, 'renting'])->name('rent');
     Route::get('/rent', [App\Http\Controllers\RentController::class, 'getFloors'])->name('getFloors');
@@ -97,7 +97,7 @@ Route::middleware([isAdmin::class, 'auth'])->group(function () {
     Route::post('/lost-add', [App\Http\Controllers\LostFoundController::class, 'addlost'])->name('addlost');
     Route::get('/lostfound', [App\Http\Controllers\LostFoundController::class, 'showLostFound'])->name('lostfound');
     Route::get('/viewlostfound', [App\Http\Controllers\LostFoundController::class, 'viewLostFound'])->name('viewLostFound');
-    
+
     //reports
     Route::get('/paymentreports', [App\Http\Controllers\PaymentReportController::class, 'viewReports'])->name('viewReports');
     //Route::get('/paymentreports', [App\Http\Controllers\PaymentReportController::class, 'viewTenantPayment'])->name('viewTenantPayment');
@@ -141,6 +141,7 @@ Route::middleware([isTenant::class, 'auth'])->group(function () {
         ->leftJoin('rentstall', 'tenant_bills.rentstall_id', '=', 'rentstall.id')
         ->where('status', '=', 'pending')
         ->where('emailadd', '=', Auth::user()->email)
+        ->select('*', 'tenant_bills.id as tenant_bills_id')
         ->get();
         return view('admin.tenantside.billsnotice', compact(['results']));
     });
