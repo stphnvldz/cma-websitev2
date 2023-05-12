@@ -69,7 +69,7 @@
                                         data-totalamount="{{ $rents->totalamount }}"
                                         data-rentstall_id="{{ $rents->id }}">Bill</button>
 
-                                        <button id="dropdownButton" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{--<button id="dropdownButton" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
       
                                         </button>
                                 </div>

@@ -163,11 +163,17 @@ class TenantListController extends Controller
     {
         $bill = DB::table('tenant_bills')
         ->leftJoin('rentstall', 'tenant_bills.rentstall_id', '=', 'rentstall.id')
+
+        ->select(
+            'rentstall.fullname',
+            'rentstall.selectedStallTextbox',
+            'rentstall.payment',
+            'tenant_bills.*',
+            )
         ->get();
         return view('admin.repors.billreports', compact('bill'));
 
     }
-
 
     //pag update ng status
 
