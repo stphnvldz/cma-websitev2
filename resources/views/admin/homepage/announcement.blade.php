@@ -15,28 +15,76 @@
 <body>
 @section('content')
 
-<form action="/announcementadd" method="post">
-  @csrf
-  <div class="container px-4 mt-4" style="font-size: 20px; float: left; margin-right: 20px; margin-left: 200px; width:800px;height:455px;border: 1px solid rgb(39, 38, 38);border-radius: 4px;">
-    <p style="font-weight: bold; ">Create your Announcement</p>
+<div class="d-flex justify-content-end">
+  <button type="button" class="btn btn-outline-success me-2 mt-2" data-bs-toggle="modal" data-bs-target="#AddAnnouncement" data-bs-whatever="@AddAnnouncement">Add Announcement</button>
+</div>
+<div class="d-flex justify-content-center">
+  <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label-lg">Create Announcement</label>
+</div>
 
-    <label for="inputEventname" class="col-sm-3 col-form-label align-self-center"></label>
-    <p style="font-size: 15px; font-weight: bold;">Event Name</p>
-    <div class="col-sm-9">
-      <input type="description" name="eventname" class="form-control" id="eventname" placeholder="Please input Event Name">
-    </div>
-    <label for="inputDescription" class="col-sm-3 col-form-label align-self-center"></label>
-    <p style="font-size: 15px; font-weight: bold;">Description</p>
-        <div class="col-sm-9">
-          <input type="event" name="description" class="form-control" id="description" style="height: 100px;" placeholder="Please input Event Description">
-        </div>
+<table class="table table-hover table-striped" style="margin-left: 0px" id="datatable">
+  <thead>
+      <tr>
+          <th scope="col">Event</th>
+          <th scope="col">Description</th>
+          <th scope="col">Actions</th>
+      </tr>
+  </thead>
+  <tbody>
+      @if(isset($ann))
+          @foreach ($ann as $anns)
+              <tr>
+                  <td>{{ $anns->eventname }}</td>
+                  <td>{{ $anns->description }}</td>
+                  <td>
+                    <form method="POST" action="{{ route('delete-ann', $anns->id) }}">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" name="delete" class="btn btn-danger"><i class="fa-solid fa-trash fa-xs"></i></button>
+                    </form>
+                  </td>
+              </tr>
+          @endforeach
+      @endif
+  </tbody>
+</table>
 
-    <div style="position: relative;">
-      <button type="submit" class="btn btn-primary" style="position: absolute; top: 50px; right: 80px;">Add Announcement</button>
-      <button type="button" class="btn btn-secondary" style="position: absolute; top: 50px; right: 0;">Cancel</button>
-    </div>
+{{--modal for add annoucement--}}
+<div class="modal fade" id="AddAnnouncement" tabindex="-1" aria-labelledby="AddAnnouncementLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h1 class="modal-title fs-5" id="addLostmodal">Add Announcement</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form action="/announcementadd" method="post">
+          @csrf
+              <div class="modal-body">
+                  <div class="d-flex justify-content-center row">
+                      <div class="col-6 text-center">
+                          <div class="mb-3 mt-3 row text-center">
+                              <label for="inputName4" class="col-sm-9 col-form-label align-self-center" style="font-size: 15px; font-weight: bold;">Event Name</label>
+                              <div class="col-sm-9">
+                                  <input type="text" name="eventname" class="form-control" id="eventname" >
+                              </div>
+                          </div>
+                          <div class="mb-3 row text-center">
+                              <label for="inputName4" class="col-sm-9 col-form-label align-self-center" style="font-size: 15px; font-weight: bold;">Description</label>
+                              <div class="col-sm-9">
+                                  <input type="text" name="description" class="form-control" id="description">
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>    
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="store" class="btn btn-primary">Upload</button>
+              </div>
+          </form>
+      </div>
   </div>
-</form>
+</div>
 
 
 

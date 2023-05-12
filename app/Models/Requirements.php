@@ -9,4 +9,9 @@ class Requirements extends Model
 {
     use HasFactory;
     protected $table = "requirements";
+
+    public function findData($id)
+    {
+        return static::find($id);
+    }
 }

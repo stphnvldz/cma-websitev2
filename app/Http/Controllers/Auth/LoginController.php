@@ -31,13 +31,13 @@ class LoginController extends Controller
     //protected $redirectTo = RouteServiceProvider::HOME;
     public function authenticated()
     {
-        if(Auth::user()->role_as == '1')
+        if(Auth::user()->role_as == '0')
         {
-            return redirect('tenant-dashboard')->with('status', 'Welcome to Admin Dashboard!');
+            return redirect('tenant-dashboard')->with('status', 'Logged in Successfully!');
         }
-        else if(Auth::user()->role_as == '0')
+        else if(Auth::user()->role_as == '1')
         {
-            return redirect('admin/dashboard')->with('status', 'Logged in Successfully!');
+            return redirect('/dashboard')->with('status', 'Logged in Successfully!');
         }
         else
         {

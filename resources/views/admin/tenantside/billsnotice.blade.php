@@ -29,7 +29,7 @@
                         <td>{{ $result->notice }}</td>
                         <td>{{ $result->description }}</td>
                         <td>{{ DateTime::createFromFormat('Y-m-d', $result->date_from)->format('d M Y') . ' to ' . DateTime::createFromFormat('Y-m-d', $result->date_to)->format('d M Y')  }}</td>
-                        <td>{{ $result->status == 1 ? 'Paid' :  'Unpaid' }}</td>
+                        <td>{{ $result->status}}</td>
                         <td><a href="/payment?id={{ $result->id }}" type="button" class="btn btn-primary">Payment</a></td>
                     </tr>
                 @endforeach

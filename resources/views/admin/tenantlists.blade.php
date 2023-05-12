@@ -236,6 +236,7 @@
                 $("#datefrom").val('');
                 $("#dateto").val('');
                 $("#rentstall_id").val(0);
+                
             }
 
             $('.bill-btn').click(function() {

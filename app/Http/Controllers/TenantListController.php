@@ -18,7 +18,6 @@ class TenantListController extends Controller
     {
         $rent = DB::table('rentstall')->select('id','fullname','contact', 'emailadd', 'payment','totalamount')
             ->where('is_archived', '=', '0')
-            ->count()
             ->get();
             
         return view('admin.tenantlists', compact('rent'));
@@ -80,7 +79,7 @@ class TenantListController extends Controller
         $model->date_from =  $request->input('datefrom');
         $model->date_to =  $request->input('dateto');
         $model->amount =  $request->input('amount');
-        $model->status =  0; // pending
+        $model->status =  ("Pending"); // pending
         $model->save();
 
         return Redirect::back()->with('message','Operation Successful !');
@@ -99,14 +98,14 @@ class TenantListController extends Controller
                 $model->description =  $request->input('description');
                 $model->date_from =  $request->input('datefrom');
                 $model->date_to =  $request->input('dateto');
-                $model->status =  0; // pending
+                $model->status =  ("Pending"); // pending
                 $model->rentstall_id = $value->id;
                 $model->amount =  $value->totalamount;
                 $model->save();
             }
 
             DB::commit();
-            return Redirect::back()->with('message','Operation Successful !');
+            return Redirect::back()->with('message','Operation Successful!');
         } catch (Exception $e) {
             DB::rollback();
             return Redirect::back()->with('message', $e->getMessage());
@@ -125,31 +124,45 @@ class TenantListController extends Controller
     //paglagay ng laman sa bill reports
     public function billRep()
     {
+        $id = $request->input('id');
+        
         $bill = DB::table('tenant_bills')
         ->leftJoin('rentstall', 'tenant_bills.rentstall_id', '=', 'rentstall.id')
-        ->get();
+        ->select(
+            'rentstall.fullname',
+            'rentstall.selectedStallTextbox',
+            'rentstall.payment',
+            'tenant_bills.*',
+            )
+        ->first();
         return view('admin.repors.billreports', compact('bill'));
     }
+
+
     //pag update ng status
-    public function paid_process(Request $request){
-        $query = $request->query();
-        
-        $fetch = DB::table('tenant_bills')
-        ->where('id', $query['id'])
-        ->update([
-        'status' => 1,
-        ]);
+
+    public function paid_process(Request $request)
+    {
+
+    $id = $request->query('id');
+
+    DB::table('tenant_bills')
+        ->where('id', $id)
+        ->update(['status' => 'Paid']);
+
         return redirect('/billreports');
     }
-        public function unpaid_process(Request $request){
-            $query = $request->query();
-            
-            $fetch = DB::table('tenant_bills')
-            ->where('id', $query['id'])
-            ->update([
-            'status' => 0,
-            ]);
-            return redirect('/billreports');
-        }
+
+    public function unpaid_process(Request $request)
+    {
+
+    $id = $request->query('id');
+
+    DB::table('tenant_bills')
+        ->where('id', $id)
+        ->update(['status' => 'Unpaid']);
+
+        return redirect('/billreports');
+    }
     
 }

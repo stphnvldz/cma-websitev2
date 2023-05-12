@@ -55,7 +55,6 @@
                                     <div class="card-body">Daily Sales</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         {{--<a class="small text-white stretched-link" href="#">View Details</a>--}}
-                                        <p1>10,000</p1>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>

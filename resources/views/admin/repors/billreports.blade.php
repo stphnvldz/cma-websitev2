@@ -44,7 +44,7 @@
                         <td>{{ $bills->payment }}</td>
                         <td>{{ $bills->amount }}</td>
                         <td>{{ DateTime::createFromFormat('Y-m-d', $bills->date_from)->format('d M Y') . ' to ' . DateTime::createFromFormat('Y-m-d', $bills->date_to)->format('d M Y')  }}</td>
-                        <td>{{ $bills->status == 1 ? 'Paid' : 'Unpaid'}}</td>
+                        <td>{{ $bills->status}}</td>
                         <td><div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             </button>
