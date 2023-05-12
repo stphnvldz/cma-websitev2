@@ -18,6 +18,12 @@
     </div>
 @endif
 
+@if (\Session::has('error'))
+    <div class="alert alert-danger m-3">
+        {!! \Session::get('error') !!}
+    </div>
+@endif
+
 <form method="POST" action="/tenant/update2" enctype="multipart/form-data">
     @csrf
     <div class="row p-5">
