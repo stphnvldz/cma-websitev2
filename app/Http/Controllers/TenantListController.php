@@ -124,8 +124,6 @@ class TenantListController extends Controller
     //paglagay ng laman sa bill reports
     public function billRep()
     {
-        $id = $request->input('id');
-        
         $bill = DB::table('tenant_bills')
         ->leftJoin('rentstall', 'tenant_bills.rentstall_id', '=', 'rentstall.id')
         ->select(
@@ -134,10 +132,10 @@ class TenantListController extends Controller
             'rentstall.payment',
             'tenant_bills.*',
             )
-        ->first();
+        ->get();
         return view('admin.repors.billreports', compact('bill'));
-    }
 
+    }
 
     //pag update ng status
 

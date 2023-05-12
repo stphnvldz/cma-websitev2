@@ -139,7 +139,7 @@ Route::middleware([isTenant::class, 'auth'])->group(function () {
         // $results = DB::table('tenant_bills')->where([['status', '=', '0'],['rentstall_id', '=', '1'] ])->get();
         $results = DB::table('tenant_bills')
         ->leftJoin('rentstall', 'tenant_bills.rentstall_id', '=', 'rentstall.id')
-        ->where('status', '=', 'pending')
+        ->where('status', '=', 'pending' )
         ->where('emailadd', '=', Auth::user()->email)
         ->select('*', 'tenant_bills.id as tenant_bills_id')
         ->get();

@@ -31,6 +31,7 @@
                 <th scope="col">Date From</th>
                 <th scope="col">Date To</th>
                 <th scope="col">Mode of Payment</th>
+                <th scope="col">Reference Number</th>
                 <th scope="col">Status</th>
                 <th scopr="col"><a class="printPage" href="#">Print</a></th>
             </tr>
@@ -46,8 +47,9 @@
                 <td>{{ $payments->datefrom }}</td>
                 <td>{{ $payments->dateto }}</td>
                 <td>{{ $payments->payment }}</td>
+                <td>{{ $payments->refnumber }}</td>
                 <td>{{ $payments->status }}</td>
-                <td><button type="button" class="btn btn-success view-button" data-bs-toggle="modal" data-bs-target="#viewModal" data-row-id="{{ $payments->id }}">View</button></td>
+                {{--<td><button type="button" class="btn btn-success view-button" data-bs-toggle="modal" data-bs-target="#viewModal" data-row-id="{{ $payments->id }}">View</button></td>--}}
             </tr>
             @endforeach
         @endif
