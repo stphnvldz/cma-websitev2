@@ -40,6 +40,8 @@ Route::middleware([isAdmin::class, 'auth'])->group(function () {
 
     //admin side
 
+    Route::get('/dashboard', [App\Http\Controllers\Admin\DasboardController::class, 'index']);
+
     Route::get('/admin-accountsettings', function () {
         return view('admin.admin-accountsettings');
     });
@@ -84,9 +86,6 @@ Route::middleware([isAdmin::class, 'auth'])->group(function () {
         return view('admin.lostfound');
     });
 
-    Route::prefix('admin')->middleware(['auth'])->group(function() {
-        Route::get('/dashboard', [App\Http\Controllers\Admin\DasboardController::class, 'index']);
-    });
 
     Route::post('/tenant/add', [App\Http\Controllers\TenantController::class, 'addtenant'])->name('addtenant');
 
