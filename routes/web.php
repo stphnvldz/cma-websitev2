@@ -2,13 +2,11 @@
 
 use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\isTenant;
-use App\Models\Floor;
-use App\Models\Payment;
-use App\Models\RentStall;
 use App\Models\User;
-use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 // guest pages
@@ -164,9 +162,22 @@ Route::middleware([isTenant::class, 'auth'])->group(function () {
 Route::get('/tenant-dashboard', function () {
     return view('admin.tenantside.tenant-dashboard');
 });
-
 Route::get('/tenant-accountsettings', function () {
-    return view('admin.tenantside.tenant-accountsettings');
+    $info = User::leftJoin('rentstall', 'rentstall.emailadd', '=', 'users.email')
+        ->where([['users.email', '=', Auth::user()->email]])
+        ->first();
+    return view('admin.tenantside.tenant-accountsettings', compact('info'));
+});
+
+Route::post('/update-password', function (Request $request) {
+
+    if ($request->input('password') !== $request->input('confirmPassword')) {
+        return redirect()->back()->with('success', 'Password does not match.');
+    }
+    $tenant = User::where('email', '=', Auth::user()->email)->first();
+    $tenant->password = Hash::make($request->input('password'));
+    $tenant->save();
+    return redirect()->back()->with('success', 'Tenant information updated successfully!');
 });
 
 Route::get('/tenant-activitylog', function () {
