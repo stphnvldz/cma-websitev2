@@ -41,7 +41,7 @@
         <div class="text-center col-6">
           <div class="d-flex flex-column align-items-center">
           <img src="{{ asset('/storage/images/'.$info->image)}}" alt="Image" class="photo2b2 mt-5 mb-3" style="width: 500px">
-            <input class="text-center form-control" name="image" type="file" id="image" style="height: 38px; width: 20rem;">
+            {{--<input class="text-center form-control" name="image" type="file" id="image" style="height: 38px; width: 20rem;">--}}
           </div>
           <div class="mb-3 mt-2 row">
             <label for="inputName4" class="col-sm-3 col-form-label align-self-center">Full Name</label>
@@ -113,34 +113,35 @@
             </div>
         </div>
       </div>
-      <div class="d-flex justify-content-center align-items-center">
-        {{-- <div class="text-center mx-2">
-          <button type="button" class="btn btn-primary" id="edit">Edit Information</button>
-        </div> --}}
+      {{--<div class="d-flex justify-content-center align-items-center">
         <div class="text-center mx-2 my-2">
           <button type="submit" id="save"class="btn btn-primary" >Save</button>
-        </div>
+        </div>--}}
     </div>
     </form>
     <hr>
     <form method="POST" action="/update-password">
-      @csrf
-    <div class="mb-3 row">
-      <label for="" class="col-sm-3 col-form-label align-self-center">Password</label>
-      <div class="col-sm-9">
-          <input type="password" name="password" class="form-control" id="password" value="">
+    @csrf
+      <div class="row p-5">
+        <div class="text-center">
+          <div class="mb-3 row">
+            <label for="" class="col-sm-3 col-form-label align-self-center">Password</label>
+            <div class="col-sm-9">
+                <input type="password" name="password" class="form-control" id="password" value="">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="" class="col-sm-3 col-form-label align-self-center">Confirm Password</label>
+            <div class="col-sm-9">
+                <input type="password" name="confirmPassword" class="form-control" id="password" value="" >
+            </div>
+          </div>
+          <div class="text-center mx-2">
+            <button type="submit"  name="passwordUpdate" class="btn btn-primary" id="edit">Update Password</button>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="mb-3 row">
-      <label for="" class="col-sm-3 col-form-label align-self-center">Confirm Password</label>
-      <div class="col-sm-9">
-          <input type="password" name="confirmPassword" class="form-control" id="password" value="" >
-      </div>
-    </div>
-    <div class="text-center mx-2">
-      <button type="submit"  name="passwordUpdate" class="btn btn-primary" id="edit">Update Password</button>
-    </div>
-  </form>
+    </form>
       <script>
         // Get the edit button element
         var editButton = document.getElementById("edit");

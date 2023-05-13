@@ -94,41 +94,41 @@ class TenantListController extends Controller
         return redirect()->back()->with('success', 'Tenant information updated successfully');
     }
 
-    public function updateTenantData2(Request $request){
-        $id = $request->input('id');
+    //public function updateTenantData2(Request $request){
+    //    $id = $request->input('id');
 
-        $db = DB::table('rentstall')
-        ->where('emailadd', '=', Auth::user()->email)
-        ->update([
-            'fullname' => $request->input('fullname'),
-            'dateofbirth' => $request->input('dateofbirth'),
-            'address' => $request->input('address'),
-            'contact' => $request->input('contact'),
-            'emailadd' => $request->input('emailadd'),
-            'stalltype' => $request->input('stalltype'),
-            'stallname' => $request->input('stallname'),
-            'payment' => $request->input('payment'),
-            'amount' => $request->input('amount'),
-            'selectedStallTextbox' => $request->input('selectedStallTextbox'),
-            'totalamount' => $request->input('totalamount'),
-        ]);
+//        $db = DB::table('rentstall')
+//        ->where('emailadd', '=', Auth::user()->email)
+//        ->update([
+//            'fullname' => $request->input('fullname'),
+//            'dateofbirth' => $request->input('dateofbirth'),
+//            'address' => $request->input('address'),
+//            'contact' => $request->input('contact'),
+//            'emailadd' => $request->input('emailadd'),
+//            'stalltype' => $request->input('stalltype'),
+//            'stallname' => $request->input('stallname'),
+//            'payment' => $request->input('payment'),
+//            'amount' => $request->input('amount'),
+//            'selectedStallTextbox' => $request->input('selectedStallTextbox'),
+//            'totalamount' => $request->input('totalamount'),
+//        ]);
 
-        if($request->hasFile('image')){
-            $rent = DB::table('rentstall')->where('emailadd', '=', Auth::user()->email)->first();
+//        if($request->hasFile('image')){
+//            $rent = DB::table('rentstall')->where('emailadd', '=', Auth::user()->email)->first();
 
             // File::delete('public/img/' . $rent->image);
 
-            $image = $request->file('image');
-            $filename = $image->getClientOriginalName();
-            $image->move(public_path('public/img'), $filename);
+//            $image = $request->file('image');
+//            $filename = $image->getClientOriginalName();
+//            $image->move(public_path('public/img'), $filename);
 
-            DB::table('rentstall')
-            ->where('emailadd', '=', Auth::user()->email)
-            ->update(['image' => $filename,]);
-        }
+//            DB::table('rentstall')
+//            ->where('emailadd', '=', Auth::user()->email)
+//            ->update(['image' => $filename,]);
+//        }
 
-        return redirect()->back()->with('success', 'Tenant information updated successfully');
-    }
+//        return redirect()->back()->with('success', 'Tenant information updated successfully');
+//    }
 
     public function postBill(Request $request) {
         $model = new TenantBills();
