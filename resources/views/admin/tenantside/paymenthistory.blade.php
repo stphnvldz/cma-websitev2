@@ -15,7 +15,7 @@
             <tr>
                 <th scope="col">Stall Number</th>
                 <th scope="col">Contact Number</th>
-                <th scope="col">Type of Payment</th>
+                <th scope="col">Rental Fee Type</th>
                 <th scope="col">Amount</th>
                 <th scope="col">Date From</th>
                 <th scope="col">Date To</th>

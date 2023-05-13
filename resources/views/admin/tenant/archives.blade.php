@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>LIST OF TENANTS</title>
+    <title>List of Archive Tenants</title>
 
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -27,6 +27,7 @@
                     <th scope="col">Full Name</th>
                     <th scope="col">Contact Number</th>
                     <th scope="col">Email Address</th>
+                    <th scope="col">Selected Stall Number</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,7 +37,7 @@
                             <td>{{ $rents->fullname }}</td>
                             <td>{{ $rents->contact }}</td>
                             <td>{{ $rents->emailadd }}</td>
-
+                            <td>{{$rents->selectedStallTextbox}}</td>
                         </tr>
                     @endforeach
                 @endif

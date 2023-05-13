@@ -11,20 +11,20 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Ui\Presets\React;
 
 class TenantListController extends Controller
 {//pag show ng lists
+
     public function index()
     {
         $rent = DB::table('rentstall')->select('id','fullname','contact', 'emailadd', 'payment','totalamount')
             ->where('is_archived', '=', '0')
             ->get();
 
-        return view('admin.tenantlists', compact('rent'));
+        return view('admin.tenant.tenantlists', compact('rent'));
     }
-
-
 
     public function viewTenantData(Request $request){
         $id = $request->input('id');
@@ -33,7 +33,7 @@ class TenantListController extends Controller
         ->where('id', '=', $id)
         ->first();
 
-        return view('admin.viewtenant', ['data' => $db]);
+        return view('admin.tenant.viewtenant', ['data' => $db]);
     }
 
     public function updateTenantData(Request $request){
@@ -55,18 +55,40 @@ class TenantListController extends Controller
             'totalamount' => $request->input('totalamount'),
         ]);
 
+        // Get the current photo to delete later
+        $photo = DB::table('rentstall')
+            ->select('rentstall.image')
+            ->where('id', '=', $id)
+            ->first();
+
+        $maxSize = 2 * 1024 * 1024;
         if($request->hasFile('image')){
-            $rent = DB::table('rentstall')->where('id', '=', $id)->first();
+            $size = $request->file('image')->getSize();
+            if($size > $maxSize){
+                return redirect('/viewtenant');
+                die();
+            }
+        }
 
-            File::delete('public/img/' . $rent->image);
-
+        if($request->hasFile('image')){
+            $destinationPath = 'public/images';
             $image = $request->file('image');
-            $filename = $image->getClientOriginalName();
-            $image->move(public_path('public/img'), $filename);
+            $extension = $image->getClientOriginalExtension();
+            $imageName = $photo->image . '.' . $extension;
 
+            if(Storage::exists($destinationPath.'/'.$imageName)){
+                Storage::delete($destinationPath.'/'.$imageName);
+            }
+
+            $path = $request->file('image')->storeAs($destinationPath, $imageName);
+            
             DB::table('rentstall')
             ->where('id', '=', $id)
-            ->update(['image' => $filename,]);
+            ->update(['image' => $imageName,]);
+            
+        } else {
+            return redirect('/viewtenant');
+            die();
         }
 
         return redirect()->back()->with('success', 'Tenant information updated successfully');
@@ -119,7 +141,7 @@ class TenantListController extends Controller
         $model->status =  ("Pending"); // pending
         $model->save();
 
-        return Redirect::back()->with('message','Operation Successful !');
+        return Redirect::back()->with('message','Tenant billed!');
     }
 
     public function postAllBill(Request $request) {
@@ -142,7 +164,7 @@ class TenantListController extends Controller
             }
 
             DB::commit();
-            return Redirect::back()->with('message','Operation Successful!');
+            return Redirect::back()->with('message','All tenants have been billed!');
         } catch (Exception $e) {
             DB::rollback();
             return Redirect::back()->with('message', $e->getMessage());
@@ -156,7 +178,7 @@ class TenantListController extends Controller
         $result = RentStall::find($id);
         $result->is_archived = 1;
         $result->save();
-        return Redirect::back()->with('message','Operation Successful !');
+        return Redirect::back()->with('message','Tenant archived!');
     }
     //paglagay ng laman sa bill reports
     public function billRep()

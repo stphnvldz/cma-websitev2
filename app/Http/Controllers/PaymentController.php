@@ -22,13 +22,25 @@ class PaymentController extends Controller
         $payment->dateto = $request->input('dateto');
         $payment->payment = $request->input('payment');
         $payment->refnumber = $request->input('refnumber');
-        $payment->status= $request->input('status');
+        $payment->status= ("Pending");
         $payment->email= Auth::user()->email;
 
-        if ($request->hasFile('image')) {
+        $maxSize = 2 * 1024 * 1024;
+        if($request->hasFile('image')){
+            $size = $request->file('image')->getSize();
+            if($size > $maxSize){
+                return redirect('/rent');
+                die();
+            }
+        }
+        
+        $payment->image = 'blank.jpg';
+        if($request->hasFile('image')){
+            $destinationPath = 'public/images';
             $image = $request->file('image');
-            $filename = $image->getClientOriginalName();
-            $image->move(public_path('public/img'), $filename);
+            $extension = $image->getClientOriginalExtension();
+            $filename = $payment->fullname . '.' . $extension;
+            $path = $request->file('image')->storeAs($destinationPath, $filename);
             $payment->image = $filename;
         }
 

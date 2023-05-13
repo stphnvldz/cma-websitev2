@@ -13,9 +13,10 @@
 <body>
 
 @section('content')
-
+            
             <div class="d-flex justify-content-center row p-3">
               <div class="col-6">
+                <h5>Tenant Information</h5>
                 <div class="mb-3 row">
                   <label for="inputName4" class="col-sm-3 col-form-label align-self-center">Full Name</label>
                   <div class="col-sm-9">
@@ -49,8 +50,9 @@
                 </div>
               </div>
               <div class="col-6">
+                <h5>Stall Information</h5>
                 <div class="mb-3 row">
-                  <label for="inputFloor" class="col-sm-3 col-form-label align-self-center">Stall Type</label>
+                  <label for="inputFloor" class="col-sm-3 col-form-label align-self-center">Tenant Type</label>
                   <div class="col-sm-9">
                       <select id="stalltypet" name="stalltypet" class="form-select">
                           <option selected>Choose...</option>
@@ -66,7 +68,7 @@
                   </div>
                 </div>
                 <div class="mb-3 row">
-                  <label for="inputFloor" class="col-sm-3 col-form-label align-self-center">Type of Payment</label>
+                  <label for="inputFloor" class="col-sm-3 col-form-label align-self-center">Rental Fee Type</label>
                   <div class="col-sm-9">
                       <select id="paymentt" name="paymentt" class="form-select">
                           <option selected>Choose...</option>
@@ -76,7 +78,7 @@
                   </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="inputStallAmount" class="col-sm-3 col-form-label align-self-center">Amount of Stall</label>
+                    <label for="inputStallAmount" class="col-sm-3 col-form-label align-self-center">Stall Fee</label>
                     <div class="col-sm-9">
                         <input type="text" name="amountt" class="form-control" id="amountt" readonly>
                     </div>
@@ -112,7 +114,7 @@
                   </div>
                 </div>
                 <div class="mb-3 mt-3 row">
-                  <label for="inputName" class="col-sm-3 col-form-label align-self-center">Total Amount of Stall</label>
+                  <label for="inputName" class="col-sm-3 col-form-label align-self-center">Total Stall Fee</label>
                   <div class="col-sm-9">
                       <input type="text" class="form-control" name="totalamountt" id="totalamountt" readonly>
                   </div>
