@@ -11,8 +11,8 @@
 
     <style type="text/css">
       .photo2b2{
-        max-width: 200px;
-        min-height: 200px;
+        max-width: 300px;
+        min-height: 300px;
         object-fit:cover;
         border-radius: 10px;
       }
@@ -57,27 +57,26 @@
           <div class="row p-5">
             <div class="col-6">
               <div class="d-flex flex-column align-items-center">
-                <img src="/public/img/{{ $data->image }}" alt="Image" class="photo2b2 mt-5 mb-3">
-                <input class="text-center form-control" name="image" type="file" id="image" style="height: 38px; width: 20rem;" disabled>
+                <img src="{{ asset('/storage/images/'.$data->image)}}" alt="Image" class="photo2b2 mt-5 mb-3">
               </div>
             </div>
             <div class="col-6">
               <div class="mb-3 row">
                 <label for="inputName4" class="col-sm-4 col-form-label align-self-center">Item Name</label>
                 <div class="col-sm-10">
-                  <input type="text" name="itemname" class="form-control" id="itemName" style="width: 560px" disabled value="{{ $data->itemname }}">
+                  <input type="text" name="itemname" class="form-control" id="itemName" style="width: 560px" readonly value="{{ $data->itemname }}">
                 </div>
               </div>
               <div class="mb-3 row">
                 <label for="inputDateoflost" class="col-sm-4 col-form-label align-self-center">Date of Lost</label>
                 <div class="col-sm-10">
-                  <input type="dateoflost" name="dateoflost" class="form-control" id="dateoflost" style="width: 560px" disabled value="{{ $data->dateoflost }}">
+                  <input type="dateoflost" name="dateoflost" class="form-control" id="dateoflost" style="width: 560px" readonly value="{{ $data->dateoflost }}">
                 </div>
               </div>
               <div class="mb-3 row">
                 <label for="inputDescription" class="col-sm-4 col-form-label align-self-center">Description</label>
                 <div class="col-sm-10">
-                  <input type="description" name="description" class="form-control" id="description" style="width: 560px" value="{{ $data->description }}" disabled>
+                  <input type="description" name="description" class="form-control" id="description" style="width: 560px" value="{{ $data->description }}" readonly>
                 </div>
               </div>
               <div class="mb-3 row">
@@ -107,19 +106,11 @@
             var editButton = document.getElementById("edit");
                     
             // Get the input elements
-            var itemInput = document.getElementById("itemName");
-            var imageInput = document.getElementById("image");
-            var dateoflostInput = document.getElementById("dateoflost");
-            var descriptionInput = document.getElementById("description");
             var statusOption = document.getElementById("status");
             var saveButton = document.getElementById("saveB");
             // Add an event listener to the edit button
             editButton.addEventListener("click", function() {
               // Enable the input fields
-              imageInput.removeAttribute("disabled");
-              itemInput.removeAttribute("disabled");
-              dateoflostInput.removeAttribute("disabled");
-              descriptionInput.removeAttribute("disabled");
               statusOption.removeAttribute("disabled");
               saveButton.removeAttribute("disabled");
             });

@@ -15,10 +15,22 @@ class LostFoundController extends Controller
         $lostfound->description = $request->input('description');
         $lostfound->status = $request->input('status');
         
-        if ($request->hasFile('image')) {
+        $maxSize = 2 * 1024 * 1024;
+        if($request->hasFile('image')){
+            $size = $request->file('image')->getSize();
+            if($size > $maxSize){
+                return redirect('/rent');
+                die();
+            }
+        }
+        
+        $lostfound->image = 'blank.jpg';
+        if($request->hasFile('image')){
+            $destinationPath = 'public/images';
             $image = $request->file('image');
-            $filename = time().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('public/img'), $filename);
+            $extension = $image->getClientOriginalExtension();
+            $filename = $lostfound->itemname . '.' . $extension;
+            $path = $request->file('image')->storeAs($destinationPath, $filename);
             $lostfound->image = $filename;
         }
 
@@ -48,25 +60,8 @@ class LostFoundController extends Controller
         $db = DB::table('lostandfound')
         ->where('id', '=', $id)
         ->update([
-            'itemname' => $request->input('itemname'),
-            'dateoflost' => $request->input('dateoflost'),
-            'description' => $request->input('description'),
             'status' => $request->input('status'),
         ]);
-
-        if($request->hasFile('image')){
-            $lostfound = DB::table('lostandfound')->where('id', '=', $id)->first();
-
-            File::delete('public/img/' . $lostfound->image);
-
-            $image = $request->file('image');
-            $filename = $image->getClientOriginalName();
-            $image->move(public_path('public/img'), $filename);
-
-            DB::table('lostandfound')
-            ->where('id', '=', $id)
-            ->update(['image' => $filename,]);
-        }
 
         return redirect()->back()->with('success', 'Item information updated successfully');
     }

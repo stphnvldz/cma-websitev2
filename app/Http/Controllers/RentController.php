@@ -34,7 +34,7 @@ class RentController extends Controller
                 $formattedStallNumbers[$value['id']][] = $value['stallnumber'];
             }
 
-        return view('admin.rent', ['floors' => $floors , 'stallNumbers' => $formattedStallNumbers]);
+        return view('admin.tenant.rent', ['floors' => $floors , 'stallNumbers' => $formattedStallNumbers]);
     }
 
     public function renting(Request $request){
@@ -45,10 +45,22 @@ class RentController extends Controller
         $rent->contact = $request->input('contact');
         $rent->emailadd = $request->input('emailadd');
 
-        if ($request->hasFile('image')) {
+        $maxSize = 2 * 1024 * 1024;
+        if($request->hasFile('image')){
+            $size = $request->file('image')->getSize();
+            if($size > $maxSize){
+                return redirect('/rent');
+                die();
+            }
+        }
+
+        $rent->image = 'blank.jpg';
+        if($request->hasFile('image')){
+            $destinationPath = 'public/images';
             $image = $request->file('image');
-            $filename = $image->getClientOriginalName();
-            $image->move(public_path('public/img'), $filename);
+            $extension = $image->getClientOriginalExtension();
+            $filename = $rent->fullname . '.' . $extension;
+            $path = $request->file('image')->storeAs($destinationPath, $filename);
             $rent->image = $filename;
         }
 

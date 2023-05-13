@@ -9,8 +9,8 @@
     <title>LIST OF TENANTS</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -23,30 +23,33 @@
                 <p class="alert {{ Session::get('alert-class', 'alert-success') }}">{{ Session::get('message') }}</p>
                 <div>
         @endif
-
+        
 
         <div class="d-flex justify-content-end">
             <form class="d-flex" role="search">
-                <input type="text" class="mt-2 mx-2" id="search" name="search" style="width: 400px; height: 40px;"
-                    placeholder="Search">
-                <button type="button" class="btn btn-outline-success me-2 mt-2" style="height: 40px;" type="submit">Sort</button>
-                <button type="button" class="btn btn-outline-success bill-button bill-btn" style="height: 40px;" data-bs-toggle="modal"
-                        data-bs-target="#AllBillModal">All Bills</button>
+                <input type="text" class="mt-2 mx-2" id="search" name="search" style="width: 400px; height: 40px;"placeholder="Search">
             </form>
         </div>
 
+
         <table class="table table-hover table-striped" id="rentstall">
+            <div class="d-flex justify-content-center text-center row p-3">
+                <h3>List of Tenants</h3>
             <thead>
                 <tr>
+                    <th scope="col">ID</th>
                     <th scope="col">Full Name</th>
                     <th scope="col">Contact Number</th>
                     <th scope="col">Email Address</th>
+                    <th scope="col">Actions</th>
+                    <th scope="col"><button type="button" class="btn btn-outline-success bill-button bill-btn" data-bs-toggle="modal"data-bs-target="#AllBillModal">All Bills</button></th>
                 </tr>
             </thead>
             <tbody>
                 @if (isset($rent))
                     @foreach ($rent as $rents)
                         <tr>
+                            <td>{{ $rents-> id }}</td>
                             <td>{{ $rents->fullname }}</td>
                             <td>{{ $rents->contact }}</td>
                             <td>{{ $rents->emailadd }}</td>
@@ -222,6 +225,17 @@
         </div>
 
     </body>
+
+    <script>
+    // Search filter for the table
+        $('#search').on('keyup', function() {
+          var value = $(this).val().toLowerCase();
+          $('#rentstall tbody tr').filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+    </script>
+
     <script>
         $(document).ready(function() {
             function resetModal() {
@@ -252,6 +266,7 @@
 
     </script>
 
+    <script src="assets/js/bootstrap.js"></script>
 
     </html>
 @endsection

@@ -29,7 +29,7 @@
   <div class="row p-5">
     <div class="text-center col-6">
       <div class="d-flex flex-column align-items-center">
-        <img src="/public/img/{{ $data->image }}" alt="Image" class="photo2b2 mt-5 mb-3">
+        <img src="{{ asset('/storage/images/'.$data->image)}}" alt="Image" class="photo2b2 mt-5 mb-3">
         <input class="text-center form-control" name="image" type="file" id="image" style="height: 38px; width: 20rem;" disabled>
       </div>
       <div class="mb-3 mt-2 row">

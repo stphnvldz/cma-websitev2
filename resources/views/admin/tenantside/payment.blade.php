@@ -43,7 +43,7 @@
                   </div>
               </div>
               <div class="mb-4 row">
-                <label for="inputPayment4" class="col-sm-4 col-form-label align-self-center">Type of Payment</label>
+                <label for="inputPayment4" class="col-sm-4 col-form-label align-self-center">Rental Fee Type</label>
                 <div class="col-sm-8">
                   <input type="text" name="type" class="form-control" id="type" readonly value="{{ $data->payment }}">
                 </div>
@@ -64,7 +64,6 @@
                 <label for="inputPayment4" class="col-sm-4 col-form-label align-self-center">Date To</label>
                 <div class="col-sm-8">
                   <input type="text" name="dateto" class="form-control" id="dateto" readonly value="{{ $data->date_to }}">
-                  <input type="hidden" name="status" class="form-control" id="status" value="Pending">
                 </div>
               </div>
           </div>

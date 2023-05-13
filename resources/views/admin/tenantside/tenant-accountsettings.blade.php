@@ -9,6 +9,16 @@
     <title>Account Settings</title>
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style type="text/css">
+      .photo2b2{
+        max-width: 200px;
+        min-height: 200px;
+        object-fit:cover;
+        border-radius: 10px;
+      }
+    </style>
+
 </head>
 <body>
 @section('content')
@@ -30,7 +40,7 @@
         <h1>Account Settings</h1>
         <div class="text-center col-6">
           <div class="d-flex flex-column align-items-center">
-          <img src="/public/img/{{$info->image}}" alt="Image" class="photo2b2 mt-5 mb-3" style="width: 500px">
+          <img src="{{ asset('/storage/images/'.$info->image)}}" alt="Image" class="photo2b2 mt-5 mb-3" style="width: 500px">
             <input class="text-center form-control" name="image" type="file" id="image" style="height: 38px; width: 20rem;">
           </div>
           <div class="mb-3 mt-2 row">
