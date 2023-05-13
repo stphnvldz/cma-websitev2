@@ -125,7 +125,7 @@ Route::middleware([isTenant::class, 'auth'])->group(function () {
         $tenant->save();
         return redirect()->back()->with('success', 'Tenant information updated successfully!');
     });
-    Route::post('/tenant/update2', [App\Http\Controllers\TenantListController::class,'updateTenantData2'])->name('updateTenantData2');
+    //Route::post('/tenant/update2', [App\Http\Controllers\TenantListController::class,'updateTenantData2'])->name('updateTenantData2');
     //Route::get('/tenant-activitylog', function () {return view('admin.tenantside.tenant-activitylog');});
 
     //paymemt
