@@ -27,7 +27,6 @@
         <main>
         @yield('content')
         </main>
-        @include('layouts.inc.admin-footer')
     </div>
 
 </div>
