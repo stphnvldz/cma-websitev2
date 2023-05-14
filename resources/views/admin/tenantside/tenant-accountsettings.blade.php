@@ -34,8 +34,8 @@
     </div>
 @endif
 
-<form method="POST" action="/tenant/update2" enctype="multipart/form-data">
-    @csrf
+{{--<form method="POST" action="/tenant/update2" enctype="multipart/form-data">
+    @csrf--}}
     <div class="row p-5">
         <h1>Account Settings</h1>
         <div class="text-center col-6">
@@ -138,7 +138,7 @@
   </div>
 </div>
 </div>
-</form>
+{{--</form>--}}
       <script>
         // Get the edit button element
         var editButton = document.getElementById("edit");

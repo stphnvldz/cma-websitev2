@@ -38,6 +38,8 @@ class RentController extends Controller
     }
 
     public function renting(Request $request){
+        
+
         $rent = new RentStall();
         $rent->fullname = $request->input('fullname');
         $rent->dateofbirth = $request->input('dateofbirth');

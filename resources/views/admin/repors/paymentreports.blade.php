@@ -21,7 +21,7 @@
     </div>
     
 <div class="payment-table">
-    <table class="table table-hover table-striped" id="printTable">
+    <table class="table table-hover table-striped" id="rentstall">
         <thead>
             <tr>
                 <th scope="col">ID</th>

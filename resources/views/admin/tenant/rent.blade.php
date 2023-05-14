@@ -182,7 +182,7 @@
               <div class="mb-3 row">
                   <label for="formFile" class="col-sm-3 col-form-label align-self-center">Upload a Photo</label>
                   <div class="col-sm-9 d-flex align-items-center"> 
-                      <input class="d-flex justify-content-center form-control" name="image" type="file" id="image" style="height: 38px;">
+                      <input class="d-flex justify-content-center form-control" name="image" type="file" id="image" style="height: 38px;" required>
                       {{--<img src="" id="image" style="max-width: 100%; max-height: 200px;"/><br><br>--}}
                   </div>
               </div>
