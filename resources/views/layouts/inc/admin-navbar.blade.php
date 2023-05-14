@@ -53,7 +53,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li>
-                        <a class="dropdown-item" href="/tenant-accountsettings">Settings</a>
+                        <a class="dropdown-item" href="/admin-accountsettings">Settings</a>
                     </li>
                     {{--<li>
                         <a class="dropdown-item" href="/tenant-activitylog">Activity Log</a>

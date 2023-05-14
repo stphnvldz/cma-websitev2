@@ -21,23 +21,14 @@ class LostandfoundTableSeeder extends Seeder
         \DB::table('lostandfound')->insert(array (
             0 => 
             array (
-                'created_at' => '2023-04-22 15:41:43',
-                'dateoflost' => '04/22/2023',
-                'description' => 'Brown bag with scarf at mukhang mamahalin at mabilis mag sold out.',
                 'id' => 1,
-                'image' => '1682178103.jpeg',
                 'itemname' => 'Bag',
-                'updated_at' => '2023-04-22 15:41:43',
-            ),
-            1 => 
-            array (
-                'created_at' => '2023-04-22 16:11:58',
-                'dateoflost' => '04/23/2023',
-                'description' => 'Mukhang mamahalin at nag sold out agad kaya yung gumawa hindi nakabili at bumili na lang ng ibang mood lamp sa shopee',
-                'id' => 2,
-                'image' => '1682179918.png',
-                'itemname' => 'Mikrokosmos Mood Lamp',
-                'updated_at' => '2023-04-22 16:11:58',
+                'dateoflost' => '05/13/2023',
+                'description' => 'Brown bag with scarf at mukhang mamahalin at mabilis mag sold out.',
+                'image' => 'Bag.jpg',
+                'status' => 'Found',
+                'created_at' => '2023-05-13 13:04:54',
+                'updated_at' => '2023-05-13 13:04:54',
             ),
         ));
         

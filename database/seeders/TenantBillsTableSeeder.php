@@ -58,6 +58,19 @@ class TenantBillsTableSeeder extends Seeder
                 'created_at' => '2023-05-13 06:44:00',
                 'updated_at' => '2023-05-13 06:44:00',
             ),
+            3 => 
+            array (
+                'id' => 4,
+                'rentstall_id' => 1,
+                'notice' => 'Advance Monthly Bill',
+                'description' => 'Pay or pay?!',
+                'date_from' => '2023-06-01',
+                'date_to' => '2023-06-30',
+                'amount' => '4000',
+                'status' => 'Paid',
+                'created_at' => '2023-05-14 03:48:38',
+                'updated_at' => '2023-05-14 03:48:38',
+            ),
         ));
         
         

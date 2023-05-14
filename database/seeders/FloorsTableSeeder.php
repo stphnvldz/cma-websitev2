@@ -21,27 +21,19 @@ class FloorsTableSeeder extends Seeder
         \DB::table('floors')->insert(array (
             0 => 
             array (
-                'created_at' => '2023-03-23 09:30:10',
-                'floordes' => 'Wet and Dry Market',
-                'floornumber' => '1st Floor',
                 'id' => 1,
-                'updated_at' => '2023-03-23 09:30:10',
+                'floornumber' => '1st Floor',
+                'floordes' => 'Wet and Dry Market',
+                'created_at' => '2023-05-13 04:59:12',
+                'updated_at' => '2023-05-13 04:59:12',
             ),
             1 => 
             array (
-                'created_at' => '2023-03-23 10:39:15',
-                'floordes' => 'Necessities',
-                'floornumber' => '2nd Floor',
                 'id' => 2,
-                'updated_at' => '2023-03-23 10:39:15',
-            ),
-            2 => 
-            array (
-                'created_at' => '2023-03-23 11:18:04',
-                'floordes' => 'Others',
-                'floornumber' => '3rd Floor',
-                'id' => 3,
-                'updated_at' => '2023-03-23 11:18:04',
+                'floornumber' => '2nd Floor',
+                'floordes' => 'Necessities',
+                'created_at' => '2023-05-13 04:59:19',
+                'updated_at' => '2023-05-13 04:59:19',
             ),
         ));
         

@@ -39,7 +39,7 @@ class PaymentController extends Controller
             $destinationPath = 'public/images';
             $image = $request->file('image');
             $extension = $image->getClientOriginalExtension();
-            $filename = $payment->fullname . '.' . $extension;
+            $filename = $payment->id . '.' . $extension;
             $path = $request->file('image')->storeAs($destinationPath, $filename);
             $payment->image = $filename;
         }

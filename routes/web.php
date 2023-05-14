@@ -25,7 +25,6 @@ Auth::routes();
 Route::middleware([isAdmin::class, 'auth'])->group(function () {
     //navbar
     Route::get('/dashboard', [App\Http\Controllers\Admin\DasboardController::class, 'index']);
-    Route::get('/admin-accountsettings', function () {return view('admin.admin-accountsettings');});
     Route::get('/admin-accountsettings', function () {
         $admin = User::where([['users.email', '=', Auth::user()->email]])
             ->first();

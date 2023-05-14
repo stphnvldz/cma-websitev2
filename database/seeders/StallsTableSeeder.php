@@ -21,83 +21,91 @@ class StallsTableSeeder extends Seeder
         \DB::table('stalls')->insert(array (
             0 => 
             array (
-                'created_at' => '2023-04-01 15:50:43',
-                'floornumber' => '1st Floor',
                 'id' => 1,
+                'floornumber' => '1st Floor',
                 'stallnumber' => '1-001',
-                'updated_at' => '2023-04-01 15:50:43',
+                'created_at' => '2023-05-13 04:59:28',
+                'updated_at' => '2023-05-13 04:59:28',
             ),
             1 => 
             array (
-                'created_at' => '2023-04-01 15:50:49',
-                'floornumber' => '1st Floor',
                 'id' => 2,
+                'floornumber' => '1st Floor',
                 'stallnumber' => '1-002',
-                'updated_at' => '2023-04-01 15:50:49',
+                'created_at' => '2023-05-13 04:59:34',
+                'updated_at' => '2023-05-13 04:59:34',
             ),
             2 => 
             array (
-                'created_at' => '2023-04-01 15:50:54',
-                'floornumber' => '1st Floor',
                 'id' => 3,
+                'floornumber' => '1st Floor',
                 'stallnumber' => '1-003',
-                'updated_at' => '2023-04-01 15:50:54',
+                'created_at' => '2023-05-13 04:59:41',
+                'updated_at' => '2023-05-13 04:59:41',
             ),
             3 => 
             array (
-                'created_at' => '2023-04-01 15:50:58',
-                'floornumber' => '2nd Floor',
                 'id' => 4,
-                'stallnumber' => '2-001',
-                'updated_at' => '2023-04-01 15:50:58',
+                'floornumber' => '1st Floor',
+                'stallnumber' => '1-004',
+                'created_at' => '2023-05-13 04:59:47',
+                'updated_at' => '2023-05-13 04:59:47',
             ),
             4 => 
             array (
-                'created_at' => '2023-04-01 15:51:03',
-                'floornumber' => '2nd Floor',
                 'id' => 5,
-                'stallnumber' => '2-002',
-                'updated_at' => '2023-04-01 15:51:03',
+                'floornumber' => '1st Floor',
+                'stallnumber' => '1-005',
+                'created_at' => '2023-05-13 04:59:53',
+                'updated_at' => '2023-05-13 04:59:53',
             ),
             5 => 
             array (
-                'created_at' => '2023-04-01 15:51:07',
-                'floornumber' => '3rd Floor',
                 'id' => 6,
-                'stallnumber' => '3-001',
-                'updated_at' => '2023-04-01 15:51:07',
+                'floornumber' => '1st Floor',
+                'stallnumber' => '1-006',
+                'created_at' => '2023-05-13 04:59:58',
+                'updated_at' => '2023-05-13 04:59:58',
             ),
             6 => 
             array (
-                'created_at' => '2023-04-17 03:05:59',
-                'floornumber' => '4th Floor',
-                'id' => 10,
-                'stallnumber' => '4-001',
-                'updated_at' => '2023-04-17 03:05:59',
+                'id' => 7,
+                'floornumber' => '1st Floor',
+                'stallnumber' => '1-007',
+                'created_at' => '2023-05-13 05:00:03',
+                'updated_at' => '2023-05-13 05:00:03',
             ),
             7 => 
             array (
-                'created_at' => '2023-04-14 05:26:54',
-                'floornumber' => '1st Floor',
                 'id' => 8,
-                'stallnumber' => '1-004',
-                'updated_at' => '2023-04-14 05:26:54',
+                'floornumber' => '1st Floor',
+                'stallnumber' => '1-008',
+                'created_at' => '2023-05-13 05:00:09',
+                'updated_at' => '2023-05-13 05:00:09',
             ),
             8 => 
             array (
-                'created_at' => '2023-04-16 02:58:26',
-                'floornumber' => '3rd Floor',
                 'id' => 9,
-                'stallnumber' => '3-002',
-                'updated_at' => '2023-04-16 02:58:26',
+                'floornumber' => '1st Floor',
+                'stallnumber' => '1-009',
+                'created_at' => '2023-05-13 05:00:15',
+                'updated_at' => '2023-05-13 05:00:15',
             ),
             9 => 
             array (
-                'created_at' => '2023-04-17 03:06:59',
-                'floornumber' => '3rd Floor',
-                'id' => 12,
-                'stallnumber' => '3-003',
-                'updated_at' => '2023-04-17 03:06:59',
+                'id' => 10,
+                'floornumber' => '1st Floor',
+                'stallnumber' => '1-010',
+                'created_at' => '2023-05-13 05:00:21',
+                'updated_at' => '2023-05-13 05:00:21',
+            ),
+            10 => 
+            array (
+                'id' => 11,
+                'floornumber' => '1st Floor',
+                'stallnumber' => '1-011',
+                'created_at' => '2023-05-13 12:17:08',
+                'updated_at' => '2023-05-13 12:17:08',
             ),
         ));
         

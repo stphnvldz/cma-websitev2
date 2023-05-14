@@ -65,7 +65,7 @@
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="inputFloor" class="col-sm-3 col-form-label align-self-center">Stall Type</label>
+        <label for="inputFloor" class="col-sm-3 col-form-label align-self-center">Tenant Type</label>
         <div class="col-sm-9">
             <input type="text" name="stalltype" class="form-control" id="stalltype" value="{{ $data->stalltype }}" disabled>
         </div>
@@ -77,13 +77,13 @@
         </div>
     </div>
     <div class="mb-3 row">
-        <label for="inputFloor" class="col-sm-3 col-form-label align-self-center">Type of Payment</label>
+        <label for="inputFloor" class="col-sm-3 col-form-label align-self-center">Rental Fee Type</label>
         <div class="col-sm-9">
             <input type="text" name="payment" class="form-control" id="payment" value="{{ $data->payment }}" disabled>
         </div>
     </div>
     <div class="mb-3 row">
-        <label for="inputStallAmount" class="col-sm-3 col-form-label align-self-center">Amount of Stall</label>
+        <label for="inputStallAmount" class="col-sm-3 col-form-label align-self-center">Stall Fee</label>
         <div class="col-sm-9">
             <input type="text" name="amount" class="form-control" id="amount" value="{{ $data->amount }}" disabled>
         </div>
@@ -95,7 +95,7 @@
         </div>
     </div>
     <div class="mb-3 mt-3 row">
-        <label for="inputName" class="col-sm-3 col-form-label align-self-center">Total Amount of Stall</label>
+        <label for="inputName" class="col-sm-3 col-form-label align-self-center">Total Stall Fee</label>
         <div class="col-sm-9">
             <input type="text" class="form-control" name="totalamount" id="totalamount" value="{{ $data->totalamount }}" disabled>
         </div>
