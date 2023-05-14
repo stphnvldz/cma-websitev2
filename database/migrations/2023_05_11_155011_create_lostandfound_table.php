@@ -19,7 +19,7 @@ class CreateLostandfoundTable extends Migration
             $table->string('dateoflost');
             $table->string('description');
             $table->mediumText('image')->nullable();
-            $table->string('status');
+            $table->string('status')->default("Lost");
             $table->timestamps();
         });
     }
