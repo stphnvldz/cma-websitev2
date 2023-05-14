@@ -108,7 +108,6 @@
                         <i class="fa fa-phone"></i>
                         <span>
                             <h5>09123456789</h5>
-                            <p>Monday to Friday, 7:00 AM - 5:00 PM</p>
                         </span>
                     </div>
                     <div>

@@ -21,16 +21,17 @@
                 <div>
         @endif
 
-        <table class="table table-hover table-striped" id="rentstall">
-            <thead>
+        <div class="table-responsive">
+            <table class="table table-hover table-striped" id="rentstall">
+              <thead>
                 <tr>
-                    <th scope="col">Full Name</th>
-                    <th scope="col">Contact Number</th>
-                    <th scope="col">Email Address</th>
-                    <th scope="col">Selected Stall Number</th>
+                  <th scope="col">Full Name</th>
+                  <th scope="col">Contact Number</th>
+                  <th scope="col">Email Address</th>
+                  <th scope="col">Selected Stall Number</th>
                 </tr>
-            </thead>
-            <tbody>
+              </thead>
+              <tbody>
                 @if (isset($rent))
                     @foreach ($rent as $rents)
                         <tr>
