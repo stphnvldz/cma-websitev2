@@ -15,39 +15,50 @@
 <body>
 @section('content')
 
-<div class="d-flex justify-content-end">
-  <button type="button" class="btn btn-outline-success me-2 mt-2" data-bs-toggle="modal" data-bs-target="#AddAnnouncement" data-bs-whatever="@AddAnnouncement">Add Announcement</button>
-</div>
-<div class="d-flex justify-content-center">
-  <label for="colFormLabelLg" class="col-sm-3 col-form-label col-form-label-lg">Create Announcement</label>
-</div>
-
-<table class="table table-hover table-striped" style="margin-left: 0px" id="datatable">
-  <thead>
-      <tr>
-          <th scope="col">Event</th>
-          <th scope="col">Description</th>
-          <th scope="col">Actions</th>
-      </tr>
-  </thead>
-  <tbody>
-      @if(isset($ann))
-          @foreach ($ann as $anns)
+<div class="container">
+    <div class="row justify-content-end">
+      <div class="col-auto">
+        <button type="button" class="btn btn-outline-success me-2 mt-2" data-bs-toggle="modal" data-bs-target="#AddAnnouncement" data-bs-whatever="@AddAnnouncement">Add Announcement</button>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12 text-center">
+        <label for="colFormLabelLg" class="col-form-label col-form-label-lg" style="font-weight: bold;">Create Announcement</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="table-responsive">
+          <table class="table table-hover table-striped" id="datatable">
+            <thead>
               <tr>
-                  <td>{{ $anns->eventname }}</td>
-                  <td>{{ $anns->description }}</td>
-                  <td>
-                    <form method="POST" action="{{ route('delete-ann', $anns->id) }}">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" name="delete" class="btn btn-danger"><i class="fa-solid fa-trash fa-xs"></i></button>
-                    </form>
-                  </td>
+                <th scope="col">Event</th>
+                <th scope="col">Description</th>
+                <th scope="col">Actions</th>
               </tr>
-          @endforeach
-      @endif
-  </tbody>
-</table>
+            </thead>
+            <tbody>
+              @if(isset($ann))
+              @foreach ($ann as $anns)
+              <tr>
+                <td>{{ $anns->eventname }}</td>
+                <td>{{ $anns->description }}</td>
+                <td>
+                  <form method="POST" action="{{ route('delete-ann', $anns->id) }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" name="delete" class="btn btn-danger"><i class="fa-solid fa-trash fa-xs"></i></button>
+                  </form>
+                </td>
+              </tr>
+              @endforeach
+              @endif
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 
 {{--modal for add annoucement--}}
 <div class="modal fade" id="AddAnnouncement" tabindex="-1" aria-labelledby="AddAnnouncementLabel" aria-hidden="true">

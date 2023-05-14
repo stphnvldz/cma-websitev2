@@ -53,53 +53,54 @@
 
       <form action="/lostfound/update" method="post" enctype="multipart/form-data">
         @csrf
-          <input type="hidden" name="id" value="{{ $data->id }}">
-          <div class="row p-5">
-            <div class="col-6">
-              <div class="d-flex flex-column align-items-center">
-                <img src="{{ asset('/storage/images/'.$data->image)}}" alt="Image" class="photo2b2 mt-5 mb-3">
-              </div>
+        <input type="hidden" name="id" value="{{ $data->id }}">
+        <div class="container p-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="d-flex flex-column align-items-center">
+                        <img src="{{ asset('/storage/images/'.$data->image)}}" alt="Image" class="photo2b2 mt-5 mb-3">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3 row">
+                        <label for="inputName4" class="col-sm-4 col-form-label align-self-center">Item Name</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="itemname" class="form-control" id="itemName" readonly value="{{ $data->itemname }}">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="inputDateoflost" class="col-sm-4 col-form-label align-self-center">Date of Lost</label>
+                        <div class="col-sm-8">
+                            <input type="dateoflost" name="dateoflost" class="form-control" id="dateoflost" readonly value="{{ $data->dateoflost }}">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="inputDescription" class="col-sm-4 col-form-label align-self-center">Description</label>
+                        <div class="col-sm-8">
+                            <input type="description" name="description" class="form-control" id="description" value="{{ $data->description }}" readonly>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col-sm-8">
+                            <select id="status" name="status" class="form-select" disabled>
+                                <option>Status</option>
+                                <option>Lost</option>
+                                <option>Found</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-6">
-              <div class="mb-3 row">
-                <label for="inputName4" class="col-sm-4 col-form-label align-self-center">Item Name</label>
-                <div class="col-sm-10">
-                  <input type="text" name="itemname" class="form-control" id="itemName" style="width: 560px" readonly value="{{ $data->itemname }}">
+            <div class="row justify-content-center align-items-center mt-4">
+                <div class="col-md-2 mb-2">
+                    <button type="button" class="btn btn-primary" id="edit">Edit Information</button>
                 </div>
-              </div>
-              <div class="mb-3 row">
-                <label for="inputDateoflost" class="col-sm-4 col-form-label align-self-center">Date of Lost</label>
-                <div class="col-sm-10">
-                  <input type="dateoflost" name="dateoflost" class="form-control" id="dateoflost" style="width: 560px" readonly value="{{ $data->dateoflost }}">
+                <div class="col-md-2 mb-2">
+                    <button type="submit" name="save" id="saveB" class="btn btn-primary" disabled>Save</button>
                 </div>
-              </div>
-              <div class="mb-3 row">
-                <label for="inputDescription" class="col-sm-4 col-form-label align-self-center">Description</label>
-                <div class="col-sm-10">
-                  <input type="description" name="description" class="form-control" id="description" style="width: 560px" value="{{ $data->description }}" readonly>
-                </div>
-              </div>
-              <div class="mb-3 row">
-                <div class="col-sm-10">
-                  <select id="status" name="status" class="form-select"disabled>
-                    <option>Status</option>
-                    <option>Lost</option>
-                    <option>Found</option>
-                  </select>
-                </div>
-              </div>
-              </div>
             </div>
-            <div class="d-flex justify-content-center align-items-center">
-              <div class="text-center md-2 mx-2">
-                <button type="button" class="btn btn-primary" id="edit">Edit Information</button>
-              </div>
-              <div class="text-center md-2 mx-2">
-                <button type="submit" name="save" id="saveB" class="btn btn-primary"disabled>Save</button>
-              </div>
-            </div>
-          </div>
-        </form>
+        </div>
+    </form>
 
           <script>
             // Get the edit button element

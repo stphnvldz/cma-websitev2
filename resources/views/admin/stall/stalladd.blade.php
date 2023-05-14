@@ -25,13 +25,13 @@
     </div>
   @endif
   {{--<input type="hidden" name="floor_id" id="floor_id" value="{{ $floors->id }}">--}}
-  <div class="d-flex justify-content-center row p-5">
-    <div class="container px-4 text-center mt-2 mx-5" style="height:300px;width:1000px;border: 1px solid rgb(39, 38, 38);border-radius: 4px;">
-      <div class="d-flex justify-content-center row p-3 mt-5">
-        <div class="col-6">
-          <div class="mb-3 row">
-            <label for="inputFloor" class="col-sm-3 col-form-label align-self-center">Floor</label>
-            <div class="col-sm-9">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="inputFloor" class="form-label">Floor</label>
               <select id="floornumber" name="floornumber" class="form-select">
                 <option value="">Choose Floor</option>
                 @foreach($floors as $id => $floornumber)
@@ -39,16 +39,14 @@
                 @endforeach
               </select>
             </div>
-          </div>
-          <div class="mb-3 row">
-            <label for="inputStallNumber" class="col-sm-3 col-form-label align-self-center">Stall Number</label>
-            <div class="col-sm-9">
-                <input type="stallnumber" name="stallnumber" class="form-control" id="stallnumber" placeholder="floor#(1)-stall#(001)">
+            <div class="mb-3">
+              <label for="inputStallNumber" class="form-label">Stall Number</label>
+              <input type="text" name="stallnumber" class="form-control" id="stallnumber" placeholder="floor#(1)-stall#(001)">
+            </div>
+            <div class="text-center">
+              <button type="store" class="btn btn-primary">Save</button>
             </div>
           </div>
-        </div>
-        <div class ="text-center col-12 md-2 mt-2 mx-4">
-          <button type="store" class="btn btn-primary" style="font-size: 16px; padding: 10px 20px;">Save</button>
         </div>
       </div>
     </div>

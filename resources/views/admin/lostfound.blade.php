@@ -13,43 +13,47 @@
 <body>
 
 @section('content')
-<div class="d-flex justify-content-end">
-  <button type="button" class="btn btn-outline-success me-2 mt-2" data-bs-toggle="modal" data-bs-target="#AddLost" data-bs-whatever="@AddLost">Add New Lost</button>
-</div>
-<div class="d-flex justify-content-center mt-2 mx-auto p-2">
-  <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">LOST AND FOUND</label>
-</div>
+<div class="container">
+  <div class="d-flex justify-content-end">
+      <button type="button" class="btn btn-outline-success me-2 mt-2" data-bs-toggle="modal" data-bs-target="#AddLost" data-bs-whatever="@AddLost">Add New Lost</button>
+  </div>
+  <div class="d-flex justify-content-center mt-2 mx-auto p-2">
+      <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg" style="font-weight: bold;">LOST AND FOUND</label>
+  </div>
 
-<table class="table table-hover table-striped" style="margin-left: 0px">
-  <thead>
-      <tr>
-          <th scope="col">Item</th>
-          <th scope="col">Description</th>
-          <th scope="col">Date of Lost</th>
-          <th scope="col">Status</th>
-      </tr>
-  </thead>
-  <tbody>
-    @if(isset($lostfound))
-    <script>
-      // get the floor data from the server
-      let lostfound = {!! json_encode($lostfound) !!};
+  <div class="table-responsive">
+      <table class="table table-hover table-striped">
+          <thead>
+              <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Date of Lost</th>
+                  <th scope="col">Status</th>
+              </tr>
+          </thead>
+          <tbody>
+              @if(isset($lostfound))
+              <script>
+                  // get the floor data from the server
+                  let lostfound = {!! json_encode($lostfound) !!};
 
-      // loop through the floors and display the data in the table
-      for (let i = 0; i < lostfound.length; i++) {
-          let lostandfound = lostfound[i];
-          document.write('<tr>');
-          document.write('<td>' + lostandfound.itemname +'</td>');
-          document.write('<td>' + lostandfound.description + '</td>');
-          document.write('<td>' + lostandfound.dateoflost +'</td>');
-          document.write('<td>' + lostandfound.status +'</td>');
-          document.write('<td><a href="/viewlostfound?id=' + lostandfound.id + '" type="button" class="btn btn-secondary">View</a></td>');
-          document.write('</tr>');
-      }
-  </script>
-  @endif
-  </tbody>
-</table>
+                  // loop through the floors and display the data in the table
+                  for (let i = 0; i < lostfound.length; i++) {
+                      let lostandfound = lostfound[i];
+                      document.write('<tr>');
+                      document.write('<td>' + lostandfound.itemname +'</td>');
+                      document.write('<td>' + lostandfound.description + '</td>');
+                      document.write('<td>' + lostandfound.dateoflost +'</td>');
+                      document.write('<td>' + lostandfound.status +'</td>');
+                      document.write('<td><a href="/viewlostfound?id=' + lostandfound.id + '" type="button" class="btn btn-secondary">View</a></td>');
+                      document.write('</tr>');
+                  }
+              </script>
+              @endif
+          </tbody>
+      </table>
+  </div>
+</div>
 
 {{--modal for Lost and found--}}
 <div class="modal fade" id="AddLost" tabindex="-1" aria-labelledby="AddLost" aria-hidden="true">
