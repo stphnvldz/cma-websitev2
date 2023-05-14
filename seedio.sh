@@ -1,0 +1,1 @@
+php artisan iseed tenant_bills,requirements,announcement --force
