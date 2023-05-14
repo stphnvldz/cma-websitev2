@@ -2,6 +2,7 @@
 
 @section('content')
 
+<title>Login</title>
 <style>
     .header {
       min-height: 100vh;
