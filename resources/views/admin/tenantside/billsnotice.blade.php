@@ -12,30 +12,31 @@
 <body>
     @section('content')
 
-    <table class="table table-hover table-striped">
-        <thead>
-            <tr>
-                <th scope="col">Amount</th>
-                <th scope="col">Notice</th>
-                <th scope="col">Description</th>
-                <th scope="col">Date</th>
-                <th scope="col">Status</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="table-responsive">
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Notice</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
                 @foreach ($results as $result)
-                    <tr>
-                        <td>{{ $result->amount }}</td>
-                        <td>{{ $result->notice }}</td>
-                        <td>{{ $result->description }}</td>
-                        <td>{{ DateTime::createFromFormat('Y-m-d', $result->date_from)->format('d M Y') . ' to ' . DateTime::createFromFormat('Y-m-d', $result->date_to)->format('d M Y')  }}</td>
-                        <td>{{ $result->status}}</td>
-                        <td><a href="/payment?id={{ $result->tenant_bills_id }}" type="button" class="btn btn-primary">Payment</a></td>
-                    </tr>
+                <tr>
+                    <td>{{ $result->amount }}</td>
+                    <td>{{ $result->notice }}</td>
+                    <td>{{ $result->description }}</td>
+                    <td>{{ DateTime::createFromFormat('Y-m-d', $result->date_from)->format('d M Y') . ' to ' . DateTime::createFromFormat('Y-m-d', $result->date_to)->format('d M Y') }}</td>
+                    <td>{{ $result->status}}</td>
+                    <td><a href="/payment?id={{ $result->tenant_bills_id }}" type="button" class="btn btn-primary">Payment</a></td>
+                </tr>
                 @endforeach
-        </tbody>
-    </table>
-
+            </tbody>
+        </table>
+    </div>
     <script src="assets/js/bootstrap.js"></script>
 </body>
 </html>
