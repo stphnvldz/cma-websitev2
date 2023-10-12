@@ -146,7 +146,6 @@ class TenantListController extends Controller
 
     public function postAllBill(Request $request) {
 
-
         try {
             DB::beginTransaction();
             $rent = DB::table('rentstall')->select('id','fullname','contact', 'emailadd', 'payment','totalamount')->get();

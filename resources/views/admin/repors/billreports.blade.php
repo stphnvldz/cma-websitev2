@@ -42,9 +42,9 @@
                         <td>{{ $bills->amount }}</td>
                         <td>{{ DateTime::createFromFormat('Y-m-d', $bills->date_from)->format('d M Y') . ' to ' . DateTime::createFromFormat('Y-m-d', $bills->date_to)->format('d M Y')  }}</td>
                         <td>{{ $bills->status}}</td>
-                        <td><div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            </button>
+                        <td>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/paid_process?id={{$bills->id}}">Paid</a></li>
                                 <li><a class="dropdown-item" href="/unpaid_process?id={{$bills->id}}">Unpaid</a></li>

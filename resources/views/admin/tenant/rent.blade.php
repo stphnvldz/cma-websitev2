@@ -367,6 +367,53 @@
                         }
                 }
             });
+
+
+            const rentalFeeDropdown = document.getElementById('rentalfee');
+    const stallFeeTextbox = document.getElementById('monthly');
+    const cusaTextbox = document.getElementById('cusa');
+    const areaDropdown = document.getElementById('area');
+    const stallNumberDropdown = document.getElementById('stallnum');//stallnumber dropdown
+    const selectedStallTextbox = document.getElementById('selectedStall');
+    
+    function fetchArea(area) {
+    fetch('/fetchArea/' + area)
+        .then(response => response.json())
+        .then(data => {
+        const rentalFeeType = rentalFeeDropdown.value;
+        const monthlyFee = parseFloat(data.monthly) / (rentalFeeType === 'Daily' ? 30 : 1);
+        stallFeeTextbox.value = monthlyFee.toFixed(2);
+        cusaTextbox.value = data.cusa;
+        selectedStallTextbox.value = stallNumberDropdown.options[stallNumberDropdown.selectedIndex].text;
+        })
+        .catch(error => {
+        console.error('Error:', error);
+        // Handle the error condition
+        });
+    }
+    var selectedStallNumbers = [];
+
+    document.getElementById('selectButton').addEventListener('click', () => {
+        const area = areaDropdown.value;
+        fetchArea(area);
+
+                    // Check if the length of selectedStallNumbers array is less than or equal to 2
+                    if (selectedStallNumbers.length > 2) {
+                        alert('You can only select a maximum of two stalls.');
+                        // Disable the floor number dropdown and stall number dropdown
+                        selectButton.disabled = true;
+                        stallNumberDropdown.disabled = true;
+                        return;
+                    } else {
+                        // Update the selected stall number textbox value
+                        selectedStallTextbox.value = selectedStallNumbers.join(', ');
+                        
+                        // Calculate the total amount based on the number of selected stalls and the selected payment option
+                        totalAmountTextbox.value = amount.value  * selectedStallNumbers.length;
+                        }
+                }
+        selectedStallTextbox.value = stallNumberDropdown.options[stallNumberDropdown.selectedIndex].text;
+    });
         </script>
   
         {{--pag upload ng image sa database--}}
